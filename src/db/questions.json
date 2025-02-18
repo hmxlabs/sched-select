@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "What is your typical task duration?",
+    "key": "typicalTaskDuration",
+    "type": "multipleChoice"
+  },
+  {
+    "id": 2,
+    "question": "Approx. Task Submission Rate?",
+    "key": "taskSubmissionRate",
+    "type": "multipleChoice"
+  },
+  {
+    "id": 3,
+    "question": "Do you need a managed Cloud Solution on AWS?",
+    "key": "managedCloudSolutionAWS",
+    "type": "boolean"
+  },
+  {
+    "id": 4,
+    "question": "Do you need Microsoft Windows compute nodes?",
+    "key": "microsoftWindowsComputeNodes",
+    "type": "boolean"
+  },
+  {
+    "id": 5,
+    "question": "Do you need the scheduler to be able to run outside of AWS?",
+    "key": "runOutsideAWS",
+    "type": "boolean"
+  },
+  {
+    "id": 6,
+    "question": "Do you need support for containers?",
+    "key": "supportForContainers",
+    "type": "boolean"
+  },
+  {
+    "id": 7,
+    "question": "Do you need integration with AWS ECS or EKS?",
+    "key": "integrationAWSECS",
+    "type": "boolean"
+  },
+  {
+    "id": 8,
+    "question": "Do you need support for Amazon EC2 Spot?",
+    "key": "supportForAmazonEC2Spot",
+    "type": "boolean"
+  },
+  {
+    "id": 9,
+    "question": "Do you need advanced features for Amazon EC2 Spot?",
+    "key": "advancedFeaturesEC2Spot",
+    "type": "boolean"
+  },
+  {
+    "id": 10,
+    "question": "Do you need support for EC2 Graviton instances?",
+    "key": "supportForEC2GravitonInstances",
+    "type": "boolean"
+  }
+]

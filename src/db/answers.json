@@ -1,0 +1,42 @@
+{
+  "typicalTaskDuration": {
+    "type": "multipleChoice",
+    "options": ["Seconds to Minutes", "Minutes to Hours"]
+  },
+  "taskSubmissionRate": {
+    "type": "multipleChoice",
+    "options": ["< 500 TPS", ">= 500 TPS <= 1000 TPS", "> 1000 TPS"]
+  },
+  "managedCloudSolutionAWS": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "microsoftWindowsComputeNodes": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "runOutsideAWS": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "supportForContainers": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "integrationAWSECS": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "supportForAmazonEC2Spot": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "advancedFeaturesEC2Spot": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "supportForEC2GravitonInstances": {
+    "type": "boolean",
+    "options": [true, false]
+  }
+}

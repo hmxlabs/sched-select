@@ -1,0 +1,162 @@
+[
+  {
+    "name": "DataSynapse GridServer",
+    "product": "DataSynapse GridServer",
+    "owner": "TIBCO",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://docs.tibco.com/pub/dsp_gridserver/7.1.0/doc/html/_templates/Home.htm",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "> 1000 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": true,
+      "runOutsideAWS": true,
+      "supportForContainers": true,
+      "integrationAWSECS": true,
+      "supportForAmazonEC2Spot": true,
+      "advancedFeaturesEC2Spot": true,
+      "supportForEC2GravitonInstances": true
+    }
+  },
+  {
+    "name": "Spectrum Symphony",
+    "product": "Spectrum Symphony",
+    "owner": "IBM",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://www.ibm.com/products/analytics-workload-management",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "< 500 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": false,
+      "supportForContainers": false,
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
+    }
+  },
+  {
+    "name": "Platform LSF",
+    "product": "Platform LSF",
+    "owner": "IBM",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://www.ibm.com/products/hpc-workload-management",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "< 500 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": false,
+      "supportForContainers": false,
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
+    }
+  },
+  {
+    "name": "Yellowdog",
+    "product": "Yellowdog",
+    "owner": "Yellowdog",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://yellowdog.ai",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "< 500 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": false,
+      "supportForContainers": false,
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
+    }
+  },
+  {
+    "name": "Slurm / AWS Parallel Computing Service",
+    "product": "Slurm / AWS Parallel Computing Service",
+    "owner": "Slurm / AWS",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://aws.amazon.com/pcs/",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "< 500 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": false,
+      "supportForContainers": false,
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
+    }
+  },
+  {
+    "name": "AWS Batch",
+    "product": "AWS Batch",
+    "owner": "AWS",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://aws.amazon.com/batch/",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "< 500 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": false,
+      "supportForContainers": false,
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
+    }
+  },
+  {
+    "name": "Microsoft HPC Pack",
+    "product": "Microsoft HPC Pack",
+    "owner": "Microsoft",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://learn.microsoft.com/en-us/powershell/high-performance-computing/overview-of-microsoft-hpc-pack?view=hpc19-ps",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "< 500 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": false,
+      "supportForContainers": false,
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
+    }
+  },
+  {
+    "name": "HTC-Grid",
+    "product": "HTC-Grid",
+    "owner": "Open Source",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://github.com/finos/htc-grid",
+    "features": {
+      "typicalTaskDuration": "Minutes to Hours",
+      "taskSubmissionRate": "< 500 TPS",
+      "managedCloudSolutionAWS": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": false,
+      "supportForContainers": false,
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
+    }
+  }
+]
