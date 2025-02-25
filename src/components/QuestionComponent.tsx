@@ -7,6 +7,8 @@ import {
   Box,
 } from "@mui/material";
 
+import styles from "./Form.module.css";
+
 interface QuestionProps {
   question: string;
   questionKey: string;
@@ -51,6 +53,7 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                     }}
                   />
                 }
+                sx={{ color: "#fff" }}
                 label="Yes"
               />
               <FormControlLabel
@@ -64,6 +67,7 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                   />
                 }
                 label="No"
+                sx={{ color: "#fff" }}
               />
             </RadioGroup>
           </FormControl>
@@ -90,6 +94,7 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                     />
                   }
                   label={option}
+                  sx={{ color: "#fff" }}
                 />
               ))}
             </RadioGroup>
@@ -110,7 +115,7 @@ const QuestionComponent: React.FC<QuestionProps> = ({
         alignItems: "center",
       }}
     >
-      <h2>{question}</h2>
+      <h2 className={styles.questionText}>{question}</h2>
       {renderInput()}
     </Box>
   );

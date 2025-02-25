@@ -1,11 +1,11 @@
-import FormStepper from './components/FormStepper';
+import Form from './components/Form';
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <FormStepper />
+      <Form />
     </div>
   );
 }
