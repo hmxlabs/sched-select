@@ -2,6 +2,8 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 import styles from "./Form.module.css";
 
@@ -38,14 +40,15 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
           {schedulers.map((scheduler, index) => (
             <a
               key={index}
-              style={{ textDecoration: "none", color: "inherit" }}
+              className={styles.schedulerLink}
               href={scheduler.link}
               target="_blank"
               rel="noreferrer"
             >
-              <p className={styles.submissionText}>
+              <span className={styles.schedulerName}>
                 <strong>{scheduler.name}</strong>
-              </p>
+                <OpenInNewIcon sx={{ fontSize: 13 }} className={styles.icon} />
+              </span>
             </a>
           ))}
         </div>
@@ -55,11 +58,15 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
               mt: 4,
               backgroundColor: "#fff",
               color: "#2591eb",
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
               "&:hover": { backgroundColor: "#2591eb", color: "#fff" },
             }}
             variant="contained"
             onClick={generateShareableLink}
           >
+            <ContentCopyIcon fontSize="small" />
             Share Link
           </Button>
           <Button
@@ -72,9 +79,7 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
             variant="contained"
             onClick={resetForm}
           >
-            <RefreshIcon
-              fontSize="large"
-            />
+            <RefreshIcon fontSize="large" />
           </Button>
         </div>
       </motion.div>
