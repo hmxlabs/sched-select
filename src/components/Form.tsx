@@ -35,7 +35,7 @@ export default function Form() {
       setAnswersState(params as unknown as Answer);
       setIsReadOnly(true);
     }
-  }, [searchParams]);
+  }, []);
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
