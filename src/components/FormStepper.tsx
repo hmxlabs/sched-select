@@ -186,6 +186,7 @@ const FormStepper: React.FC = () => {
             >
               {currentQuestionIndex < questions.length ? (
                 <QuestionComponent
+                  hint={questions[currentQuestionIndex].hint}
                   question={questions[currentQuestionIndex].question}
                   type={
                     answers[questions[currentQuestionIndex].key as keyof Answer]

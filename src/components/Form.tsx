@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logo.png";
+import { Snackbar } from "@mui/material";
+// import logo from "../assets/logo.png";
 import questions from "../db/questions.json";
 import answers from "../db/answers.json";
 import schedulers from "../db/schedulers.json";
@@ -13,28 +15,50 @@ import styles from "./Form.module.css";
 
 export default function Form() {
   const [submitted, setSubmitted] = useState<boolean>(false);
-  // const [showForm, setShowForm] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] =
     useState(false);
   const [answersState, setAnswersState] = useState<Answer>({} as Answer);
   const [filteredSchedulers, setFilteredSchedulers] =
     useState<Scheduler[]>(schedulers);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isReadOnly, setIsReadOnly] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
     filterSchedulers(answersState);
   }, [answersState]);
 
+  useEffect(() => {
+    const params = Object.fromEntries(searchParams.entries());
+    if (Object.keys(params).length > 0) {
+      setAnswersState(params as unknown as Answer);
+      setIsReadOnly(true);
+    }
+  }, [searchParams]);
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
   const handleAnswer = (answer: any) => {
     const currentQuestion = questions[currentQuestionIndex];
+    const newAnswers = { ...answersState, [currentQuestion.key]: answer };
+
     setAnswersState((prev) => ({ ...prev, [currentQuestion.key]: answer }));
     setIsCurrentQuestionAnswered(true);
+
+    const answerValues: Record<string, string> = Object.fromEntries(
+      Object.entries(newAnswers).map(([key, value]) => [key, String(value)])
+    );
+
+    setSearchParams(new URLSearchParams(answerValues));
   };
 
   const filterSchedulers = (answersState: Record<string, any>) => {
     const filtered = schedulers.filter((scheduler) => {
       return Object.keys(answersState).every((key) => {
-        const userAnswer = answersState[key];
+        let userAnswer = answersState[key];
         const schedulerFeature =
           scheduler.features[key as keyof SchedulerFeatures];
 
@@ -46,9 +70,15 @@ export default function Form() {
 
         if (typeof schedulerFeature === "boolean") {
           if (typeof userAnswer === "string") {
-            const normalizedUserAnswer = userAnswer.toLowerCase() === "yes";
-            return schedulerFeature === normalizedUserAnswer;
+            userAnswer =
+              userAnswer.toLowerCase() === "yes" ||
+              userAnswer.toLowerCase() === "true";
           }
+          return schedulerFeature === userAnswer;
+        }
+
+        if (typeof schedulerFeature === "number") {
+          userAnswer = Number(userAnswer);
           return schedulerFeature === userAnswer;
         }
 
@@ -70,15 +100,37 @@ export default function Form() {
   };
 
   const handleNext = () => {
-    if (!isCurrentQuestionAnswered) {
+    if (!isReadOnly && !isCurrentQuestionAnswered) {
       return;
     }
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-      setSubmitted(true);
+    if (isReadOnly || isCurrentQuestionAnswered) {
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex((prev) => prev + 1);
+      } else {
+        setSubmitted(true);
+      }
+      setIsCurrentQuestionAnswered(false);
     }
+
     setIsCurrentQuestionAnswered(false);
+  };
+
+  const generateShareableLink = () => {
+    const url = `${window.location.origin}${
+      window.location.pathname
+    }?${searchParams.toString()}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setOpenSnackbar(true);
+    });
+  };
+
+  const resetForm = () => {
+    setAnswersState({} as Answer);
+    setCurrentQuestionIndex(0);
+    setIsReadOnly(false);
+    setFilteredSchedulers(schedulers);
+    setSubmitted(false);
+    window.history.replaceState(null, "", window.location.pathname);
   };
 
   return (
@@ -89,9 +141,16 @@ export default function Form() {
       no-repeat center center/cover`,
       }}
     >
-      <div className={styles.logoContainer}>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        message="URL copied to clipboard!"
+      />
+      {/* <div className={styles.logoContainer}>
         <img src={logo} alt="HMx" className={styles.logo} />
-      </div>
+      </div> */}
       <div className={styles.formBox}>
         <div className={styles.progressBarContainer}>
           <motion.div
@@ -118,6 +177,7 @@ export default function Form() {
             >
               <QuestionComponent
                 question={questions[currentQuestionIndex].question}
+                hint={questions[currentQuestionIndex].hint}
                 type={
                   answers[questions[currentQuestionIndex].key as keyof Answer]
                     .type
@@ -129,6 +189,7 @@ export default function Form() {
                 questionKey={questions[currentQuestionIndex].key}
                 onAnswer={handleAnswer}
                 allAnswers={answersState}
+                disabled={isReadOnly}
               />
             </motion.div>
           ) : (
@@ -138,7 +199,11 @@ export default function Form() {
               transition={{ duration: 0.5 }}
               className={styles.submissionContainer}
             >
-              <SchedulerListComponent schedulers={filteredSchedulers} />
+              <SchedulerListComponent
+                schedulers={filteredSchedulers}
+                generateShareableLink={generateShareableLink}
+                resetForm={resetForm}
+              />
             </motion.div>
           )}
         </AnimatePresence>

@@ -1,12 +1,15 @@
-import Form from './components/Form';
+import { BrowserRouter } from "react-router-dom";
+import Form from "./components/Form";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Form />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Form />
+      </div>
+    </BrowserRouter>
   );
 }
 
