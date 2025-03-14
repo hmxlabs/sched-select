@@ -2,60 +2,70 @@
   {
     "id": 1,
     "question": "What is your typical task duration?",
+    "hint": "Consider how long a single task or job typically runs in your workflow. Are they short (Seconds to Minutes), medium (Minutes to Hours)? This helps determine the best scheduling strategy for efficiency and resource allocation.",
     "key": "typicalTaskDuration",
     "type": "multipleChoice"
   },
   {
     "id": 2,
     "question": "Approx. Task Submission Rate?",
+    "hint": "< 500 if your system handles fewer than 500 tasks per second, 500-1000 if your system handles between 500 and 1000 tasks per second, and >1000 if your system handles more than 1000 tasks per second.",
     "key": "taskSubmissionRate",
     "type": "multipleChoice"
   },
   {
     "id": 3,
     "question": "Do you need a managed Cloud Solution on AWS?",
+    "hint": "",
     "key": "managedCloudSolutionAWS",
     "type": "boolean"
   },
   {
     "id": 4,
     "question": "Do you need Microsoft Windows compute nodes?",
+    "hint": "",
     "key": "microsoftWindowsComputeNodes",
     "type": "boolean"
   },
   {
     "id": 5,
     "question": "Do you need the scheduler to be able to run outside of AWS?",
+    "hint": "",
     "key": "runOutsideAWS",
     "type": "boolean"
   },
   {
     "id": 6,
     "question": "Do you need support for containers?",
+    "hint": "",
     "key": "supportForContainers",
     "type": "boolean"
   },
   {
     "id": 7,
     "question": "Do you need integration with AWS ECS or EKS?",
+    "hint": "",
     "key": "integrationAWSECS",
     "type": "boolean"
   },
   {
     "id": 8,
     "question": "Do you need support for Amazon EC2 Spot?",
+    "hint": "",
     "key": "supportForAmazonEC2Spot",
     "type": "boolean"
   },
   {
     "id": 9,
     "question": "Do you need advanced features for Amazon EC2 Spot?",
+    "hint": "",
     "key": "advancedFeaturesEC2Spot",
     "type": "boolean"
   },
   {
     "id": 10,
     "question": "Do you need support for EC2 Graviton instances?",
+    "hint": "",
     "key": "supportForEC2GravitonInstances",
     "type": "boolean"
   }

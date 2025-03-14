@@ -1,12 +1,15 @@
-import FormStepper from './components/FormStepper';
+import { BrowserRouter } from "react-router-dom";
+import Form from "./components/Form";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <FormStepper />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Form />
+      </div>
+    </BrowserRouter>
   );
 }
 

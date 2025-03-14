@@ -5,31 +5,39 @@ import {
   FormControlLabel,
   FormControl,
   Box,
+  Button,
 } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+
+import styles from "./Form.module.css";
 
 interface QuestionProps {
   question: string;
+  hint: string;
   questionKey: string;
   type: string;
   options?: any[];
   allAnswers: any;
+  disabled?: boolean;
   onAnswer: (answer: any) => void;
 }
 
 const QuestionComponent: React.FC<QuestionProps> = ({
   question,
+  hint,
   type,
   options,
   onAnswer,
   allAnswers,
   questionKey,
+  disabled,
 }) => {
   const renderInput = () => {
-
     switch (type) {
       case "boolean":
         return (
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" disabled={disabled}>
             <RadioGroup
               aria-label={question}
               name={questionKey}
@@ -51,6 +59,7 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                     }}
                   />
                 }
+                sx={{ color: "#fff" }}
                 label="Yes"
               />
               <FormControlLabel
@@ -64,13 +73,14 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                   />
                 }
                 label="No"
+                sx={{ color: "#fff" }}
               />
             </RadioGroup>
           </FormControl>
         );
       case "multipleChoice":
         return (
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" disabled={disabled}>
             <RadioGroup
               aria-label={question}
               name={question}
@@ -90,6 +100,7 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                     />
                   }
                   label={option}
+                  sx={{ color: "#fff" }}
                 />
               ))}
             </RadioGroup>
@@ -110,7 +121,26 @@ const QuestionComponent: React.FC<QuestionProps> = ({
         alignItems: "center",
       }}
     >
-      <h2>{question}</h2>
+      <Box
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 1,
+        }}
+      >
+        <h2 className={styles.questionText}>{question}</h2>
+        {hint && (
+          <Tooltip title={hint} arrow>
+            <Button sx={{ minWidth: 0, padding: 0 }}>
+              <HelpOutlineIcon sx={{ color: "white" }} fontSize="small" />
+            </Button>
+          </Tooltip>
+        )}
+      </Box>
+
       {renderInput()}
     </Box>
   );
