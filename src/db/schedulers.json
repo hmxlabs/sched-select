@@ -7,16 +7,16 @@
     "score": "100%",
     "link": "https://docs.tibco.com/pub/dsp_gridserver/7.1.0/doc/html/_templates/Home.htm",
     "features": {
-      "typicalTaskDuration": "Minutes to Hours",
+      "typicalTaskDuration": "Seconds to Minutes",
       "taskSubmissionRate": "> 1000 TPS",
       "managedCloudSolutionAWS": false,
       "microsoftWindowsComputeNodes": true,
       "runOutsideAWS": true,
       "supportForContainers": true,
-      "integrationAWSECS": true,
-      "supportForAmazonEC2Spot": true,
-      "advancedFeaturesEC2Spot": true,
-      "supportForEC2GravitonInstances": true
+      "integrationAWSECS": false,
+      "supportForAmazonEC2Spot": false,
+      "advancedFeaturesEC2Spot": false,
+      "supportForEC2GravitonInstances": false
     }
   },
   {
@@ -27,12 +27,12 @@
     "score": "100%",
     "link": "https://www.ibm.com/products/analytics-workload-management",
     "features": {
-      "typicalTaskDuration": "Minutes to Hours",
-      "taskSubmissionRate": "< 500 TPS",
+      "typicalTaskDuration": "Seconds to Minutes",
+      "taskSubmissionRate": "> 1000 TPS",
       "managedCloudSolutionAWS": false,
       "microsoftWindowsComputeNodes": true,
-      "runOutsideAWS": false,
-      "supportForContainers": false,
+      "runOutsideAWS": true,
+      "supportForContainers": true,
       "integrationAWSECS": false,
       "supportForAmazonEC2Spot": false,
       "advancedFeaturesEC2Spot": false,
@@ -51,7 +51,7 @@
       "taskSubmissionRate": "< 500 TPS",
       "managedCloudSolutionAWS": false,
       "microsoftWindowsComputeNodes": true,
-      "runOutsideAWS": false,
+      "runOutsideAWS": true,
       "supportForContainers": false,
       "integrationAWSECS": false,
       "supportForAmazonEC2Spot": false,
@@ -67,16 +67,16 @@
     "score": "100%",
     "link": "https://yellowdog.ai",
     "features": {
-      "typicalTaskDuration": "Minutes to Hours",
-      "taskSubmissionRate": "< 500 TPS",
-      "managedCloudSolutionAWS": false,
+      "typicalTaskDuration": "Seconds to Minutes",
+      "taskSubmissionRate": "> 1000 TPS",
+      "managedCloudSolutionAWS": true,
       "microsoftWindowsComputeNodes": true,
-      "runOutsideAWS": false,
-      "supportForContainers": false,
+      "runOutsideAWS": true,
+      "supportForContainers": true,
       "integrationAWSECS": false,
       "supportForAmazonEC2Spot": false,
-      "advancedFeaturesEC2Spot": false,
-      "supportForEC2GravitonInstances": false
+      "advancedFeaturesEC2Spot": true,
+      "supportForEC2GravitonInstances": true
     }
   },
   {
@@ -89,14 +89,14 @@
     "features": {
       "typicalTaskDuration": "Minutes to Hours",
       "taskSubmissionRate": "< 500 TPS",
-      "managedCloudSolutionAWS": false,
+      "managedCloudSolutionAWS": true,
       "microsoftWindowsComputeNodes": true,
       "runOutsideAWS": false,
       "supportForContainers": false,
       "integrationAWSECS": false,
       "supportForAmazonEC2Spot": false,
-      "advancedFeaturesEC2Spot": false,
-      "supportForEC2GravitonInstances": false
+      "advancedFeaturesEC2Spot": true,
+      "supportForEC2GravitonInstances": true
     }
   },
   {
@@ -109,14 +109,14 @@
     "features": {
       "typicalTaskDuration": "Minutes to Hours",
       "taskSubmissionRate": "< 500 TPS",
-      "managedCloudSolutionAWS": false,
-      "microsoftWindowsComputeNodes": true,
+      "managedCloudSolutionAWS": true,
+      "microsoftWindowsComputeNodes": false,
       "runOutsideAWS": false,
-      "supportForContainers": false,
-      "integrationAWSECS": false,
-      "supportForAmazonEC2Spot": false,
-      "advancedFeaturesEC2Spot": false,
-      "supportForEC2GravitonInstances": false
+      "supportForContainers": true,
+      "integrationAWSECS": true,
+      "supportForAmazonEC2Spot": true,
+      "advancedFeaturesEC2Spot": true,
+      "supportForEC2GravitonInstances": true
     }
   },
   {
@@ -127,12 +127,12 @@
     "score": "100%",
     "link": "https://learn.microsoft.com/en-us/powershell/high-performance-computing/overview-of-microsoft-hpc-pack?view=hpc19-ps",
     "features": {
-      "typicalTaskDuration": "Minutes to Hours",
-      "taskSubmissionRate": "< 500 TPS",
+      "typicalTaskDuration": "Seconds to Minutes",
+      "taskSubmissionRate": ">= 500 TPS <= 1000 TPS",
       "managedCloudSolutionAWS": false,
       "microsoftWindowsComputeNodes": true,
-      "runOutsideAWS": false,
-      "supportForContainers": false,
+      "runOutsideAWS": true,
+      "supportForContainers": true,
       "integrationAWSECS": false,
       "supportForAmazonEC2Spot": false,
       "advancedFeaturesEC2Spot": false,
@@ -147,16 +147,16 @@
     "score": "100%",
     "link": "https://github.com/finos/htc-grid",
     "features": {
-      "typicalTaskDuration": "Minutes to Hours",
-      "taskSubmissionRate": "< 500 TPS",
+      "typicalTaskDuration": "Seconds to Minutes",
+      "taskSubmissionRate": "> 1000 TPS",
       "managedCloudSolutionAWS": false,
-      "microsoftWindowsComputeNodes": true,
-      "runOutsideAWS": false,
-      "supportForContainers": false,
-      "integrationAWSECS": false,
-      "supportForAmazonEC2Spot": false,
+      "microsoftWindowsComputeNodes": false,
+      "runOutsideAWS": true,
+      "supportForContainers": true,
+      "integrationAWSECS": true,
+      "supportForAmazonEC2Spot": true,
       "advancedFeaturesEC2Spot": false,
-      "supportForEC2GravitonInstances": false
+      "supportForEC2GravitonInstances": true
     }
   }
 ]
