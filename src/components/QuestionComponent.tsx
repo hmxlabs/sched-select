@@ -6,11 +6,11 @@ import {
   FormControl,
   Box,
   Button,
+  FormGroup,
+  Checkbox
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-
-import styles from "./Form.module.css";
 
 interface QuestionProps {
   question: string;
@@ -106,6 +106,74 @@ const QuestionComponent: React.FC<QuestionProps> = ({
             </RadioGroup>
           </FormControl>
         );
+      case "multiSelect":
+        return (
+          <FormControl component="fieldset" disabled={disabled}>
+            <FormGroup>
+              {options?.map((option, index) => {
+                return (
+                <FormControlLabel
+                  key={index}
+                  control={
+                    <Checkbox
+                      checked={
+                        typeof allAnswers[questionKey] === "string"
+                        ? allAnswers[questionKey].split(",").includes(option)
+                        : Array.isArray(allAnswers[questionKey])
+                          ? allAnswers[questionKey].includes(option)
+                          : false
+                      }
+                      onChange={(e) => {
+                        const newAnswers = e.target.checked
+                          ? [...(allAnswers[questionKey] || []), option]
+                          : (allAnswers[questionKey] || []).filter(
+                              (item: string) => item !== option
+                            );
+                        onAnswer(newAnswers);
+                      }}
+                      sx={{
+                        color: "#fff",
+                        "&.Mui-checked": { color: "#2591eb" },
+                      }}
+                    />
+                  }
+                  label={option}
+                  sx={{ color: "#fff" }}
+                />
+              )}
+              
+              )}
+            </FormGroup>
+          </FormControl>
+        );
+      case "rankedChoice":
+        return (
+          <FormControl component="fieldset" disabled={disabled}>
+            <RadioGroup
+              aria-label={question}
+              name={questionKey}
+              value={allAnswers[questionKey] ?? ""}
+              onChange={(e) => onAnswer(Number(e.target.value))}
+            >
+              {options?.map((option) => (
+                <FormControlLabel
+                  key={option.value}
+                  value={option.rank}
+                  control={
+                    <Radio
+                      sx={{
+                        color: "#fff",
+                        "&.Mui-checked": { color: "#2591eb" },
+                      }}
+                    />
+                  }
+                  label={option.value}
+                  sx={{ color: "#fff" }}
+                />
+              ))}
+            </RadioGroup>
+          </FormControl>
+        );
       default:
         return null;
     }
@@ -131,7 +199,7 @@ const QuestionComponent: React.FC<QuestionProps> = ({
           gap: 1,
         }}
       >
-        <h2 className={styles.questionText}>{question}</h2>
+        <h2 className="questionText">{question}</h2>
         {hint && (
           <Tooltip title={hint} arrow>
             <Button sx={{ minWidth: 0, padding: 0 }}>

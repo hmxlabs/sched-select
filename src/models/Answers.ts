@@ -48,4 +48,8 @@ export interface Answer {
     type: string;
     options: boolean[];
   };
+  cloudProviders: {
+    type: string;
+    options: string[];
+  }
 }

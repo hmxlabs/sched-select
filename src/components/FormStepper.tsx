@@ -61,14 +61,13 @@ const FormStepper: React.FC = () => {
     const filtered = schedulers.filter((scheduler) => {
       return Object.keys(answersState).every((key) => {
         const userAnswer = answersState[key];
-        const schedulerFeature = scheduler.features[key as keyof SchedulerFeatures];
-  
-        console.log(key, "=>", userAnswer, "vs", schedulerFeature);
-  
+        const schedulerFeature =
+          scheduler.features[key as keyof SchedulerFeatures];
+
         if (schedulerFeature === undefined) {
           return true;
         }
-  
+
         if (typeof schedulerFeature === "boolean") {
           if (typeof userAnswer === "string") {
             const normalizedUserAnswer = userAnswer.toLowerCase() === "yes";
@@ -76,18 +75,18 @@ const FormStepper: React.FC = () => {
           }
           return schedulerFeature === userAnswer;
         }
-  
+
         if (Array.isArray(schedulerFeature)) {
           return schedulerFeature.includes(userAnswer);
         }
-  
+
         return schedulerFeature === userAnswer;
       });
     });
-  
+
     setFilteredSchedulers(filtered);
   };
-  
+
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex((prev) => prev - 1);

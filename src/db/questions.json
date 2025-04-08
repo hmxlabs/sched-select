@@ -4,14 +4,14 @@
     "question": "What is your typical task duration?",
     "hint": "Consider how long a single task or job typically runs in your workflow. Are they short (Seconds to Minutes), medium (Minutes to Hours)? This helps determine the best scheduling strategy for efficiency and resource allocation.",
     "key": "typicalTaskDuration",
-    "type": "multipleChoice"
+    "type": "rankedChoice"
   },
   {
     "id": 2,
     "question": "Approx. Task Submission Rate?",
     "hint": "< 500 if your system handles fewer than 500 tasks per second, 500-1000 if your system handles between 500 and 1000 tasks per second, and >1000 if your system handles more than 1000 tasks per second.",
     "key": "taskSubmissionRate",
-    "type": "multipleChoice"
+    "type": "rankedChoice"
   },
   {
     "id": 3,
@@ -68,5 +68,12 @@
     "hint": "",
     "key": "supportForEC2GravitonInstances",
     "type": "boolean"
+  },
+  {
+    "id": 11,
+    "question": "Which cloud providers do you require support for?",
+    "hint": "",
+    "key": "cloudProviders",
+    "type": "multiSelect"
   }
 ]

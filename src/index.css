@@ -11,3 +11,153 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --primary-color: #1e1e1e;
+  --secondary-color: #555;
+  --background-image: none;
+  --font-family: Arial, sans-serif;
+  --button-bg: #007bff;
+  --button-text: #fff;
+  --border-color: #007bff;
+  --progress-bar-bg: #007bff;
+  --input-bg: #222;
+  --input-border: #555;
+  --input-text: white;
+  --box-bg: rgba(30, 30, 30, 0.85);
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--background-image);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--primary-color);
+  flex-direction: column;
+}
+
+.formBox {
+  width: 90%;
+  max-width: 500px;
+  background: var(--box-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border: 2px solid var(--border-color);
+}
+
+.progressBarContainer {
+  width: 100%;
+  background: #444;
+  height: 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.progressBar {
+  height: 100%;
+  background: var(--progress-bar-bg);
+  border-radius: 5px;
+}
+
+.questionContainer {
+  margin-bottom: 20px;
+}
+.questionText {
+  color: var(--progress-bar-bg);
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-size: 16px;
+  outline: none;
+}
+.inputField:focus {
+  border-color: var(--progress-bar-bg);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.button {
+  padding: 10px 15px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.button:hover {
+  opacity: 0.8;
+}
+.button:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.submissionContainer {
+  text-align: center;
+}
+.submissionTitle {
+  font-size: 24px;
+  color: #00ff6a;
+}
+.submissionBox {
+  background: #333;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: left;
+  margin-top: 15px;
+}
+.submissionText {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.schedulerLink {
+  display: block;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.schedulerName {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon {
+  color: white;
+  font-size: 14px;
+}

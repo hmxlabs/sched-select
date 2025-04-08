@@ -1,11 +1,19 @@
 {
   "typicalTaskDuration": {
-    "type": "multipleChoice",
-    "options": ["Seconds to Minutes", "Minutes to Hours"]
+    "type": "rankedChoice",
+    "options": [
+      { "value": "Seconds to Minutes", "rank": 1 },
+      { "value": "Minutes to Hours", "rank": 2 }
+    ]
+
   },
   "taskSubmissionRate": {
-    "type": "multipleChoice",
-    "options": ["< 500 TPS", ">= 500 TPS <= 1000 TPS", "> 1000 TPS"]
+    "type": "rankedChoice",
+    "options": [
+      { "value": "< 500 TPS", "rank": 1 },
+      { "value": "500–1000 TPS", "rank": 2 },
+      { "value": "> 1000 TPS", "rank": 3 }
+    ]
   },
   "managedCloudSolutionAWS": {
     "type": "boolean",
@@ -38,5 +46,9 @@
   "supportForEC2GravitonInstances": {
     "type": "boolean",
     "options": [true, false]
+  },
+  "cloudProviders": {
+    "type": "multiSelect",
+    "options": ["AWS", "Azure", "GCP", "Oracle", "IBM", "Ali Baba", "Other"]
   }
 }

@@ -1,6 +1,6 @@
 export interface SchedulerFeatures {
-  typicalTaskDuration: string;
-  taskSubmissionRate: string;
+  typicalTaskDuration: number;
+  taskSubmissionRate: number;
   managedCloudSolutionAWS: boolean;
   microsoftWindowsComputeNodes: boolean;
   runOutsideAWS: boolean;
@@ -9,6 +9,7 @@ export interface SchedulerFeatures {
   supportForAmazonEC2Spot: boolean;
   advancedFeaturesEC2Spot: boolean;
   supportForEC2GravitonInstances: boolean;
+  cloudProviders: string[];
 }
 
 export interface Scheduler {
