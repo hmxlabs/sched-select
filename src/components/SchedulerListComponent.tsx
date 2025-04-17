@@ -8,18 +8,21 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 interface Scheduler {
   name: string;
   link: string;
+  isMatch?: boolean;
 }
 
 interface SchedulerListProps {
   schedulers: Scheduler[];
   generateShareableLink?: () => void;
   resetForm?: () => void;
+  compact?: boolean;
 }
 
 const SchedulerListComponent: React.FC<SchedulerListProps> = ({
   schedulers,
   generateShareableLink,
   resetForm,
+  compact = false,
 }) => {
   return !schedulers.length ? (
     <>
@@ -38,12 +41,16 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         transition={{ duration: 0.5 }}
         className="submissionContainer"
       >
-        <h2 className="submissionTitle">Matching Schedulers:</h2>
+        {!compact ? (
+          <h2 className="submissionTitle">Matching Schedulers:</h2>
+        ) : null}
         <div className="submissionBox">
           {schedulers.map((scheduler, index) => (
             <a
               key={index}
-              className="schedulerLink"
+              className={`schedulerLink ${
+                scheduler.isMatch ? "match" : "no-match"
+              }`}
               href={scheduler.link}
               target="_blank"
               rel="noreferrer"
@@ -52,26 +59,35 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
                 <strong>{scheduler.name}</strong>
                 <OpenInNewIcon className="icon icon-sm" />
               </span>
+              <span
+                className={`match-indicator ${
+                  scheduler.isMatch ? "match" : "no-match"
+                }`}
+              >
+                {scheduler.isMatch ? "✔" : "✘"}
+              </span>
             </a>
           ))}
         </div>
-        <div className="buttonContainer">
-          <Button
-            className="share-button"
-            variant="contained"
-            onClick={generateShareableLink}
-          >
-            <ContentCopyIcon fontSize="small" />
-            Share Link
-          </Button>
-          <Button
-            className="reset-button"
-            variant="contained"
-            onClick={resetForm}
-          >
-            <RefreshIcon fontSize="large" />
-          </Button>
-        </div>
+        {!compact && (
+          <div className="buttonContainer">
+            <Button
+              className="share-button"
+              variant="contained"
+              onClick={generateShareableLink}
+            >
+              <ContentCopyIcon fontSize="small" />
+              Share Link
+            </Button>
+            <Button
+              className="reset-button"
+              variant="contained"
+              onClick={resetForm}
+            >
+              <RefreshIcon fontSize="large" />
+            </Button>
+          </div>
+        )}
       </motion.div>
     </AnimatePresence>
   );
