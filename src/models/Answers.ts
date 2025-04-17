@@ -51,5 +51,5 @@ export interface Answer {
   cloudProviders: {
     type: string;
     options: string[];
-  }
+  };
 }

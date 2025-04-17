@@ -1,19 +1,9 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 :root {
-  --primary-color: #1e1e1e;
+  --white-bg: #ffffff;
+  --black-bg: #000000;
+  --font-body: "Roboto", Arial, sans-serif;
+  --background-color: #121212;
+  --primary-color: #0d1017;
   --secondary-color: #555;
   --background-image: none;
   --font-family: Arial, sans-serif;
@@ -24,7 +14,18 @@ code {
   --input-bg: #222;
   --input-border: #555;
   --input-text: white;
+  --text-color: #ffffff;
+  --radio-checked-color: #2591eb;
+  --disabled-color: #a3a1a1;
+  --checkbox-checked-color: #2591eb;
+  --checkbox-unchecked-color: #ffffff;
+  --gap-size: 1rem;
   --box-bg: rgba(30, 30, 30, 0.85);
+  --button-bg: #ffffff;
+  --button-text: #2591eb;
+  --button-bg-hover: #2591eb;
+  --button-text-hover: #ffffff;
+  --button-margin-top: 2rem;
 }
 
 body {
@@ -41,6 +42,7 @@ body {
   height: 100vh;
   background-color: var(--primary-color);
   flex-direction: column;
+  background: url("https://hmxlabs.io/assets/img/hpc-prem-cloud/on-prem.webp") no-repeat center center/cover
 }
 
 .formBox {
@@ -160,4 +162,111 @@ body {
 .icon {
   color: white;
   font-size: 14px;
+}
+
+.radio-label {
+  color: var(--text-color) !important;
+}
+
+.radio-icon {
+  color: var(--text-color) !important;
+}
+
+.radio-icon.Mui-checked {
+  color: var(--radio-checked-color) !important;
+}
+
+.radio-icon.Mui-disabled {
+  color: var(--disabled-color) !important;
+}
+
+.radio-icon.Mui-checked.Mui-disabled {
+  color: var(--disabled-color) !important;
+}
+
+.radio-label.Mui-disabled .MuiFormControlLabel-label {
+  color: var(--disabled-color) !important;
+}
+
+.checkbox-icon {
+  color: var(--text-color) !important;
+}
+
+.checkbox-icon.Mui-checked {
+  color: var(--checkbox-checked-color) !important;
+}
+
+.checkbox-icon.Mui-disabled {
+  color: var(--disabled-color) !important;
+}
+
+.checkbox-label .MuiFormControlLabel-label {
+  color: var(--text-color) !important;
+}
+
+.checkbox-label.Mui-disabled .MuiFormControlLabel-label {
+  color: var(--disabled-color);
+  opacity: 1 !important;
+}
+
+.layout-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.layout-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.help-button {
+  min-width: 0;
+  padding: 0;
+}
+
+.help-button-icon {
+  color: var(--icon-color);
+}
+
+.reset-button.MuiButton-contained {
+  margin-top: var(--button-margin-top);
+  background-color: var(--white-bg);
+  color: var(--button-text);
+}
+
+.reset-button.MuiButton-contained:hover {
+  background-color: var(--button-bg-hover);
+  color: var(--button-text-hover);
+}
+
+.share-button.MuiButton-contained {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  margin-top: var(--button-margin-top);
+  display: flex;
+  align-items: center;
+  gap: var(--button-gap);
+}
+
+.share-button.MuiButton-contained:hover {
+  background-color: var(--button-bg-hover);
+  color: var(--button-text-hover);
+}
+
+.icon-sm {
+  font-size: 13px !important;
+}
+
+.icon-md {
+  font-size: 18px !important;
+}
+
+.icon-lg {
+  font-size: 24px !important;
 }

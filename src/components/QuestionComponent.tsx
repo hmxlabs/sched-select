@@ -7,7 +7,7 @@ import {
   Box,
   Button,
   FormGroup,
-  Checkbox
+  Checkbox,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -51,29 +51,15 @@ const QuestionComponent: React.FC<QuestionProps> = ({
             >
               <FormControlLabel
                 value="true"
-                control={
-                  <Radio
-                    sx={{
-                      color: "#fff",
-                      "&.Mui-checked": { color: "#2591eb" },
-                    }}
-                  />
-                }
-                sx={{ color: "#fff" }}
+                control={<Radio className="radio-icon" />}
+                className="radio-label"
                 label="Yes"
               />
               <FormControlLabel
                 value="false"
-                control={
-                  <Radio
-                    sx={{
-                      color: "#fff",
-                      "&.Mui-checked": { color: "#2591eb" },
-                    }}
-                  />
-                }
+                control={<Radio className="radio-icon" />}
+                className="radio-label"
                 label="No"
-                sx={{ color: "#fff" }}
               />
             </RadioGroup>
           </FormControl>
@@ -91,16 +77,9 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                 <FormControlLabel
                   key={index}
                   value={option}
-                  control={
-                    <Radio
-                      sx={{
-                        color: "#fff",
-                        "&.Mui-checked": { color: "#2591eb" },
-                      }}
-                    />
-                  }
+                  control={<Radio className="radio-icon" />}
+                  className="radio-label"
                   label={option}
-                  sx={{ color: "#fff" }}
                 />
               ))}
             </RadioGroup>
@@ -112,37 +91,35 @@ const QuestionComponent: React.FC<QuestionProps> = ({
             <FormGroup>
               {options?.map((option, index) => {
                 return (
-                <FormControlLabel
-                  key={index}
-                  control={
-                    <Checkbox
-                      checked={
-                        typeof allAnswers[questionKey] === "string"
-                        ? allAnswers[questionKey].split(",").includes(option)
-                        : Array.isArray(allAnswers[questionKey])
-                          ? allAnswers[questionKey].includes(option)
-                          : false
-                      }
-                      onChange={(e) => {
-                        const newAnswers = e.target.checked
-                          ? [...(allAnswers[questionKey] || []), option]
-                          : (allAnswers[questionKey] || []).filter(
-                              (item: string) => item !== option
-                            );
-                        onAnswer(newAnswers);
-                      }}
-                      sx={{
-                        color: "#fff",
-                        "&.Mui-checked": { color: "#2591eb" },
-                      }}
-                    />
-                  }
-                  label={option}
-                  sx={{ color: "#fff" }}
-                />
-              )}
-              
-              )}
+                  <FormControlLabel
+                    key={index}
+                    control={
+                      <Checkbox
+                        className="checkbox-icon"
+                        checked={
+                          typeof allAnswers[questionKey] === "string"
+                            ? allAnswers[questionKey]
+                                .split(",")
+                                .includes(option)
+                            : Array.isArray(allAnswers[questionKey])
+                            ? allAnswers[questionKey].includes(option)
+                            : false
+                        }
+                        onChange={(e) => {
+                          const newAnswers = e.target.checked
+                            ? [...(allAnswers[questionKey] || []), option]
+                            : (allAnswers[questionKey] || []).filter(
+                                (item: string) => item !== option
+                              );
+                          onAnswer(newAnswers);
+                        }}
+                      />
+                    }
+                    label={option}
+                    className="checkbox-label"
+                  />
+                );
+              })}
             </FormGroup>
           </FormControl>
         );
@@ -159,16 +136,9 @@ const QuestionComponent: React.FC<QuestionProps> = ({
                 <FormControlLabel
                   key={option.value}
                   value={option.rank}
-                  control={
-                    <Radio
-                      sx={{
-                        color: "#fff",
-                        "&.Mui-checked": { color: "#2591eb" },
-                      }}
-                    />
-                  }
+                  control={<Radio className="radio-icon" />}
+                  className="radio-label"
                   label={option.value}
-                  sx={{ color: "#fff" }}
                 />
               ))}
             </RadioGroup>
@@ -180,35 +150,17 @@ const QuestionComponent: React.FC<QuestionProps> = ({
   };
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Box
-        sx={{
-          flexGrow: 1,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 1,
-        }}
-      >
+    <Box className="layout-column-center">
+      <Box className="layout-row-center">
         <h2 className="questionText">{question}</h2>
         {hint && (
           <Tooltip title={hint} arrow>
-            <Button sx={{ minWidth: 0, padding: 0 }}>
-              <HelpOutlineIcon sx={{ color: "white" }} fontSize="small" />
+            <Button className="help-button">
+              <HelpOutlineIcon className="help-button-icon" fontSize="small" />
             </Button>
           </Tooltip>
         )}
       </Box>
-
       {renderInput()}
     </Box>
   );

@@ -5,7 +5,6 @@
       { "value": "Seconds to Minutes", "rank": 1 },
       { "value": "Minutes to Hours", "rank": 2 }
     ]
-
   },
   "taskSubmissionRate": {
     "type": "rankedChoice",
