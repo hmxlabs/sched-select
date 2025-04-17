@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Snackbar } from "@mui/material";
+import { Snackbar, Box } from "@mui/material";
 import questions from "../db/questions.json";
 import answers from "../db/answers.json";
 import schedulers from "../db/schedulers.json";
@@ -12,7 +12,7 @@ import { Answer } from "../models/Answers";
 import {
   filterSchedulers,
   generateShareableLink,
-  scoreSchedulers,
+  // scoreSchedulers,
 } from "../utils/helpers";
 
 export default function Form() {
@@ -36,8 +36,11 @@ export default function Form() {
   }, []);
 
   useEffect(() => {
-    setFilteredSchedulers(filterSchedulers(answersState, schedulers));
-    console.log(scoreSchedulers(answersState, schedulers), "scoreSchedulers");
+    const updatedSchedulers = schedulers.map((scheduler) => {
+      const isMatch = filterSchedulers(answersState, [scheduler]).length > 0;
+      return { ...scheduler, isMatch: isMatch || false };
+    });
+    setFilteredSchedulers(updatedSchedulers);
   }, [answersState]);
 
   const handleCloseSnackbar = () => setOpenSnackbar(false);
@@ -90,6 +93,14 @@ export default function Form() {
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         message="URL copied to clipboard!"
       />
+
+      {!submitted && !isReadOnly && (
+        <Box className="side-panel">
+          <Box className="side-panel-content">
+            <SchedulerListComponent schedulers={filteredSchedulers} compact />
+          </Box>
+        </Box>
+      )}
 
       <div className="formBox">
         {/* Progress Bar */}

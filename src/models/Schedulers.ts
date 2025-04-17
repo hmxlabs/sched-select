@@ -20,4 +20,5 @@ export interface Scheduler {
   score: string;
   link: string;
   features: SchedulerFeatures;
+  isMatch?: boolean;
 }

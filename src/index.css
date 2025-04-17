@@ -270,3 +270,77 @@ body {
 .icon-lg {
   font-size: 24px !important;
 }
+
+.schedulerLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.schedulerLink.match {
+  background-color: #e0f7fa;
+  color: green;
+}
+
+.schedulerLink.no-match {
+  background-color: #ffebee;
+  color: red;
+}
+
+.match-indicator {
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+
+.match-indicator.match {
+  color: green;
+}
+
+.match-indicator.no-match {
+  color: red;
+}
+
+.schedulerName {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.icon-sm {
+  font-size: 1rem;
+  margin-left: 8px;
+}
+
+.submissionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.share-button,
+.reset-button {
+  margin: 0 10px;
+}
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 400px;
+}
+
+.side-panel-content {
+  padding: 20px;
+}
