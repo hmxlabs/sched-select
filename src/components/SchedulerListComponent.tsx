@@ -26,20 +26,10 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
       <h3 className="submissionText">
         Unfortunately, no schedulers match your selection
       </h3>
-      <Button
-          sx={{
-            mt: 4,
-            backgroundColor: "#fff",
-            color: "#2591eb",
-            "&:hover": { backgroundColor: "#2591eb", color: "#fff" },
-          }}
-          variant="contained"
-          onClick={resetForm}
-        >
-          <RefreshIcon fontSize="large" />
-        </Button>
+      <Button className="reset-button" variant="contained" onClick={resetForm}>
+        <RefreshIcon fontSize="large" />
+      </Button>
     </>
-    
   ) : (
     <AnimatePresence mode="wait">
       <motion.div
@@ -60,22 +50,14 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
             >
               <span className="schedulerName">
                 <strong>{scheduler.name}</strong>
-                <OpenInNewIcon sx={{ fontSize: 13 }} className="icon" />
+                <OpenInNewIcon className="icon icon-sm" />
               </span>
             </a>
           ))}
         </div>
         <div className="buttonContainer">
           <Button
-            sx={{
-              mt: 4,
-              backgroundColor: "#fff",
-              color: "#2591eb",
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              "&:hover": { backgroundColor: "#2591eb", color: "#fff" },
-            }}
+            className="share-button"
             variant="contained"
             onClick={generateShareableLink}
           >
@@ -83,12 +65,7 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
             Share Link
           </Button>
           <Button
-            sx={{
-              mt: 4,
-              backgroundColor: "#fff",
-              color: "#2591eb",
-              "&:hover": { backgroundColor: "#2591eb", color: "#fff" },
-            }}
+            className="reset-button"
             variant="contained"
             onClick={resetForm}
           >

@@ -9,14 +9,20 @@ import QuestionComponent from "./QuestionComponent";
 import SchedulerListComponent from "./SchedulerListComponent";
 import { Scheduler } from "../models/Schedulers";
 import { Answer } from "../models/Answers";
-import { filterSchedulers, generateShareableLink } from "../utils/helpers";
+import {
+  filterSchedulers,
+  generateShareableLink,
+  scoreSchedulers,
+} from "../utils/helpers";
 
 export default function Form() {
   const [submitted, setSubmitted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] = useState(false);
+  const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] =
+    useState(false);
   const [answersState, setAnswersState] = useState<Answer>({} as Answer);
-  const [filteredSchedulers, setFilteredSchedulers] = useState<Scheduler[]>(schedulers);
+  const [filteredSchedulers, setFilteredSchedulers] =
+    useState<Scheduler[]>(schedulers);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isReadOnly, setIsReadOnly] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -31,6 +37,7 @@ export default function Form() {
 
   useEffect(() => {
     setFilteredSchedulers(filterSchedulers(answersState, schedulers));
+    console.log(scoreSchedulers(answersState, schedulers), "scoreSchedulers");
   }, [answersState]);
 
   const handleCloseSnackbar = () => setOpenSnackbar(false);
@@ -42,13 +49,20 @@ export default function Form() {
     setAnswersState(newAnswers);
     setIsCurrentQuestionAnswered(true);
 
-    setSearchParams(new URLSearchParams(Object.entries(newAnswers).map(([key, value]) => [key, String(value)])));
+    setSearchParams(
+      new URLSearchParams(
+        Object.entries(newAnswers).map(([key, value]) => [key, String(value)])
+      )
+    );
   };
 
   const handleNavigation = (direction: "next" | "back") => {
     if (direction === "back" && currentQuestionIndex > 0) {
       setCurrentQuestionIndex((prev) => prev - 1);
-    } else if (direction === "next" && (isReadOnly || isCurrentQuestionAnswered)) {
+    } else if (
+      direction === "next" &&
+      (isReadOnly || isCurrentQuestionAnswered)
+    ) {
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
         setIsCurrentQuestionAnswered(false);
@@ -68,12 +82,7 @@ export default function Form() {
   };
 
   return (
-    <div
-      className="container"
-      style={{
-        background: `url("https://hmxlabs.io/assets/img/hpc-prem-cloud/on-prem.webp") no-repeat center center/cover`,
-      }}
-    >
+    <div className="container">
       <Snackbar
         open={openSnackbar}
         autoHideDuration={3000}
@@ -88,7 +97,11 @@ export default function Form() {
           <motion.div
             className="progressBar"
             initial={{ width: "0%" }}
-            animate={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
+            animate={{
+              width: `${
+                ((currentQuestionIndex + 1) / questions.length) * 100
+              }%`,
+            }}
             transition={{ duration: 0.5 }}
           />
         </div>
@@ -106,8 +119,14 @@ export default function Form() {
               <QuestionComponent
                 question={questions[currentQuestionIndex].question}
                 hint={questions[currentQuestionIndex].hint}
-                type={answers[questions[currentQuestionIndex].key as keyof Answer]?.type}
-                options={answers[questions[currentQuestionIndex].key as keyof Answer]?.options}
+                type={
+                  answers[questions[currentQuestionIndex].key as keyof Answer]
+                    ?.type
+                }
+                options={
+                  answers[questions[currentQuestionIndex].key as keyof Answer]
+                    ?.options
+                }
                 questionKey={questions[currentQuestionIndex].key}
                 onAnswer={handleAnswer}
                 allAnswers={answersState}
@@ -115,15 +134,29 @@ export default function Form() {
               />
             </motion.div>
           ) : (
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
-              <SchedulerListComponent schedulers={filteredSchedulers} generateShareableLink={() => generateShareableLink(setOpenSnackbar)} resetForm={resetForm} />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <SchedulerListComponent
+                schedulers={filteredSchedulers}
+                generateShareableLink={() =>
+                  generateShareableLink(setOpenSnackbar)
+                }
+                resetForm={resetForm}
+              />
             </motion.div>
           )}
         </AnimatePresence>
 
         {!submitted && (
           <div className="buttonContainer">
-            <button onClick={() => handleNavigation("back")} disabled={currentQuestionIndex === 0} className="button">
+            <button
+              onClick={() => handleNavigation("back")}
+              disabled={currentQuestionIndex === 0}
+              className="button"
+            >
               Previous
             </button>
             <button onClick={() => handleNavigation("next")} className="button">

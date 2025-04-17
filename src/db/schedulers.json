@@ -59,7 +59,14 @@
       "supportForAmazonEC2Spot": false,
       "advancedFeaturesEC2Spot": false,
       "supportForEC2GravitonInstances": false,
-      "cloudProviders": ["AWS", "Azure", "GCP", "IBM Cloud", "Oracle Cloud", "Alibaba Cloud"]
+      "cloudProviders": [
+        "AWS",
+        "Azure",
+        "GCP",
+        "IBM Cloud",
+        "Oracle Cloud",
+        "Alibaba Cloud"
+      ]
     }
   },
   {
