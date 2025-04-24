@@ -2,8 +2,8 @@
   "typicalTaskDuration": {
     "type": "rankedChoice",
     "options": [
-      { "value": "Seconds to Minutes", "rank": 1 },
-      { "value": "Minutes to Hours", "rank": 2 }
+      { "value": "Seconds to Minutes", "rank": 2 },
+      { "value": "Minutes to Hours", "rank": 1 }
     ]
   },
   "taskSubmissionRate": {
