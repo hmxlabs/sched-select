@@ -9,20 +9,12 @@
   "taskSubmissionRate": {
     "type": "rankedChoice",
     "options": [
-      { "value": "< 500 TPS", "rank": 1 },
-      { "value": "500–1000 TPS", "rank": 2 },
-      { "value": "> 1000 TPS", "rank": 3 }
+      { "value": "Less than 500 per second", "rank": 1 },
+      { "value": "500–1000 per second", "rank": 2 },
+      { "value": "More than 1000 per second", "rank": 3 }
     ]
   },
-  "managedCloudSolutionAWS": {
-    "type": "boolean",
-    "options": [true, false]
-  },
   "microsoftWindowsComputeNodes": {
-    "type": "boolean",
-    "options": [true, false]
-  },
-  "runOutsideAWS": {
     "type": "boolean",
     "options": [true, false]
   },
@@ -30,24 +22,56 @@
     "type": "boolean",
     "options": [true, false]
   },
+  "arm64CPUSupport": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "gpuSupport": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "advancedResourceScheduling": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "dataAwareScheduling": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "onPremisesScheduler": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "managedCloudResources": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "supportCloudSpotCapacity": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "managedCloudSolution": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "cloudAWSSupport": {
+    "type": "boolean",
+    "options": [true, false]
+  },
   "integrationAWSECS": {
     "type": "boolean",
     "options": [true, false]
   },
-  "supportForAmazonEC2Spot": {
+  "advancedAWSEC2SpotFeatures": {
     "type": "boolean",
     "options": [true, false]
   },
-  "advancedFeaturesEC2Spot": {
+  "cloudAzureSupport": {
     "type": "boolean",
     "options": [true, false]
   },
-  "supportForEC2GravitonInstances": {
+  "cloudGCPSupport": {
     "type": "boolean",
     "options": [true, false]
-  },
-  "cloudProviders": {
-    "type": "multiSelect",
-    "options": ["AWS", "Azure", "GCP", "Oracle", "IBM", "Ali Baba", "Other"]
   }
 }
