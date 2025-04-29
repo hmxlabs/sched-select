@@ -19,10 +19,11 @@
       "managedCloudResources": false,
       "supportCloudSpotCapacity": false,
       "managedCloudSolution": false,
-      "cloudAWSSupport": false,
+      "cloudAWSIntegration": false,
+      "integrationAWSECS": false,
       "advancedAWSEC2SpotFeatures": false,
-      "cloudAzureSupport": false,
-      "cloudGCPSupport": false
+      "cloudAzureIntegration": false,
+      "cloudGCPIntegration": false
     }
   },
   {
@@ -45,10 +46,11 @@
       "managedCloudResources": true,
       "supportCloudSpotCapacity": false,
       "managedCloudSolution": false,
-      "cloudAWSSupport": true,
+      "cloudAWSIntegration": true,
+      "integrationAWSECS": false,
       "advancedAWSEC2SpotFeatures": false,
-      "cloudAzureSupport": true,
-      "cloudGCPSupport": true
+      "cloudAzureIntegration": true,
+      "cloudGCPIntegration": true
     }
   },
   {
@@ -71,10 +73,11 @@
       "managedCloudResources": false,
       "supportCloudSpotCapacity": false,
       "managedCloudSolution": false,
-      "cloudAWSSupport": false,
+      "cloudAWSIntegration": false,
+      "integrationAWSECS": false,
       "advancedAWSEC2SpotFeatures": false,
-      "cloudAzureSupport": false,
-      "cloudGCPSupport": false
+      "cloudAzureIntegration": false,
+      "cloudGCPIntegration": false
     }
   },
   {
@@ -97,10 +100,11 @@
       "managedCloudResources": true,
       "supportCloudSpotCapacity": true,
       "managedCloudSolution": false,
-      "cloudAWSSupport": true,
+      "cloudAWSIntegration": true,
+      "integrationAWSECS": false,
       "advancedAWSEC2SpotFeatures": true,
-      "cloudAzureSupport": true,
-      "cloudGCPSupport": true
+      "cloudAzureIntegration": true,
+      "cloudGCPIntegration": true
     }
   },
   {
@@ -123,10 +127,11 @@
       "managedCloudResources": false,
       "supportCloudSpotCapacity": false,
       "managedCloudSolution": false,
-      "cloudAWSSupport": false,
+      "cloudAWSIntegration": false,
+      "integrationAWSECS": false,
       "advancedAWSEC2SpotFeatures": false,
-      "cloudAzureSupport": false,
-      "cloudGCPSupport": false
+      "cloudAzureIntegration": false,
+      "cloudGCPIntegration": false
     }
   },
   {
@@ -149,10 +154,11 @@
       "managedCloudResources": true,
       "supportCloudSpotCapacity": false,
       "managedCloudSolution": true,
-      "cloudAWSSupport": true,
+      "cloudAWSIntegration": true,
+      "integrationAWSECS": false,
       "advancedAWSEC2SpotFeatures": false,
-      "cloudAzureSupport": false,
-      "cloudGCPSupport": false
+      "cloudAzureIntegration": false,
+      "cloudGCPIntegration": false
     }
   },
   {
@@ -165,15 +171,21 @@
     "features": {
       "typicalTaskDuration": 1,
       "taskSubmissionRate": 1,
-      "managedCloudSolutionAWS": true,
       "microsoftWindowsComputeNodes": false,
-      "runOutsideAWS": false,
       "supportForContainers": true,
+      "arm64CPUSupport": true,
+      "gpuSupport": false,
+      "advancedResourceScheduling": false,
+      "dataAwareScheduling": false,
+      "onPremisesScheduler": false,
+      "managedCloudResources": true,
+      "supportCloudSpotCapacity": true,
+      "managedCloudSolution": true,
+      "cloudAWSIntegration": true,
       "integrationAWSECS": true,
-      "supportForAmazonEC2Spot": true,
-      "advancedFeaturesEC2Spot": true,
-      "supportForEC2GravitonInstances": true,
-      "cloudProviders": ["AWS"]
+      "advancedAWSEC2SpotFeatures": false,
+      "cloudAzureIntegration": false,
+      "cloudGCPIntegration": false
     }
   },
   {
@@ -186,36 +198,48 @@
     "features": {
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 2,
-      "managedCloudSolutionAWS": false,
       "microsoftWindowsComputeNodes": true,
-      "runOutsideAWS": true,
       "supportForContainers": true,
+      "arm64CPUSupport": false,
+      "gpuSupport": false,
+      "advancedResourceScheduling": false,
+      "dataAwareScheduling": false,
+      "onPremisesScheduler": false,
+      "managedCloudResources": true,
+      "supportCloudSpotCapacity": true,
+      "managedCloudSolution": false,
+      "cloudAWSIntegration": false,
       "integrationAWSECS": false,
-      "supportForAmazonEC2Spot": false,
-      "advancedFeaturesEC2Spot": false,
-      "supportForEC2GravitonInstances": false,
-      "cloudProviders": ["AWS", "Azure", "GCP"]
+      "advancedAWSEC2SpotFeatures": false,
+      "cloudAzureIntegration": true,
+      "cloudGCPIntegration": false
     }
   },
   {
     "name": "HTC-Grid",
     "product": "HTC-Grid",
-    "owner": "Open Source",
+    "owner": "FINOS",
     "inScope": 1,
     "score": "100%",
     "link": "https://github.com/finos/htc-grid",
     "features": {
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 3,
-      "managedCloudSolutionAWS": false,
       "microsoftWindowsComputeNodes": false,
-      "runOutsideAWS": true,
       "supportForContainers": true,
-      "integrationAWSECS": true,
-      "supportForAmazonEC2Spot": true,
-      "advancedFeaturesEC2Spot": false,
-      "supportForEC2GravitonInstances": true,
-      "cloudProviders": ["AWS", "Azure"]
+      "arm64CPUSupport": false,
+      "gpuSupport": false,
+      "advancedResourceScheduling": false,
+      "dataAwareScheduling": false,
+      "onPremisesScheduler": true,
+      "managedCloudResources": false,
+      "supportCloudSpotCapacity": false,
+      "managedCloudSolution": false,
+      "cloudAWSIntegration": true,
+      "integrationAWSECS": false,
+      "advancedAWSEC2SpotFeatures": false,
+      "cloudAzureIntegration": true,
+      "cloudGCPIntegration": false
     }
   }
 ]

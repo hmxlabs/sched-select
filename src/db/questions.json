@@ -87,7 +87,7 @@
     "id": 13,
     "question": "Do you require AWS integration?",
     "hint": "Do you require integration with AWS so that the scheduler managed your AWS resources for you?",
-    "key": "cloudAWSSupport",
+    "key": "cloudAWSIntegration",
     "type": "boolean"
   },
   {
@@ -108,14 +108,14 @@
     "id": 16,
     "question": "Do you require Azure integration?",
     "hint": "Do you require integration with Microsoft Azure so that the scheduler managed your AWS resources for you?",
-    "key": "cloudAzureSupport",
+    "key": "cloudAzureIntegration",
     "type": "boolean"
   },
   {
     "id": 17,
     "question": "Do you require Google Cloud support",
     "hint": "Do you require integration with Google Cloud so that the scheduler managed your AWS resources for you?",
-    "key": "cloudGCPSupport",
+    "key": "cloudGCPIntegration",
     "type": "boolean"
   }
 ]

@@ -54,7 +54,7 @@
     "type": "boolean",
     "options": [true, false]
   },
-  "cloudAWSSupport": {
+  "cloudAWSIntegration": {
     "type": "boolean",
     "options": [true, false]
   },
@@ -66,11 +66,11 @@
     "type": "boolean",
     "options": [true, false]
   },
-  "cloudAzureSupport": {
+  "cloudAzureIntegration": {
     "type": "boolean",
     "options": [true, false]
   },
-  "cloudGCPSupport": {
+  "cloudGCPIntegration": {
     "type": "boolean",
     "options": [true, false]
   }

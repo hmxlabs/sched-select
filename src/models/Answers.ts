@@ -16,15 +16,7 @@ export interface Answer {
     type: string;
     options: string[];
   };
-  managedCloudSolutionAWS: {
-    type: string;
-    options: boolean[];
-  };
   microsoftWindowsComputeNodes: {
-    type: string;
-    options: boolean[];
-  };
-  runOutsideAWS: {
     type: string;
     options: boolean[];
   };
@@ -32,24 +24,56 @@ export interface Answer {
     type: string;
     options: boolean[];
   };
+  arm64CPUSupport: {
+    type: string;
+    options: boolean[];
+  };
+  gpuSupport: {
+    type: string;
+    options: boolean[];
+  };
+  advancedResourceScheduling: {
+    type: string;
+    options: boolean[];
+  };
+  dataAwareScheduling: {
+    type: string;
+    options: boolean[];
+  };
+  onPremisesScheduler: {
+    type: string;
+    options: boolean[];
+  };
+  managedCloudResources: {
+    type: string;
+    options: boolean[];
+  };
+  supportCloudSpotCapacity: {
+    type: string;
+    options: boolean[];
+  };
+  managedCloudSolution: {
+    type: string;
+    options: boolean[];
+  };
+  cloudAWSIntegration: {
+    type: string;
+    options: boolean[];
+  };
   integrationAWSECS: {
     type: string;
     options: boolean[];
   };
-  supportForAmazonEC2Spot: {
+  advancedAWSEC2SpotFeatures: {
     type: string;
     options: boolean[];
   };
-  advancedFeaturesEC2Spot: {
+  cloudAzureIntegration: {
     type: string;
     options: boolean[];
   };
-  supportForEC2GravitonInstances: {
+  cloudGCPIntegration: {
     type: string;
     options: boolean[];
-  };
-  cloudProviders: {
-    type: string;
-    options: string[];
   };
 }
