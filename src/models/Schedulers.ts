@@ -16,6 +16,7 @@ export interface SchedulerFeatures {
   advancedAWSEC2SpotFeatures: boolean;
   cloudAzureIntegration: boolean;
   cloudGCPIntegration: boolean;
+  supportedCloudProviders: string[];
 }
 
 export interface Scheduler {
