@@ -1,4 +1,12 @@
 {
+  "freeOrOpenSourceSoftware": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "commercialSupport": {
+    "type": "boolean",
+    "options": [true, false]
+  },
   "typicalTaskDuration": {
     "type": "rankedChoice",
     "options": [

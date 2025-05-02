@@ -1,4 +1,6 @@
 export interface SchedulerFeatures {
+  freeOrOpenSourceSoftware: boolean;
+  commercialSupport: boolean;
   typicalTaskDuration: number;
   taskSubmissionRate: number;
   microsoftWindowsComputeNodes: boolean;

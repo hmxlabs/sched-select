@@ -1,6 +1,20 @@
 [
   {
     "id": 1,
+    "question": "Are you limited to using only free or open source software?",
+    "hint": "If you are looking only for free to use or open source schedulers, please select yes. If you are open to using commercial software, please select no.",
+    "key": "freeOrOpenSourceSoftware",
+    "type": "boolean"
+  },
+  {
+    "id": 1,
+    "question": "Do you require commercial support?",
+    "hint": "Will you require a support contract with the vendor to ensure that you can get help when you need it?",
+    "key": "commercialSupport",
+    "type": "boolean"
+  },
+  {
+    "id": 1,
     "question": "What is your typical task duration?",
     "hint": "Consider how long a single task or job typically runs in your workflow. Are they short (Seconds to Minutes), medium (Minutes to Hours)? This helps determine the best scheduling strategy for efficiency and resource allocation.",
     "key": "typicalTaskDuration",

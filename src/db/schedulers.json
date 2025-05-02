@@ -7,6 +7,8 @@
     "score": "100%",
     "link": "https://docs.tibco.com/pub/dsp_gridserver/7.1.0/doc/html/_templates/Home.htm",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 3,
       "microsoftWindowsComputeNodes": true,
@@ -39,6 +41,8 @@
     "score": "100%",
     "link": "https://www.ibm.com/products/analytics-workload-management",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 3,
       "microsoftWindowsComputeNodes": true,
@@ -71,6 +75,8 @@
     "score": "100%",
     "link": "https://www.ibm.com/products/hpc-workload-management",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": true,
@@ -103,6 +109,8 @@
     "score": "100%",
     "link": "https://yellowdog.ai",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 3,
       "microsoftWindowsComputeNodes": true,
@@ -135,6 +143,8 @@
     "score": "100%",
     "link": "https://www.schedmd.com/slurm/",
     "features": {
+      "freeOrOpenSourceSoftware": true,
+      "commercialSupport": true,
       "typicalTaskDuration": 1,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": true,
@@ -167,6 +177,8 @@
     "score": "100%",
     "link": "https://www.aws.com/pcs",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": false,
       "typicalTaskDuration": 1,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": true,
@@ -199,6 +211,8 @@
     "score": "100%",
     "link": "https://aws.amazon.com/batch/",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": false,
       "typicalTaskDuration": 1,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": false,
@@ -231,6 +245,8 @@
     "score": "100%",
     "link": "https://learn.microsoft.com/en-us/powershell/high-performance-computing/overview-of-microsoft-hpc-pack?view=hpc19-ps",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": false,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 2,
       "microsoftWindowsComputeNodes": true,
@@ -263,6 +279,8 @@
     "score": "100%",
     "link": "https://github.com/finos/htc-grid",
     "features": {
+      "freeOrOpenSourceSoftware": true,
+      "commercialSupport": false,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 3,
       "microsoftWindowsComputeNodes": false,
@@ -295,6 +313,8 @@
     "score": "100%",
     "link": "https://www.aneo.eu/en/armonik",
     "features": {
+      "freeOrOpenSourceSoftware": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 3,
       "microsoftWindowsComputeNodes": true,

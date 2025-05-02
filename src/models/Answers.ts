@@ -8,6 +8,14 @@
 // }
 
 export interface Answer {
+  freeOrOpenSourceSoftware: {
+    type: string;
+    options: boolean[];
+  };
+  commercialSupport: {
+    type: string;
+    options: boolean[];
+  };
   typicalTaskDuration: {
     type: string;
     options: string[];
