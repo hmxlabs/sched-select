@@ -346,6 +346,8 @@
     "score": "100%",
     "link": "https://www.htcondor.org",
     "features": {
+      "freeOrOpenSourceSoftware": true,
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": true,
