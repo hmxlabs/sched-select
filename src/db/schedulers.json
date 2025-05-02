@@ -317,5 +317,36 @@
         "GCP"
       ]
     }
+  },
+  {
+    "name": "HTCondor",
+    "product": "HTCondor",
+    "owner": "Center for High Throughput Computing",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://www.htcondor.org",
+    "features": {
+      "typicalTaskDuration": 2,
+      "taskSubmissionRate": 1,
+      "microsoftWindowsComputeNodes": true,
+      "supportForContainers": true,
+      "arm64CPUSupport": true,
+      "gpuSupport": true,
+      "advancedResourceScheduling": true,
+      "dataAwareScheduling": true,
+      "onPremisesScheduler": true,
+      "managedCloudResources": false,
+      "supportCloudSpotCapacity": false,
+      "managedCloudSolution": false,
+      "cloudAWSIntegration": false,
+      "integrationAWSECS": false,
+      "advancedAWSEC2SpotFeatures": false,
+      "cloudAzureIntegration": false,
+      "cloudGCPIntegration": false,
+      "supportedCloudProviders": [
+        "AWS",
+        "GCP"
+      ]
+    }
   }
 ]
