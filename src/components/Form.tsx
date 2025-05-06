@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Snackbar, Box } from "@mui/material";
@@ -43,6 +43,36 @@ export default function Form() {
     setFilteredSchedulers(updatedSchedulers);
   }, [answersState]);
 
+  function shouldShowQuestion(question: any, allAnswers: any) {
+    console.log(question.dependsOn, 'question.dependsOn')
+    if (!question.dependsOn) return true;
+
+    return question.dependsOn.every((dep: any) => {
+      const userAnswer = allAnswers[dep.key];
+
+      if (userAnswer === undefined) return false;
+
+      const normalizedAnswer =
+        typeof userAnswer === "string"
+          ? userAnswer === "true"
+            ? true
+            : userAnswer === "false"
+            ? false
+            : isNaN(Number(userAnswer))
+            ? userAnswer
+            : Number(userAnswer)
+          : userAnswer;
+
+      return normalizedAnswer === dep.value;
+    });
+  }
+
+  const visibleQuestions = useMemo(() => {
+    return questions.filter((question) =>
+      shouldShowQuestion(question, answersState)
+    );
+  }, [answersState]);
+
   const handleCloseSnackbar = () => setOpenSnackbar(false);
 
   const handleAnswer = (answer: string | boolean | number | string[]) => {
@@ -66,7 +96,7 @@ export default function Form() {
       direction === "next" &&
       (isReadOnly || isCurrentQuestionAnswered)
     ) {
-      if (currentQuestionIndex < questions.length - 1) {
+      if (currentQuestionIndex < visibleQuestions.length - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
         setIsCurrentQuestionAnswered(false);
       } else {
@@ -110,7 +140,7 @@ export default function Form() {
             initial={{ width: "0%" }}
             animate={{
               width: `${
-                ((currentQuestionIndex + 1) / questions.length) * 100
+                ((currentQuestionIndex + 1) / visibleQuestions.length) * 100
               }%`,
             }}
             transition={{ duration: 0.5 }}
@@ -120,7 +150,7 @@ export default function Form() {
         <AnimatePresence mode="wait">
           {!submitted ? (
             <motion.div
-              key={questions[currentQuestionIndex].key}
+              key={visibleQuestions[currentQuestionIndex].key}
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
@@ -128,17 +158,19 @@ export default function Form() {
               className="questionContainer"
             >
               <QuestionComponent
-                question={questions[currentQuestionIndex].question}
-                hint={questions[currentQuestionIndex].hint}
+                question={visibleQuestions[currentQuestionIndex].question}
+                hint={visibleQuestions[currentQuestionIndex].hint}
                 type={
-                  answers[questions[currentQuestionIndex].key as keyof Answer]
-                    ?.type
+                  answers[
+                    visibleQuestions[currentQuestionIndex].key as keyof Answer
+                  ]?.type
                 }
                 options={
-                  answers[questions[currentQuestionIndex].key as keyof Answer]
-                    ?.options
+                  answers[
+                    visibleQuestions[currentQuestionIndex].key as keyof Answer
+                  ]?.options
                 }
-                questionKey={questions[currentQuestionIndex].key}
+                questionKey={visibleQuestions[currentQuestionIndex].key}
                 onAnswer={handleAnswer}
                 allAnswers={answersState}
                 disabled={isReadOnly}
@@ -171,7 +203,9 @@ export default function Form() {
               Previous
             </button>
             <button onClick={() => handleNavigation("next")} className="button">
-              {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}
+              {currentQuestionIndex < visibleQuestions.length - 1
+                ? "Next"
+                : "Submit"}
             </button>
           </div>
         )}

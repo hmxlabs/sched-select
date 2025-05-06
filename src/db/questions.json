@@ -74,7 +74,13 @@
     "question": "Do you wish to use spot/ preemptible/ low priority VMs on cloud?",
     "hint": "Will you require your scheduler to use cheaper spot capacity when it is available (at the risk of it being preempted before your workload completes)?",
     "key": "supportCloudSpotCapacity",
-    "type": "boolean"
+    "type": "boolean",
+    "dependsOn": [
+      {
+        "key": "managedCloudResources",
+        "value": true
+      }
+    ]
   },
   {
     "id": 12,
@@ -95,14 +101,26 @@
     "question": "Do you need integration with AWS ECS or EKS?",
     "hint": "",
     "key": "integrationAWSECS",
-    "type": "boolean"
+    "type": "boolean",
+    "dependsOn": [
+      {
+        "key": "cloudAWSIntegration",
+        "value": true
+      }
+    ]
   },
   {
     "id": 15,
     "question": "Do you need advanced features for Amazon EC2 Spot?",
     "hint": "",
     "key": "advancedAWSEC2SpotFeatures",
-    "type": "boolean"
+    "type": "boolean",
+    "dependsOn": [
+      {
+        "key": "cloudAWSIntegration",
+        "value": true
+      }
+    ]
   },
   {
     "id": 16,
@@ -117,5 +135,18 @@
     "hint": "Do you require integration with Google Cloud so that the scheduler managed your AWS resources for you?",
     "key": "cloudGCPIntegration",
     "type": "boolean"
+  },
+  {
+    "id": 18,
+    "question": "Which cloud providers do you require support for?",
+    "hint": "",
+    "key": "supportedCloudProviders",
+    "type": "multiSelect",
+    "dependsOn": [
+      {
+        "key": "cloudGCPIntegration",
+        "value": true
+      }
+    ]
   }
 ]
