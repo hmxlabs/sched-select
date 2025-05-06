@@ -81,5 +81,9 @@
   "cloudGCPIntegration": {
     "type": "boolean",
     "options": [true, false]
+  },
+  "supportedCloudProviders": {
+    "type": "multiSelect",
+    "options": ["AWS", "Azure", "GCP", "Oracle", "IBM", "Ali Baba", "Other"]
   }
 }
