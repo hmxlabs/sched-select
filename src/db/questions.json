@@ -85,30 +85,17 @@
   },
   {
     "id": 13,
-    "question": "Do you need integration with Kubernetes?",
-    "hint": "Do you require the scheduler to manage resources within a Kubernetes cluster?",
-    "key": "IntegrationK8",
-    "type": "boolean"
-  },
-  {
-    "id": 14,
     "question": "Do you require the scheduler to manage cloud resources?",
     "hint": "Will you require the scheduler to automatically create and destroy cloud resources based on the workload for you or will this be handled elsewhere?",
     "key": "managedCloudResources",
     "type": "boolean"
   },
   {
-    "id": 11,
+    "id": 14,
     "question": "Do you wish to use spot/ preemptible/ low priority VMs on cloud?",
     "hint": "Will you require your scheduler to use cheaper spot capacity when it is available (at the risk of it being preempted before your workload completes)?",
     "key": "supportCloudSpotCapacity",
-    "type": "boolean",
-    "dependsOn": [
-      {
-        "key": "managedCloudResources",
-        "value": true
-      }
-    ]
+    "type": "boolean"
   },
   {
     "id": 15,

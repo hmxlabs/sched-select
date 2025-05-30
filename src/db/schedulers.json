@@ -184,7 +184,7 @@
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": true,
-      "commercialSupport": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 1,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": true,
@@ -219,7 +219,7 @@
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
-      "commercialSupport": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 1,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": false,
@@ -254,7 +254,7 @@
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
-      "commercialSupport": false,
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 2,
       "microsoftWindowsComputeNodes": true,

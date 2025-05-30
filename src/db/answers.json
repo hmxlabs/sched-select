@@ -64,7 +64,7 @@
   },
   "managedCloudSolution": {
     "type": "boolean",
-    "options": [true, false]
+    "options": [false, true]
   },
   "cloudAWSIntegration": {
     "type": "boolean",
