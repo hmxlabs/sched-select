@@ -346,6 +346,28 @@
         "AWS",
         "GCP"
       ]
+    },
+    "details": {
+      "freeSoftware": "",
+      "openSourceSoftware": "",
+      "commercialSupport": "",
+      "typicalTaskDuration": "ArmoniK can be configured to provide a median roundtrip latency of 38ms. Hence, ArmoniK can easily schedule tasks shorter than 1 second. On the other hands, production deployment often face some tasks that lasts for few hours.",
+      "taskSubmissionRate": "Task can be submitted in batches of 100, allowing to submit thousands of tasks per seconds within a single session. Some details can be found on our (incomplete) benchmark page: https://armonik.readthedocs.io/en/latest/content/benchmarking/benchmarking-armonik-v2.12.3.html",
+      "microsoftWindowsComputeNodes": "Integration for Windows worker has been developed. It is considered as beta as it hasn't been through extensive testing yet. https://github.com/aneoconsulting/ArmoniK.Core",
+      "supportForContainers": "As of today, ArmoniK requires the workers to be packaged as containers",
+      "arm64CPUSupport": "Support for ARM64 is in preview. We use it in our every day tests and for demo with our portable Raspberry cluster: https://github.com/aneoconsulting/ArmoniK.Core",
+      "gpuSupport": "ArmoniK supports GPU. However, it is the responsibility of the users to manage the GPU code and the data transfer between CPU and GPU. An example of how GPU nodes can be configured can be found here https://github.com/aneoconsulting/ArmoniK/blob/fd6a1ddefd90d14fc34e7f144d58c1b3d61aab53/infrastructure/quick-deploy/aws/parameters.tfvars#L72" ,
+      "advancedResourceScheduling": "ArmoniK partitions can be used to provide autoscaling rules for each users. This is done by exposing custom metric that can take into consideration external elements such as cluster occupation, time: https://armonik.readthedocs.io/en/latest/content/armonik/glossary.html#partition",
+      "dataAwareScheduling": "ArmoniK jobs are described as graphs of data and tasks. In a Session, data can be shared amongst any tasks. ArmoniK manages data transfer to a worker while the previous task is running (replicating communication-computation overlapping from advanced MPI programming). We recommend that a session should only run on a single distributed ArmoniK environment. An ArmoniK provides a load balancer to distribute session across different ArmoniK environment.",
+      "onPremisesScheduler": "ArmoniK can be deployed on any Kubernetes infrastructure. See installation guide.",
+      "managedCloudResources": "As of today, ArmoniK relies on managed Kubernetes services to manage cloud resources. Future development will rely on other managed services such as AWS Autoscaling Groups or GCP's Managed Instance Groups to provide the same feature without Kubernetes. ArmoniK leverages Kubernete's Pod Deletion Cost to reduce the likelihood of worker eviction during scaledown phases.",
+      "supportCloudSpotCapacity": "Done through Kubernetes machine pool definitions.",
+      "managedCloudSolution": "No. Although Market-place deployments are under development.",
+      "cloudAWSIntegration": "See installation guide. https://armonik.readthedocs.io/en/latest/content/getting-started/installation/aws.html",
+      "IntegrationK8": "ArmoniK relies on EKS.",
+      "advancedCapacityProvisioning": "",
+      "cloudAzureIntegration": "No specific Azure Integration has been developed yet. However, one can use ArmoniK on Azure using the vanilla Kubernetes deployment.",
+      "cloudGCPIntegration": "See installation guide.https://armonik.readthedocs.io/en/latest/content/getting-started/installation/gcp.html"
     }
   },
   {
