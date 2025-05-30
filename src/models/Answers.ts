@@ -8,7 +8,11 @@
 // }
 
 export interface Answer {
-  freeOrOpenSourceSoftware: {
+  freeSoftware: {
+    type: string;
+    options: boolean[];
+  };
+  openSourceSoftware: {
     type: string;
     options: boolean[];
   };
@@ -68,11 +72,11 @@ export interface Answer {
     type: string;
     options: boolean[];
   };
-  integrationAWSECS: {
+  IntegrationK8: {
     type: string;
     options: boolean[];
   };
-  advancedAWSEC2SpotFeatures: {
+  advancedCapacityProvisioning: {
     type: string;
     options: boolean[];
   };

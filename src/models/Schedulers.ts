@@ -1,5 +1,6 @@
 export interface SchedulerFeatures {
-  freeOrOpenSourceSoftware: boolean;
+  freeSoftware: boolean;
+  openSourceSoftware: boolean;
   commercialSupport: boolean;
   typicalTaskDuration: number;
   taskSubmissionRate: number;
@@ -14,8 +15,8 @@ export interface SchedulerFeatures {
   supportCloudSpotCapacity: boolean;
   managedCloudSolution: boolean;
   cloudAWSIntegration: boolean;
-  integrationAWSECS: boolean;
-  advancedAWSEC2SpotFeatures: boolean;
+  IntegrationK8: boolean;
+  advancedCapacityProvisioning: boolean;
   cloudAzureIntegration: boolean;
   cloudGCPIntegration: boolean;
   supportedCloudProviders: string[];

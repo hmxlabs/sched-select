@@ -1,5 +1,9 @@
 {
-  "freeOrOpenSourceSoftware": {
+  "freeSoftware": {
+    "type": "boolean",
+    "options": [true, false]
+  },
+  "openSourceSoftware": {
     "type": "boolean",
     "options": [true, false]
   },
@@ -66,11 +70,11 @@
     "type": "boolean",
     "options": [true, false]
   },
-  "integrationAWSECS": {
+  "IntegrationK8": {
     "type": "boolean",
     "options": [true, false]
   },
-  "advancedAWSEC2SpotFeatures": {
+  "advancedCapacityProvisioning": {
     "type": "boolean",
     "options": [true, false]
   },

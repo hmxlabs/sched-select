@@ -1,83 +1,97 @@
 [
   {
     "id": 1,
-    "question": "Are you limited to using only free or open source software?",
+    "question": "Do you require a product that is free to use?",
     "hint": "If you are looking only for free to use or open source schedulers, please select yes. If you are open to using commercial software, please select no.",
-    "key": "freeOrOpenSourceSoftware",
+    "key": "freeSoftware",
     "type": "boolean"
   },
   {
-    "id": 1,
+    "id": 2,
+    "question": "Are you limited to using only free or open source software?",
+    "hint": "If you are looking only for free to use or open source schedulers, please select yes. If you are open to using commercial software, please select no.",
+    "key": "openSourceSoftware",
+    "type": "boolean"
+  },
+  {
+    "id": 3,
     "question": "Do you require commercial support?",
     "hint": "Will you require a support contract with the vendor to ensure that you can get help when you need it?",
     "key": "commercialSupport",
     "type": "boolean"
   },
   {
-    "id": 1,
+    "id": 4,
     "question": "What is your typical task duration?",
     "hint": "Consider how long a single task or job typically runs in your workflow. Are they short (Seconds to Minutes), medium (Minutes to Hours)? This helps determine the best scheduling strategy for efficiency and resource allocation.",
     "key": "typicalTaskDuration",
     "type": "rankedChoice"
   },
   {
-    "id": 2,
+    "id": 5,
     "question": "What is your approximate task submission rate?",
     "hint": "How many tasks will your clients to the scheduler submit at their peak?",
     "key": "taskSubmissionRate",
     "type": "rankedChoice"
   },
   {
-    "id": 3,
+    "id": 6,
     "question": "Do you need Microsoft Windows compute nodes?",
     "hint": "",
     "key": "microsoftWindowsComputeNodes",
     "type": "boolean"
   },
   {
-    "id": 4,
+    "id": 7,
     "question": "Do you need support for containers?",
     "hint": "",
     "key": "supportForContainers",
     "type": "boolean"
   },
   {
-    "id": 5,
+    "id": 8,
     "question": "Do you require support for ARM64 CPU architecture?",
     "hint": "",
     "key": "arm64CPUSupport",
     "type": "boolean"
   },
   {
-    "id": 6,
+    "id": 9,
     "question": "Do you need support for GPUs?",
     "hint": "",
     "key": "gpuSupport",
     "type": "boolean"
   },
   {
-    "id": 7,
+    "id": 10,
     "question": "Do you require advanced resource scheduling features?",
     "hint": "Will you require the ability to create multiple pools of resources which can be shared between multiple users and reclaimed based on ownership or allocation or timing?",
     "key": "advancedResourceScheduling",
     "type": "boolean"
   },
   {
-    "id": 8,
+    "id": 11,
     "question": "Do you need data aware scheduling?",
     "hint": "Is the data that will be used the compute nodes geographically distributed? If so do you require the ability to schedule workloads accounting for data locality?",
     "key": "dataAwareScheduling",
     "type": "boolean"
   },
   {
-    "id": 9,
-    "question": "Do you require the scheduler to operate on-premises?",
-    "hint": "Is the data that will be used the compute nodes geographically distributed? If so do you require the ability to schedule workloads accounting for data locality?",
-    "key": "onPremisesScheduler",
+    "id": 12,
+    "question": "Do you need integration with Kubernetes?",
+    "hint": "Do you require the scheduler to manage resources within a Kubernetes cluster?",
+    "key": "IntegrationK8",
     "type": "boolean"
   },
   {
-    "id": 10,
+    "id": 13,
+    "question": "Do you need integration with Kubernetes?",
+    "hint": "Do you require the scheduler to manage resources within a Kubernetes cluster?",
+    "key": "IntegrationK8",
+    "type": "boolean"
+  },
+  {
+    "id": 14,
     "question": "Do you require the scheduler to manage cloud resources?",
     "hint": "Will you require the scheduler to automatically create and destroy cloud resources based on the workload for you or will this be handled elsewhere?",
     "key": "managedCloudResources",
@@ -97,61 +111,42 @@
     ]
   },
   {
-    "id": 12,
+    "id": 15,
+    "question": "Do you require attribute based selection for capacity provisioning on cloud?",
+    "hint": "",
+    "key": "advancedCapacityProvisioning",
+    "type": "boolean"
+  },
+    {
+    "id": 16,
     "question": "Do you require a fully managed cloud service?",
     "hint": "Do you want the solution to provide a fully managed service that takes care of all the infrastructure and maintenance for you?",
     "key": "managedCloudSolution",
     "type": "boolean"
   },
   {
-    "id": 13,
+    "id": 17,
     "question": "Do you require AWS integration?",
     "hint": "Do you require integration with AWS so that the scheduler managed your AWS resources for you?",
     "key": "cloudAWSIntegration",
     "type": "boolean"
   },
   {
-    "id": 14,
-    "question": "Do you need integration with AWS ECS or EKS?",
-    "hint": "",
-    "key": "integrationAWSECS",
-    "type": "boolean",
-    "dependsOn": [
-      {
-        "key": "cloudAWSIntegration",
-        "value": true
-      }
-    ]
-  },
-  {
-    "id": 15,
-    "question": "Do you need advanced features for Amazon EC2 Spot?",
-    "hint": "",
-    "key": "advancedAWSEC2SpotFeatures",
-    "type": "boolean",
-    "dependsOn": [
-      {
-        "key": "cloudAWSIntegration",
-        "value": true
-      }
-    ]
-  },
-  {
-    "id": 16,
+    "id": 18,
     "question": "Do you require Azure integration?",
     "hint": "Do you require integration with Microsoft Azure so that the scheduler managed your AWS resources for you?",
     "key": "cloudAzureIntegration",
     "type": "boolean"
   },
   {
-    "id": 17,
+    "id": 19,
     "question": "Do you require Google Cloud support",
     "hint": "Do you require integration with Google Cloud so that the scheduler managed your AWS resources for you?",
     "key": "cloudGCPIntegration",
     "type": "boolean"
   },
   {
-    "id": 18,
+    "id": 20,
     "question": "Which cloud providers do you require support for?",
     "hint": "",
     "key": "supportedCloudProviders",
