@@ -37,28 +37,28 @@
   {
     "id": 6,
     "question": "Do you need Microsoft Windows compute nodes?",
-    "hint": "",
+    "hint": "Will you require workload to run under Microsoft Windows? The management/ control can be on Linux",
     "key": "microsoftWindowsComputeNodes",
     "type": "boolean"
   },
   {
     "id": 7,
     "question": "Do you need support for containers?",
-    "hint": "",
+    "hint": "Is your workload packaged as a container image?",
     "key": "supportForContainers",
     "type": "boolean"
   },
   {
     "id": 8,
     "question": "Do you require support for ARM64 CPU architecture?",
-    "hint": "",
+    "hint": "Does your workload and/or the management/ control plane need to run on ARM64/ AARCH64 CPU ISA",
     "key": "arm64CPUSupport",
     "type": "boolean"
   },
   {
     "id": 9,
     "question": "Do you need support for GPUs?",
-    "hint": "",
+    "hint": "Do you need the scheduler to place workloads accounting for GPU availability and requirements? This is important for workloads that require GPU acceleration, such as machine learning or high-performance computing tasks.",
     "key": "gpuSupport",
     "type": "boolean"
   },
@@ -100,7 +100,7 @@
   {
     "id": 15,
     "question": "Do you require attribute based selection for capacity provisioning on cloud?",
-    "hint": "",
+    "hint": "Do you require the abilit to select cloud resources based on attributes such as CPU, memory, GPU as opposed to specifying the exact type of VM to use?",
     "key": "advancedCapacityProvisioning",
     "type": "boolean"
   },
