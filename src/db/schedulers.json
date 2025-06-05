@@ -195,7 +195,7 @@
       "dataAwareScheduling": false,
       "onPremisesScheduler": false,
       "managedCloudResources": true,
-      "supportCloudSpotCapacity": false,
+      "supportCloudSpotCapacity": true,
       "managedCloudSolution": true,
       "cloudAWSIntegration": true,
       "IntegrationK8": false,
@@ -207,6 +207,28 @@
         "Azure",
         "GCP"
       ]
+    },
+    "details": {
+      "freeSoftware": "",
+      "openSourceSoftware": "",
+      "commercialSupport": "Commercial support is available for AWS PCS and is dependent on your level of AWS Enterprise support: https://aws.amazon.com/premiumsupport/plans/",
+      "typicalTaskDuration": "",
+      "taskSubmissionRate": "",
+      "microsoftWindowsComputeNodes": "",
+      "supportForContainers": "",
+      "arm64CPUSupport": "PCS supports ARM64 workloads: https://docs.aws.amazon.com/pcs/latest/userguide/working-with_cng_create.html",
+      "gpuSupport": "" ,
+      "advancedResourceScheduling": "",
+      "dataAwareScheduling": "",
+      "onPremisesScheduler": "",
+      "managedCloudResources": "",
+      "supportCloudSpotCapacity": "AWS PCS supports Spot Instances: https://docs.aws.amazon.com/pcs/latest/userguide/working-with_cng_create.html",
+      "managedCloudSolution": "",
+      "cloudAWSIntegration": "",
+      "IntegrationK8": "",
+      "advancedCapacityProvisioning": "",
+      "cloudAzureIntegration": "",
+      "cloudGCPIntegration": ""
     }
   },
   {
@@ -225,7 +247,7 @@
       "microsoftWindowsComputeNodes": false,
       "supportForContainers": true,
       "arm64CPUSupport": true,
-      "gpuSupport": false,
+      "gpuSupport": true,   
       "advancedResourceScheduling": false,
       "dataAwareScheduling": false,
       "onPremisesScheduler": false,
@@ -242,6 +264,28 @@
         "Azure",
         "GCP"
       ]
+    },
+    "details": {
+      "freeSoftware": "",
+      "openSourceSoftware": "",
+      "commercialSupport": "Commercial support is available for AWS Batch and is dependent on your level of AWS Enterprise support: https://aws.amazon.com/premiumsupport/plans/",
+      "typicalTaskDuration": "",
+      "taskSubmissionRate": "",
+      "microsoftWindowsComputeNodes": "",
+      "supportForContainers": "AWS Batch supports container/multi-container workloads via ECS, Fargate, and EKS: https://aws.amazon.com/batch/faqs/#topic-0",
+      "arm64CPUSupport": "AWS Batch supports both X86_64 and ARM64 vCPU architecture. For Windows container workloads, you must use X86_64. Fargate Spot is not supported for ARM64 and Windows-based containers on Fargate. https://docs.aws.amazon.com/batch/latest/userguide/create-compute-environment.html",
+      "gpuSupport": "AWS Batch supports GPU scheduling, but not when using Fargate as your compute environment. You can utilize instances from the p2, p3, p4, p5, g3, g3s, g4, or g5 familes: https://aws.amazon.com/batch/faqs/#topic-5" ,
+      "advancedResourceScheduling": "",
+      "dataAwareScheduling": "",
+      "onPremisesScheduler": "",
+      "managedCloudResources": "",
+      "supportCloudSpotCapacity": "AWS Batch supports utilizing Spot Instances: https://aws.amazon.com/batch/faqs/#topic-3",
+      "managedCloudSolution": "",
+      "cloudAWSIntegration": "",
+      "IntegrationK8": "",
+      "advancedCapacityProvisioning": "",
+      "cloudAzureIntegration": "",
+      "cloudGCPIntegration": ""
     }
   },
   {
@@ -312,6 +356,28 @@
         "Azure",
         "GCP"
       ]
+    },
+    "details": {
+      "freeSoftware": "",
+      "openSourceSoftware": "",
+      "commercialSupport": "",
+      "typicalTaskDuration": "",
+      "taskSubmissionRate": "",
+      "microsoftWindowsComputeNodes": "",
+      "supportForContainers": "",
+      "arm64CPUSupport": "",
+      "gpuSupport": "" ,
+      "advancedResourceScheduling": "",
+      "dataAwareScheduling": "",
+      "onPremisesScheduler": "",
+      "managedCloudResources": "",
+      "supportCloudSpotCapacity": "",
+      "managedCloudSolution": "",
+      "cloudAWSIntegration": "",
+      "IntegrationK8": "",
+      "advancedCapacityProvisioning": "",
+      "cloudAzureIntegration": "",
+      "cloudGCPIntegration": ""
     }
   },
   {
