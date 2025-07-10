@@ -64,76 +64,83 @@
   },
   {
     "id": 10,
+    "question": "Do you require all data transfers and storage to be encrypted?",
+    "hint": "Do you require all data that is exchanged between the components of the scheduler and the compute nodes to be encrypted?",
+    "key": "dataEncrypted",
+    "type": "boolean"
+  },
+  {
+    "id": 11,
     "question": "Do you require advanced resource scheduling features?",
     "hint": "Will you require the ability to create multiple pools of resources which can be shared between multiple users and reclaimed based on ownership or allocation or timing?",
     "key": "advancedResourceScheduling",
     "type": "boolean"
   },
   {
-    "id": 11,
+    "id": 12,
     "question": "Do you need data aware scheduling?",
     "hint": "Is the data that will be used the compute nodes geographically distributed? If so do you require the ability to schedule workloads accounting for data locality?",
     "key": "dataAwareScheduling",
     "type": "boolean"
   },
   {
-    "id": 12,
+    "id": 13,
     "question": "Do you need integration with Kubernetes?",
     "hint": "Do you require the scheduler to manage resources within a Kubernetes cluster?",
     "key": "IntegrationK8",
     "type": "boolean"
   },
   {
-    "id": 13,
+    "id": 14,
     "question": "Do you require the scheduler to manage cloud resources?",
     "hint": "Will you require the scheduler to automatically create and destroy cloud resources based on the workload for you or will this be handled elsewhere?",
     "key": "managedCloudResources",
     "type": "boolean"
   },
   {
-    "id": 14,
+    "id": 15,
     "question": "Do you wish to use spot/ preemptible/ low priority VMs on cloud?",
     "hint": "Will you require your scheduler to use cheaper spot capacity when it is available (at the risk of it being preempted before your workload completes)?",
     "key": "supportCloudSpotCapacity",
     "type": "boolean"
   },
   {
-    "id": 15,
+    "id": 16,
     "question": "Do you require attribute based selection for capacity provisioning on cloud?",
     "hint": "Do you require the abilit to select cloud resources based on attributes such as CPU, memory, GPU as opposed to specifying the exact type of VM to use?",
     "key": "advancedCapacityProvisioning",
     "type": "boolean"
   },
     {
-    "id": 16,
+    "id": 17,
     "question": "Do you require a fully managed cloud service?",
     "hint": "Do you want the solution to provide a fully managed service that takes care of all the infrastructure and maintenance for you?",
     "key": "managedCloudSolution",
     "type": "boolean"
   },
   {
-    "id": 17,
+    "id": 18,
     "question": "Do you require AWS integration?",
     "hint": "Do you require integration with AWS so that the scheduler managed your AWS resources for you?",
     "key": "cloudAWSIntegration",
     "type": "boolean"
   },
   {
-    "id": 18,
+    "id": 19,
     "question": "Do you require Azure integration?",
     "hint": "Do you require integration with Microsoft Azure so that the scheduler managed your AWS resources for you?",
     "key": "cloudAzureIntegration",
     "type": "boolean"
   },
   {
-    "id": 19,
+    "id": 20,
     "question": "Do you require Google Cloud support",
     "hint": "Do you require integration with Google Cloud so that the scheduler managed your AWS resources for you?",
     "key": "cloudGCPIntegration",
     "type": "boolean"
   },
   {
-    "id": 20,
+    "id": 21,
     "question": "Which cloud providers do you require support for?",
     "hint": "",
     "key": "supportedCloudProviders",

@@ -8,6 +8,7 @@ export interface SchedulerFeatures {
   supportForContainers: boolean;
   arm64CPUSupport: boolean;
   gpuSupport: boolean;
+  dataEncrypted: boolean;
   advancedResourceScheduling: boolean;
   dataAwareScheduling: boolean;
   onPremisesScheduler: boolean;

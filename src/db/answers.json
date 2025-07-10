@@ -42,6 +42,10 @@
     "type": "boolean",
     "options": [true, false]
   },
+  "dataEncrypted": {
+    "type": "boolean",
+    "options": [true, false]
+  },
   "advancedResourceScheduling": {
     "type": "boolean",
     "options": [true, false]
