@@ -2,7 +2,6 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
