@@ -15,6 +15,9 @@ import {
   // scoreSchedulers,
 } from "../utils/helpers";
 
+import backgroundImage from '../assets/bg1.jpg';
+
+
 export default function Form() {
   const [submitted, setSubmitted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -114,101 +117,109 @@ export default function Form() {
     window.history.replaceState(null, "", window.location.pathname);
   };
 
+  const customStyle = {
+    '--bg-url': `url(${backgroundImage})`
+  } as React.CSSProperties & { [key: string]: string };
+
   return (
-    <div className="container">
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={3000}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        message="URL copied to clipboard!"
-      />
+    <div className="container" style={customStyle}>
+      <div className="content">
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          message="URL copied to clipboard!"
+        />
 
-      {!submitted && !isReadOnly && (
-        <Box className="side-panel">
-          <Box className="side-panel-content">
-            <SchedulerListComponent schedulers={filteredSchedulers} compact />
+        {!submitted && !isReadOnly && (
+          <Box className="side-panel" sx={{ order: { xs: 2, md: 0 } }}>
+            <Box className="side-panel-content">
+              <SchedulerListComponent schedulers={filteredSchedulers} compact />
+            </Box>
           </Box>
-        </Box>
-      )}
-
-      <div className="formBox">
-        {/* Progress Bar */}
-        <div className="progressBarContainer">
-          <motion.div
-            className="progressBar"
-            initial={{ width: "0%" }}
-            animate={{
-              width: `${
-                ((currentQuestionIndex + 1) / visibleQuestions.length) * 100
-              }%`,
-            }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
-
-        <AnimatePresence mode="wait">
-          {!submitted ? (
-            <motion.div
-              key={visibleQuestions[currentQuestionIndex].key}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
-              className="questionContainer"
-            >
-              <QuestionComponent
-                question={visibleQuestions[currentQuestionIndex].question}
-                hint={visibleQuestions[currentQuestionIndex].hint}
-                type={
-                  answers[
-                    visibleQuestions[currentQuestionIndex].key as keyof Answer
-                  ]?.type
-                }
-                options={
-                  answers[
-                    visibleQuestions[currentQuestionIndex].key as keyof Answer
-                  ]?.options
-                }
-                questionKey={visibleQuestions[currentQuestionIndex].key}
-                onAnswer={handleAnswer}
-                allAnswers={answersState}
-                disabled={isReadOnly}
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <SchedulerListComponent
-                schedulers={filteredSchedulers}
-                generateShareableLink={() =>
-                  generateShareableLink(setOpenSnackbar)
-                }
-                resetForm={resetForm}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {!submitted && (
-          <div className="buttonContainer">
-            <button
-              onClick={() => handleNavigation("back")}
-              disabled={currentQuestionIndex === 0}
-              className="button"
-            >
-              Previous
-            </button>
-            <button onClick={() => handleNavigation("next")} className="button">
-              {currentQuestionIndex < visibleQuestions.length - 1
-                ? "Next"
-                : "Submit"}
-            </button>
-          </div>
         )}
+
+        <Box className="formBox" sx={{ order: { xs: 1, md: 0 } }}>
+          
+          <AnimatePresence mode="wait">
+            {!submitted ? (
+              <motion.div
+                key={visibleQuestions[currentQuestionIndex].key}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
+                className="questionContainer"
+              >
+                <QuestionComponent
+                  question={visibleQuestions[currentQuestionIndex].question}
+                  hint={visibleQuestions[currentQuestionIndex].hint}
+                  type={
+                    answers[
+                      visibleQuestions[currentQuestionIndex].key as keyof Answer
+                    ]?.type
+                  }
+                  options={
+                    answers[
+                      visibleQuestions[currentQuestionIndex].key as keyof Answer
+                    ]?.options
+                  }
+                  questionKey={visibleQuestions[currentQuestionIndex].key}
+                  onAnswer={handleAnswer}
+                  allAnswers={answersState}
+                  disabled={isReadOnly}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <SchedulerListComponent
+                  schedulers={filteredSchedulers}
+                  generateShareableLink={() =>
+                    generateShareableLink(setOpenSnackbar)
+                  }
+                  resetForm={resetForm}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {!submitted && (
+            <div className="buttonContainer">
+              <button
+                onClick={() => handleNavigation("back")}
+                disabled={currentQuestionIndex === 0}
+                className="button"
+              >
+                Previous
+              </button>
+              <button onClick={() => handleNavigation("next")} className="button">
+                {currentQuestionIndex < visibleQuestions.length - 1
+                  ? "Next"
+                  : "Submit"}
+              </button>
+            </div>
+          )}
+
+          {/* Progress Bar */}
+          <div className="progressBarContainer">
+            <motion.div
+              className="progressBar"
+              initial={{ width: "0%" }}
+              animate={{
+                width: `${
+                  ((currentQuestionIndex + 1) / visibleQuestions.length) * 100
+                }%`,
+              }}
+              transition={{ duration: 0.5 }}
+            />
+            <p className="progressBarText">{currentQuestionIndex + 1} of {visibleQuestions.length} questions</p>
+          </div>
+        </Box>
       </div>
     </div>
   );

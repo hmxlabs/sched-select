@@ -10,8 +10,7 @@ import {
   Checkbox,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-
+import InfoOutlineIcon from '@mui/icons-material/InfoOutlined';
 interface QuestionProps {
   question: string;
   hint: string;
@@ -152,14 +151,16 @@ const QuestionComponent: React.FC<QuestionProps> = ({
   return (
     <Box className="layout-column-center">
       <Box className="layout-row-center">
-        <h2 className="questionText">{question}</h2>
-        {hint && (
-          <Tooltip title={hint} arrow>
-            <Button className="help-button">
-              <HelpOutlineIcon className="help-button-icon" fontSize="small" />
-            </Button>
-          </Tooltip>
-        )}
+        <h2 className="questionText">{question}
+          {hint && (
+            <Tooltip title={hint} arrow>
+              <Button className="help-button">
+                <InfoOutlineIcon className="help-button-icon" fontSize="small" />
+              </Button>
+            </Tooltip>
+          )}
+        </h2>
+        
       </Box>
       {renderInput()}
     </Box>

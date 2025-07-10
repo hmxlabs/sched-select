@@ -4,6 +4,8 @@ import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 interface Scheduler {
   name: string;
@@ -45,28 +47,45 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
           <h2 className="submissionTitle">Matching Schedulers:</h2>
         ) : null}
         <div className="submissionBox">
-          {schedulers.map((scheduler, index) => (
-            <a
-              key={index}
-              className={`schedulerLink ${
-                scheduler.isMatch ? "match" : "no-match"
-              }`}
-              href={scheduler.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="schedulerName">
-                <strong>{scheduler.name}</strong>
-                <OpenInNewIcon className="icon icon-sm" />
-              </span>
-              <span
-                className={`match-indicator ${
-                  scheduler.isMatch ? "match" : "no-match"
-                }`}
+          <p className="sched-category">MATCHES</p>
+          {
+            schedulers
+            .filter((scheduler) => scheduler.isMatch)
+            .map((scheduler, index) => (
+              <a
+                key={`match-${index}`}
+                className="schedulerLink match"
+                href={scheduler.link}
+                target="_blank"
+                rel="noreferrer"
               >
-                {scheduler.isMatch ? "✔" : "✘"}
-              </span>
-            </a>
+                <CheckCircleIcon className="match-indicator match" />
+                {/* <span className="match-indicator match">✔</span> */}
+                <span className="schedulerName">
+                  <strong>{scheduler.name}</strong>
+                  {/* <OpenInNewIcon className="icon icon-sm" /> */}
+                </span>
+              </a>
+          ))}
+          <p className="sched-category">NOT A MATCH</p>
+          {
+            schedulers
+            .filter((scheduler) => !scheduler.isMatch)
+            .map((scheduler, index) => (
+              <a
+                key={index}
+                className="schedulerLink no-match"
+                href={scheduler.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <CancelIcon className="match-indicator no-match" />
+                {/* <span className="match-indicator no-match">✘</span> */}
+                <span className="schedulerName">
+                  <strong>{scheduler.name}</strong>
+                  {/* <OpenInNewIcon className="icon icon-sm" /> */}
+                </span>
+              </a>
           ))}
         </div>
         {!compact && (
