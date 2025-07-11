@@ -1,9 +1,11 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { styled } from '@mui/material/styles';
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ShareIcon from '@mui/icons-material/Share';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 interface Scheduler {
   name: string;
@@ -17,6 +19,11 @@ interface SchedulerListProps {
   resetForm?: () => void;
   compact?: boolean;
 }
+
+
+const CustomButton = styled(Button)(({ theme }) => ({
+  padding: '4px 10px !important'
+}));
 
 const SchedulerListComponent: React.FC<SchedulerListProps> = ({
   schedulers,
@@ -41,53 +48,71 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         transition={{ duration: 0.5 }}
         className="submissionContainer"
       >
-        {!compact ? (
-          <h2 className="submissionTitle">Matching Schedulers:</h2>
-        ) : null}
         <div className="submissionBox">
-          {schedulers.map((scheduler, index) => (
-            <a
-              key={index}
-              className={`schedulerLink ${
-                scheduler.isMatch ? "match" : "no-match"
-              }`}
-              href={scheduler.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="schedulerName">
-                <strong>{scheduler.name}</strong>
-                <OpenInNewIcon className="icon icon-sm" />
-              </span>
-              <span
-                className={`match-indicator ${
-                  scheduler.isMatch ? "match" : "no-match"
-                }`}
+          {!compact ? (
+            <h3 className="submissionTitle">Results</h3>
+          ) : null}
+          <p className="sched-category">MATCHES</p>
+          {
+            schedulers
+            .filter((scheduler) => scheduler.isMatch)
+            .map((scheduler, index) => (
+              <a
+                key={`match-${index}`}
+                className="schedulerLink match"
+                href={scheduler.link}
+                target="_blank"
+                rel="noreferrer"
               >
-                {scheduler.isMatch ? "✔" : "✘"}
-              </span>
-            </a>
+                <CheckCircleIcon className="match-indicator match" />
+                {/* <span className="match-indicator match">✔</span> */}
+                <span className="schedulerName">
+                  <strong>{scheduler.name}</strong>
+                  {/* <OpenInNewIcon className="icon icon-sm" /> */}
+                </span>
+              </a>
           ))}
+          <p className="sched-category">NOT A MATCH</p>
+          {
+            schedulers
+            .filter((scheduler) => !scheduler.isMatch)
+            .map((scheduler, index) => (
+              <a
+                key={index}
+                className="schedulerLink no-match"
+                href={scheduler.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <CancelIcon className="match-indicator no-match" />
+                {/* <span className="match-indicator no-match">✘</span> */}
+                <span className="schedulerName">
+                  <strong>{scheduler.name}</strong>
+                  {/* <OpenInNewIcon className="icon icon-sm" /> */}
+                </span>
+              </a>
+          ))}
+          {!compact && (
+            <div className="buttonContainer">
+              <CustomButton
+                className="share-button"
+                variant="contained"
+                onClick={generateShareableLink}
+              >
+                <ShareIcon fontSize="small"  />
+                <span className="btn-text">Share Link</span>
+              </CustomButton>
+              <CustomButton
+                className="reset-button"
+                variant="contained"
+                onClick={resetForm}
+              >
+                <RefreshIcon fontSize="small" />
+                <span className="btn-text">Restart</span>
+              </CustomButton>
+            </div>
+          )}
         </div>
-        {!compact && (
-          <div className="buttonContainer">
-            <Button
-              className="share-button"
-              variant="contained"
-              onClick={generateShareableLink}
-            >
-              <ContentCopyIcon fontSize="small" />
-              Share Link
-            </Button>
-            <Button
-              className="reset-button"
-              variant="contained"
-              onClick={resetForm}
-            >
-              <RefreshIcon fontSize="large" />
-            </Button>
-          </div>
-        )}
       </motion.div>
     </AnimatePresence>
   );

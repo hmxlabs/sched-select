@@ -1,346 +1,361 @@
 :root {
-  --white-bg: #ffffff;
-  --black-bg: #000000;
-  --font-body: "Roboto", Arial, sans-serif;
-  --background-color: #121212;
-  --primary-color: #0d1017;
-  --secondary-color: #555;
-  --background-image: none;
-  --font-family: Arial, sans-serif;
-  --button-bg: #007bff;
-  --button-text: #fff;
-  --border-color: #007bff;
-  --progress-bar-bg: #007bff;
-  --input-bg: #222;
-  --input-border: #555;
-  --input-text: white;
-  --text-color: #ffffff;
-  --radio-checked-color: #2591eb;
-  --disabled-color: #a3a1a1;
-  --checkbox-checked-color: #2591eb;
-  --checkbox-unchecked-color: #ffffff;
-  --gap-size: 1rem;
-  --box-bg: rgba(30, 30, 30, 0.85);
-  --button-bg: #ffffff;
-  --button-text: #2591eb;
-  --button-bg-hover: #2591eb;
-  --button-text-hover: #ffffff;
-  --button-margin-top: 2rem;
-}
+    --white-bg: #ffffff;
+    --black-bg: #000000;
+    --font-body: "Roboto", Arial, sans-serif;
+    --background-color: #121212;
+    --primary-color: #0d1017;
+    --secondary-color: #555;
+    --background-image: none;
+    --font-family: Arial, sans-serif;
+    --button-bg: #2491EB;
+    --button-text: #ffffff;
+    --button-bg-hover: #2591eb;
+    --button-text-hover: #ffffff;
+    --border-color: #007bff;
+    --progress-bar-bg: rgba(36, 145, 235, 1);
+    --input-bg: #222;
+    --input-border: #555;
+    --input-text: white;
+    --text-color: #ffffff;
+    --radio-checked-color: #fff;
+    --disabled-color: #a3a1a1;
+    --checkbox-checked-color: #ffffff;
+    --checkbox-unchecked-color: #ffffff;
+    --gap-size: 1rem;
+    --box-bg: rgba(44, 46, 52, 0.75);
+    --button-margin-top: 2rem;
+    --sub-title-color:rgba(255, 255, 255, 0.8);
+    --custom-secondary: #424242;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    background: var(--background-image);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    background: var(--bg-url) no-repeat center center/cover;
+    padding: 20px;
+  }
+  
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    display: flex;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .full-width{
+    width: 100%;
+  }
 
-body {
-  font-family: var(--font-family);
-  background: var(--background-image);
-  margin: 0;
-  padding: 0;
-}
+  .formBox {
+    width: 90%;
+    max-width: 500px;
+    background: var(--box-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  .progressBarContainer {
+    width: 100%;
+    background: #444;
+    height: 5px;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .progressBar {
+    height: 100%;
+    background: var(--progress-bar-bg);
+    border-radius: 5px;
+  }
+  .progressBarText {
+    font-size: 14px;
+    font-weight: lighter;
+    text-align: right;
+  }
+  
+  .questionContainer {
+    margin-bottom: 90px;
+  }
+  .questionText {
+    color: var(--white-bg);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-size: 16px;
+    outline: none;
+  }
+  .inputField:focus {
+    border-color: var(--progress-bar-bg);
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 30px; */
+    gap: 10px;
+  }
+  .button {
+    padding: 5px 10px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .button:hover {
+    opacity: 0.8;
+  }
+  .button:disabled {
+    background: #666;
+    cursor: not-allowed;
+  }
+  
+  .submissionContainer {
+    text-align: center;
+  }
+  .submissionTitle {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+  }
+  .submissionBox {
+    padding: 32px 32px 16px 32px;
+    text-align: left;
+    gap: 32px;
+    border-radius: 8px;
+    background: var(--box-bg);
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--primary-color);
-  flex-direction: column;
-  background: url("https://hmxlabs.io/assets/img/hpc-prem-cloud/on-prem.webp") no-repeat center center/cover
-}
+  }
+  .submissionText {
+    color: white;
+    margin-bottom: 8px;
+  }
+  
+  .logoContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  .logo {
+    width: 200px;
+    height: auto;
+  }
+  
+  .schedulerLink {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+  }
+  .schedulerLink.match {
+    color: #fff;
+  }
+  .schedulerLink.no-match {
+    color: #fff;
+  }
+  .match-indicator {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  .match-indicator.match {
+    color: #4CAF50;
+  }
+  .match-indicator.no-match {
+    color: #FF5252;
+  }
+  .schedulerName {
+    font-size: 12px;
+    font-weight: lighter;
+  }
+  
+  .side-panel {
+    position: fixed;
+    top: 25%;
+    right: 80px;
+    width: 400px;
+    z-index: 10;
+  }
+  
+  .side-panel-content {
+    padding: 20px;
+  }
 
-.formBox {
-  width: 90%;
-  max-width: 500px;
-  background: var(--box-bg);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  border: 2px solid var(--border-color);
-}
+  .sched-category{
+    color: var(--sub-title-color);
+    font-size: 12px;
+    font-weight: lighter;
+    padding: 0 10px;
+    margin-top: 32px;
+  }
+  
+  .btn-text{
+    margin-left: 8px;
+  }
 
-.progressBarContainer {
-  width: 100%;
-  background: #444;
-  height: 5px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-.progressBar {
-  height: 100%;
-  background: var(--progress-bar-bg);
-  border-radius: 5px;
-}
-
-.questionContainer {
-  margin-bottom: 20px;
-}
-.questionText {
-  color: var(--progress-bar-bg);
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.inputField {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--input-border);
-  background: var(--input-bg);
-  color: var(--input-text);
-  font-size: 16px;
-  outline: none;
-}
-.inputField:focus {
-  border-color: var(--progress-bar-bg);
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-.button {
-  padding: 10px 15px;
-  background: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.button:hover {
-  opacity: 0.8;
-}
-.button:disabled {
-  background: #666;
-  cursor: not-allowed;
-}
-
-.submissionContainer {
-  text-align: center;
-}
-.submissionTitle {
-  font-size: 24px;
-  color: #00ff6a;
-}
-.submissionBox {
-  background: #333;
-  padding: 15px;
-  border-radius: 5px;
-  text-align: left;
-  margin-top: 15px;
-}
-.submissionText {
-  color: white;
-  margin-bottom: 8px;
-}
-
-.logoContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.logo {
-  width: 200px;
-  height: auto;
-}
-
-.schedulerLink {
-  display: block;
-  text-decoration: none;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.schedulerName {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.icon {
-  color: white;
-  font-size: 14px;
-}
-
-.radio-label {
-  color: var(--text-color) !important;
-}
-
-.radio-icon {
-  color: var(--text-color) !important;
-}
-
-.radio-icon.Mui-checked {
-  color: var(--radio-checked-color) !important;
-}
-
-.radio-icon.Mui-disabled {
-  color: var(--disabled-color) !important;
-}
-
-.radio-icon.Mui-checked.Mui-disabled {
-  color: var(--disabled-color) !important;
-}
-
-.radio-label.Mui-disabled .MuiFormControlLabel-label {
-  color: var(--disabled-color) !important;
-}
-
-.checkbox-icon {
-  color: var(--text-color) !important;
-}
-
-.checkbox-icon.Mui-checked {
-  color: var(--checkbox-checked-color) !important;
-}
-
-.checkbox-icon.Mui-disabled {
-  color: var(--disabled-color) !important;
-}
-
-.checkbox-label .MuiFormControlLabel-label {
-  color: var(--text-color) !important;
-}
-
-.checkbox-label.Mui-disabled .MuiFormControlLabel-label {
-  color: var(--disabled-color);
-  opacity: 1 !important;
-}
-
-.layout-column-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.layout-row-center {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.help-button {
-  min-width: 0;
-  padding: 0;
-}
-
-.help-button-icon {
-  color: var(--icon-color);
-}
-
-.reset-button.MuiButton-contained {
-  margin-top: var(--button-margin-top);
-  background-color: var(--white-bg);
-  color: var(--button-text);
-}
-
-.reset-button.MuiButton-contained:hover {
-  background-color: var(--button-bg-hover);
-  color: var(--button-text-hover);
-}
-
-.share-button.MuiButton-contained {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  margin-top: var(--button-margin-top);
-  display: flex;
-  align-items: center;
-  gap: var(--button-gap);
-}
-
-.share-button.MuiButton-contained:hover {
-  background-color: var(--button-bg-hover);
-  color: var(--button-text-hover);
-}
-
-.icon-sm {
-  font-size: 13px !important;
-}
-
-.icon-md {
-  font-size: 18px !important;
-}
-
-.icon-lg {
-  font-size: 24px !important;
-}
-
-.schedulerLink {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 5px;
-  text-decoration: none;
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.schedulerLink.match {
-  background-color: #e0f7fa;
-  color: green;
-}
-
-.schedulerLink.no-match {
-  background-color: #ffebee;
-  color: red;
-}
-
-.match-indicator {
-  font-size: 1.2rem;
-  margin-left: 10px;
-}
-
-.match-indicator.match {
-  color: green;
-}
-
-.match-indicator.no-match {
-  color: red;
-}
-
-.schedulerName {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.icon-sm {
-  font-size: 1rem;
-  margin-left: 8px;
-}
-
-.submissionTitle {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.share-button,
-.reset-button {
-  margin: 0 10px;
-}
-
-.side-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  width: 400px;
-}
-
-.side-panel-content {
-  padding: 20px;
-}
+  /* Typography + Input Controls */
+  .radio-label,
+  .radio-icon,
+  .checkbox-icon {
+    color: var(--text-color) !important;
+  }
+  .radio-icon.Mui-checked,
+  .checkbox-icon.Mui-checked {
+    color: var(--checkbox-checked-color) !important;
+  }
+  .radio-icon.Mui-disabled,
+  .checkbox-icon.Mui-disabled {
+    color: var(--disabled-color) !important;
+  }
+  .radio-label.Mui-disabled .MuiFormControlLabel-label,
+  .checkbox-label.Mui-disabled .MuiFormControlLabel-label {
+    color: var(--disabled-color) !important;
+    opacity: 1 !important;
+  }
+  .checkbox-label .MuiFormControlLabel-label {
+    color: var(--text-color) !important;
+  }
+  
+  .layout-column-center {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .layout-row-center {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+  }
+  
+  .help-button {
+    min-width: 0;
+    padding: 0;
+    justify-content: flex-start !important;
+  }
+  .help-button-icon {
+    color: var(--button-text);
+  }
+  
+  .reset-button.MuiButton-contained {
+    color: var(--button-text);
+    margin-top: var(--button-margin-top);
+    align-items: center;
+    gap: var(--button-gap);
+    text-transform: capitalize;
+    font-size: 13px;
+    border-radius: 4px;
+    background: var(--button-bg);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+  .reset-button.MuiButton-contained:hover {
+    background-color: var(--button-bg-hover);
+    color: var(--button-text-hover);
+  }
+  .share-button.MuiButton-contained {
+    color: var(--button-text);
+    margin-top: var(--button-margin-top);
+    align-items: center;
+    gap: var(--button-gap);
+    text-transform: capitalize;
+    font-size: 13px;
+    border-radius: 4px;
+    background: var(--custom-secondary);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+  .share-button.MuiButton-contained:hover {
+    background-color: var(--button-bg-hover);
+    color: var(--button-text-hover);
+  }
+  
+  .icon-sm { font-size: 13px !important; }
+  .icon-md { font-size: 18px; }
+  .icon-lg { font-size: 24px; }
+  
+  /* 🌐 Responsive Design */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      gap: 16px;
+      /* padding: 16px; */
+    }
+  
+    .formBox {
+      /* width: 100%; */
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  
+    .side-panel {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .side-panel-content {
+      padding: 10px;
+    }
+  
+    .buttonContainer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  
+    .progressBarText {
+      text-align: center;
+    }
+  
+    .schedulerName {
+      font-size: 14px;
+    }
+  }
+  
