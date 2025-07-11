@@ -123,7 +123,7 @@ export default function Form() {
 
   return (
     <div className="container" style={customStyle}>
-      <div className="content">
+      <div className={submitted ? "content" : "content full-width"}>
         <Snackbar
           open={openSnackbar}
           autoHideDuration={3000}
@@ -140,86 +140,86 @@ export default function Form() {
           </Box>
         )}
 
-        <Box className="formBox" sx={{ order: { xs: 1, md: 0 } }}>
-          
-          <AnimatePresence mode="wait">
-            {!submitted ? (
-              <motion.div
-                key={visibleQuestions[currentQuestionIndex].key}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
-                className="questionContainer"
-              >
-                <QuestionComponent
-                  question={visibleQuestions[currentQuestionIndex].question}
-                  hint={visibleQuestions[currentQuestionIndex].hint}
-                  type={
-                    answers[
-                      visibleQuestions[currentQuestionIndex].key as keyof Answer
-                    ]?.type
-                  }
-                  options={
-                    answers[
-                      visibleQuestions[currentQuestionIndex].key as keyof Answer
-                    ]?.options
-                  }
-                  questionKey={visibleQuestions[currentQuestionIndex].key}
-                  onAnswer={handleAnswer}
-                  allAnswers={answersState}
-                  disabled={isReadOnly}
-                />
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <SchedulerListComponent
-                  schedulers={filteredSchedulers}
-                  generateShareableLink={() =>
-                    generateShareableLink(setOpenSnackbar)
-                  }
-                  resetForm={resetForm}
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
+        {
+          !submitted ? (
+            <Box className="formBox" sx={{ order: { xs: 1, md: 0 } }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={visibleQuestions[currentQuestionIndex].key}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5 }}
+                  className="questionContainer"
+                >
+                  <QuestionComponent
+                    question={visibleQuestions[currentQuestionIndex].question}
+                    hint={visibleQuestions[currentQuestionIndex].hint}
+                    type={
+                      answers[
+                        visibleQuestions[currentQuestionIndex].key as keyof Answer
+                      ]?.type
+                    }
+                    options={
+                      answers[
+                        visibleQuestions[currentQuestionIndex].key as keyof Answer
+                      ]?.options
+                    }
+                    questionKey={visibleQuestions[currentQuestionIndex].key}
+                    onAnswer={handleAnswer}
+                    allAnswers={answersState}
+                    disabled={isReadOnly}
+                  />
+                </motion.div>
+              </AnimatePresence>
 
-          {!submitted && (
-            <div className="buttonContainer">
-              <button
-                onClick={() => handleNavigation("back")}
-                disabled={currentQuestionIndex === 0}
-                className="button"
-              >
-                Previous
-              </button>
-              <button onClick={() => handleNavigation("next")} className="button">
-                {currentQuestionIndex < visibleQuestions.length - 1
-                  ? "Next"
-                  : "Submit"}
-              </button>
-            </div>
-          )}
+              {!submitted && (
+                <div className="buttonContainer">
+                  <button
+                    onClick={() => handleNavigation("back")}
+                    disabled={currentQuestionIndex === 0}
+                    className="button"
+                  >
+                    Previous
+                  </button>
+                  <button onClick={() => handleNavigation("next")} className="button">
+                    {currentQuestionIndex < visibleQuestions.length - 1
+                      ? "Next"
+                      : "Submit"}
+                  </button>
+                </div>
+              )}
 
-          {/* Progress Bar */}
-          <div className="progressBarContainer">
+              {/* Progress Bar */}
+              <div className="progressBarContainer">
+                <motion.div
+                  className="progressBar"
+                  initial={{ width: "0%" }}
+                  animate={{
+                    width: `${
+                      ((currentQuestionIndex + 1) / visibleQuestions.length) * 100
+                    }%`,
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+                <p className="progressBarText">{currentQuestionIndex + 1} of {visibleQuestions.length} questions</p>
+              </div>
+            </Box>
+          ) : (
             <motion.div
-              className="progressBar"
-              initial={{ width: "0%" }}
-              animate={{
-                width: `${
-                  ((currentQuestionIndex + 1) / visibleQuestions.length) * 100
-                }%`,
-              }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-            />
-            <p className="progressBarText">{currentQuestionIndex + 1} of {visibleQuestions.length} questions</p>
-          </div>
-        </Box>
+            >
+              <SchedulerListComponent
+                schedulers={filteredSchedulers}
+                generateShareableLink={() =>
+                  generateShareableLink(setOpenSnackbar)
+                }
+                resetForm={resetForm}
+              />
+            </motion.div>
+          )}
       </div>
     </div>
   );

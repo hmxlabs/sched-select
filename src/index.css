@@ -25,6 +25,7 @@
     --box-bg: rgba(44, 46, 52, 0.75);
     --button-margin-top: 2rem;
     --sub-title-color:rgba(255, 255, 255, 0.8);
+    --custom-secondary: #424242;
   }
   
   body {
@@ -60,11 +61,14 @@
     color: white;
     display: flex;
     gap: 32px;
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
   }
   
+  .full-width{
+    width: 100%;
+  }
+
   .formBox {
     width: 90%;
     max-width: 500px;
@@ -121,8 +125,8 @@
   
   .buttonContainer {
     display: flex;
-    justify-content: end;
-    margin-top: 30px;
+    justify-content: space-between;
+    /* margin-top: 30px; */
     gap: 10px;
   }
   .button {
@@ -147,16 +151,22 @@
     text-align: center;
   }
   .submissionTitle {
-    font-size: 1.5rem;
-    color: #00ff6a;
-    margin-bottom: 20px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
   }
   .submissionBox {
-    background: var(--box-bg);
-    padding: 15px 10px;
-    border-radius: 8px;
+    padding: 32px 32px 16px 32px;
     text-align: left;
-    margin-top: 15px;
+    gap: 32px;
+    border-radius: 8px;
+    background: var(--box-bg);
+
   }
   .submissionText {
     color: white;
@@ -219,8 +229,14 @@
     color: var(--sub-title-color);
     font-size: 12px;
     font-weight: lighter;
+    padding: 0 10px;
+    margin-top: 32px;
   }
   
+  .btn-text{
+    margin-left: 8px;
+  }
+
   /* Typography + Input Controls */
   .radio-label,
   .radio-icon,
@@ -265,21 +281,30 @@
   }
   
   .reset-button.MuiButton-contained {
-    margin-top: var(--button-margin-top);
-    background-color: var(--white-bg);
     color: var(--button-text);
+    margin-top: var(--button-margin-top);
+    align-items: center;
+    gap: var(--button-gap);
+    text-transform: capitalize;
+    font-size: 13px;
+    border-radius: 4px;
+    background: var(--button-bg);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
   .reset-button.MuiButton-contained:hover {
     background-color: var(--button-bg-hover);
     color: var(--button-text-hover);
   }
   .share-button.MuiButton-contained {
-    background-color: var(--button-bg);
     color: var(--button-text);
     margin-top: var(--button-margin-top);
-    display: flex;
     align-items: center;
     gap: var(--button-gap);
+    text-transform: capitalize;
+    font-size: 13px;
+    border-radius: 4px;
+    background: var(--custom-secondary);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
   .share-button.MuiButton-contained:hover {
     background-color: var(--button-bg-hover);

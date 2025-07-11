@@ -1,8 +1,9 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { styled } from '@mui/material/styles';
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ShareIcon from '@mui/icons-material/Share';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 
@@ -18,6 +19,11 @@ interface SchedulerListProps {
   resetForm?: () => void;
   compact?: boolean;
 }
+
+
+const CustomButton = styled(Button)(({ theme }) => ({
+  padding: '4px 10px !important'
+}));
 
 const SchedulerListComponent: React.FC<SchedulerListProps> = ({
   schedulers,
@@ -42,10 +48,10 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         transition={{ duration: 0.5 }}
         className="submissionContainer"
       >
-        {!compact ? (
-          <h2 className="submissionTitle">Matching Schedulers:</h2>
-        ) : null}
         <div className="submissionBox">
+          {!compact ? (
+            <h3 className="submissionTitle">Results</h3>
+          ) : null}
           <p className="sched-category">MATCHES</p>
           {
             schedulers
@@ -86,26 +92,27 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
                 </span>
               </a>
           ))}
+          {!compact && (
+            <div className="buttonContainer">
+              <CustomButton
+                className="share-button"
+                variant="contained"
+                onClick={generateShareableLink}
+              >
+                <ShareIcon fontSize="small"  />
+                <span className="btn-text">Share Link</span>
+              </CustomButton>
+              <CustomButton
+                className="reset-button"
+                variant="contained"
+                onClick={resetForm}
+              >
+                <RefreshIcon fontSize="small" />
+                <span className="btn-text">Restart</span>
+              </CustomButton>
+            </div>
+          )}
         </div>
-        {!compact && (
-          <div className="buttonContainer">
-            <Button
-              className="share-button"
-              variant="contained"
-              onClick={generateShareableLink}
-            >
-              <ContentCopyIcon fontSize="small" />
-              Share Link
-            </Button>
-            <Button
-              className="reset-button"
-              variant="contained"
-              onClick={resetForm}
-            >
-              <RefreshIcon fontSize="large" />
-            </Button>
-          </div>
-        )}
       </motion.div>
     </AnimatePresence>
   );
