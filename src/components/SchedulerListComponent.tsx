@@ -12,11 +12,13 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import SchedulerInfoComponent from "./SchedulerInfo";
+import UnknownFeaturesDialog from "./UnknownFeature";
 interface Scheduler {
   name: string;
   link: string;
   isMatch?: boolean;
   unknownCount?: number;
+  unknownFeatures?: string[];
   details?: Record<string, string>;
 }
 interface SchedulerListProps {
@@ -40,12 +42,24 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
     null
   );
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [unknownFeaturesDialogOpen, setUnknownFeaturesDialogOpen] = useState(false);
+
+
+  const handleOpenUnknownFeaturesDialog = (scheduler: Scheduler) => {
+    setSelectedScheduler(scheduler);
+    setUnknownFeaturesDialogOpen(true);
+  }
+  const handleCloseUnknownFeaturesDialog = () => {
+    setUnknownFeaturesDialogOpen(false);
+    setSelectedScheduler(null);
+  }
 
   const handleOpenDetails = (scheduler: Scheduler) => {
     setSelectedScheduler(scheduler);
     setDialogOpen(true);
   };
 
+  
   const renderScheduler = (
     scheduler: Scheduler,
     index: number,
@@ -85,12 +99,17 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         ) : null}
       </a>
 
-      {scheduler.unknownCount && scheduler.unknownCount > 0 ? (
-        <div className="unknownFields">
+      {scheduler.unknownCount && scheduler.unknownCount > 0 && scheduler.unknownFeatures && scheduler.unknownFeatures.length > 0 ? (
+        <Box onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          handleOpenUnknownFeaturesDialog(scheduler);
+        }} className="unknownFields">
           ( ⚠️ {scheduler.unknownCount} unknown feature
           {scheduler.unknownCount > 1 ? "s" : ""} )
-        </div>
-      ) : null}
+        </Box>
+      ) : null
+      }
     </Box>
   );
 
@@ -155,6 +174,14 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
             setDialogOpen={setDialogOpen}
           />
         )}
+        
+        {/* Unknown Features Dialog */}
+        <UnknownFeaturesDialog
+            open={unknownFeaturesDialogOpen}
+            onClose={handleCloseUnknownFeaturesDialog} 
+            unknownFeatures={selectedScheduler?.unknownFeatures || []}
+            unknownCount={selectedScheduler?.unknownCount || 0}
+        />
       </motion.div>
     </AnimatePresence>
   );

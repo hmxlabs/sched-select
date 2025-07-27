@@ -7,6 +7,7 @@ export const scoreSchedulers = (
   return schedulers.map((scheduler) => {
     let totalMatch = 0;
     let unknownCount = 0;
+    let unknownFeatures: string[] = [];
 
     Object.keys(answersState).forEach((key) => {
       let userAnswer = answersState[key];
@@ -15,6 +16,7 @@ export const scoreSchedulers = (
 
       if (schedulerFeature === undefined || schedulerFeature === "unknown" || schedulerFeature === null) {
         unknownCount += 1;
+        unknownFeatures.push(formatKey(key));
         return;
       };
 
@@ -62,6 +64,7 @@ export const scoreSchedulers = (
       ...scheduler,
       totalMatch,
       unknownCount,
+      unknownFeatures
     };
   });
 };
@@ -122,16 +125,17 @@ export const generateShareableLink = (
 export const formatKey = (key: string): string => {
   const acronyms = ['CPU', 'GPU', 'AWS', 'GCP', 'K8', 'ARM', 'API'];
 
-  const spaced = key.replace(/([a-z])([A-Z])/g, '$1 $2');
+  // Insert space before uppercase letters following lowercase or digits
+  let spaced = key
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')  // camelCase or numberCase
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2'); // acronym + Word → split e.g., CPUSupport → CPU Support
 
-  return spaced
-    .split(' ')
-    .map(word => {
-      const match = acronyms.find(acronym =>
-        word.toLowerCase().includes(acronym.toLowerCase())
-      );
-      return match ?? word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(' ');
+  const words = spaced.split(' ');
+
+  const formatted = words.map(word => {
+    const matched = acronyms.find(a => a.toLowerCase() === word.toLowerCase());
+    return matched ?? word.charAt(0).toUpperCase() + word.slice(1);
+  });
+
+  return formatted.join(' ');
 };
-

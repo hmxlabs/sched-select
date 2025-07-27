@@ -14,6 +14,7 @@ interface Scheduler {
   link: string;
   isMatch?: boolean;
   unknownCount?: number;
+  unknownFeatures?: string[];
   details?: Record<string, string>;
 }
 
