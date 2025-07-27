@@ -5,58 +5,63 @@ export const scoreSchedulers = (
   schedulers: Scheduler[]
 ) => {
   return schedulers.map((scheduler) => {
-    let totalScore = 0;
+    let totalMatch = 0;
+    let unknownCount = 0;
 
     Object.keys(answersState).forEach((key) => {
       let userAnswer = answersState[key];
       const schedulerFeature =
         scheduler.features[key as keyof SchedulerFeatures];
 
-      if (schedulerFeature === undefined) return;
+      if (schedulerFeature === undefined || schedulerFeature === "unknown" || schedulerFeature === null) {
+        unknownCount += 1;
+        return;
+      };
 
       if (typeof schedulerFeature === "boolean") {
         userAnswer = ["yes", "true"].includes(String(userAnswer).toLowerCase());
         if (userAnswer === true && schedulerFeature === true) {
-          totalScore += 1;
+          totalMatch += 1;
         } else if (userAnswer === false) {
-          totalScore += 1;
+          totalMatch += 1;
         }
       }
 
       if (typeof schedulerFeature === "number") {
         userAnswer = Number(userAnswer);
         if (!isNaN(userAnswer) && schedulerFeature >= userAnswer) {
-          totalScore += 1;
+          totalMatch += 1;
         }
       } else if (Array.isArray(schedulerFeature)) {
         if (Array.isArray(userAnswer)) {
           const matchedCount = userAnswer.filter((answer: string) =>
             schedulerFeature.includes(answer)
           ).length;
-          totalScore += matchedCount;
+          totalMatch += matchedCount;
         } else if (typeof userAnswer === "string") {
           const userAnswers = userAnswer.split(",").map((a) => a.trim());
           const matchedCount = userAnswers.filter((answer) =>
             schedulerFeature.includes(answer)
           ).length;
-          totalScore += matchedCount;
+          totalMatch += matchedCount;
         } else {
           if (schedulerFeature.includes(userAnswer)) {
-            totalScore += 1;
+            totalMatch += 1;
           }
         }
       }
 
       if (typeof schedulerFeature === "string") {
         if (schedulerFeature === userAnswer) {
-          totalScore += 1;
+          totalMatch += 1;
         }
       }
     });
 
     return {
       ...scheduler,
-      score: totalScore,
+      totalMatch,
+      unknownCount,
     };
   });
 };
@@ -71,7 +76,7 @@ export const filterSchedulers = (
       const schedulerFeature =
         scheduler.features[key as keyof SchedulerFeatures];
 
-      if (schedulerFeature === undefined) return true;
+      if (schedulerFeature === undefined || schedulerFeature === "unknown" || schedulerFeature === null) return true;
 
       if (typeof schedulerFeature === "boolean") {
         userAnswer = ["yes", "true"].includes(String(userAnswer).toLowerCase());
@@ -113,3 +118,20 @@ export const generateShareableLink = (
   const url = window.location.href;
   navigator.clipboard.writeText(url).then(() => setOpenSnackbar(true));
 };
+
+export const formatKey = (key: string): string => {
+  const acronyms = ['CPU', 'GPU', 'AWS', 'GCP', 'K8', 'ARM', 'API'];
+
+  const spaced = key.replace(/([a-z])([A-Z])/g, '$1 $2');
+
+  return spaced
+    .split(' ')
+    .map(word => {
+      const match = acronyms.find(acronym =>
+        word.toLowerCase().includes(acronym.toLowerCase())
+      );
+      return match ?? word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+};
+
