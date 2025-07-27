@@ -9,7 +9,7 @@
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
-      "commercialSupport": "unknown",
+      "commercialSupport": true,
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 3,
       "microsoftWindowsComputeNodes": true,
@@ -50,7 +50,7 @@
       "taskSubmissionRate": 3,
       "microsoftWindowsComputeNodes": true,
       "supportForContainers": true,
-      "arm64CPUSupport": "unknown",
+      "arm64CPUSupport": false,
       "gpuSupport": true,
       "dataEncrypted": false,
       "advancedResourceScheduling": true,
