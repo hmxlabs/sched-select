@@ -1,26 +1,26 @@
 export interface SchedulerFeatures {
-  freeSoftware: boolean;
-  openSourceSoftware: boolean;
-  commercialSupport: boolean;
-  typicalTaskDuration: number;
-  taskSubmissionRate: number;
-  microsoftWindowsComputeNodes: boolean;
-  supportForContainers: boolean;
-  arm64CPUSupport: boolean;
-  gpuSupport: boolean;
-  dataEncrypted: boolean;
-  advancedResourceScheduling: boolean;
-  dataAwareScheduling: boolean;
-  onPremisesScheduler: boolean;
-  managedCloudResources: boolean;
-  supportCloudSpotCapacity: boolean;
-  managedCloudSolution: boolean;
-  cloudAWSIntegration: boolean;
-  IntegrationK8: boolean;
-  advancedCapacityProvisioning: boolean;
-  cloudAzureIntegration: boolean;
-  cloudGCPIntegration: boolean;
-  supportedCloudProviders: string[];
+  freeSoftware?: boolean | null | string;
+  openSourceSoftware?: boolean | null | string;
+  commercialSupport?: boolean | null | string;
+  typicalTaskDuration?: number | null | string;
+  taskSubmissionRate?: number | null | string;
+  microsoftWindowsComputeNodes?: boolean | null | string;
+  supportForContainers?: boolean | null | string;
+  arm64CPUSupport?: boolean | null | string;
+  gpuSupport?: boolean | null | string;
+  dataEncrypted?: boolean | null | string;
+  advancedResourceScheduling?: boolean | null | string;
+  dataAwareScheduling?: boolean | null | string;
+  onPremisesScheduler?: boolean | null | string;
+  managedCloudResources?: boolean | null | string;
+  supportCloudSpotCapacity?: boolean | null | string;
+  managedCloudSolution?: boolean | null | string;
+  cloudAWSIntegration?: boolean | null | string;
+  IntegrationK8?: boolean | null | string;
+  advancedCapacityProvisioning?: boolean | null | string;
+  cloudAzureIntegration?: boolean | null | string;
+  cloudGCPIntegration?: boolean | null | string;
+  supportedCloudProviders?: string[] | null | string;
 }
 
 export interface Scheduler {
@@ -32,4 +32,6 @@ export interface Scheduler {
   link: string;
   features: SchedulerFeatures;
   isMatch?: boolean;
+  unkownCount?: number;
+  totalMatch?: number;
 }

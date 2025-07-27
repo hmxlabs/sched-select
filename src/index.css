@@ -187,7 +187,7 @@
     display: flex;
     align-items: center;
     padding: 0px 10px;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
@@ -215,7 +215,7 @@
   
   .side-panel {
     position: fixed;
-    top: 25%;
+    top: 15%;
     right: 80px;
     width: 400px;
     z-index: 10;
@@ -235,6 +235,23 @@
   
   .btn-text{
     margin-left: 8px;
+  }
+
+  .unknownFields {
+    color: orange;
+    font-size: 12px;
+    padding: 10px 0px 14px 45px;
+  }
+
+  .hyperlink {
+    color: '#1976d2';
+    text-decoration: 'underline';
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .text-sm {
+    font-size: 12px !important;
   }
 
   /* Typography + Input Controls */

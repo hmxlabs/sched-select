@@ -12,7 +12,7 @@ import { Answer } from "../models/Answers";
 import {
   filterSchedulers,
   generateShareableLink,
-  // scoreSchedulers,
+  scoreSchedulers,
 } from "../utils/helpers";
 
 import backgroundImage from '../assets/bg1.jpg';
@@ -47,7 +47,6 @@ export default function Form() {
   }, [answersState]);
 
   function shouldShowQuestion(question: any, allAnswers: any) {
-    console.log(question.dependsOn, 'question.dependsOn')
     if (!question.dependsOn) return true;
 
     return question.dependsOn.every((dep: any) => {
@@ -103,6 +102,8 @@ export default function Form() {
         setCurrentQuestionIndex((prev) => prev + 1);
         setIsCurrentQuestionAnswered(false);
       } else {
+        const final = scoreSchedulers(answersState, filteredSchedulers);
+        setFilteredSchedulers(final);
         setSubmitted(true);
       }
     }

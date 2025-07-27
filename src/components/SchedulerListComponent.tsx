@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { styled } from '@mui/material/styles';
-import { Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import {
+  Button,
+  Box,
+  IconButton,
+} from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import ShareIcon from '@mui/icons-material/Share';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
-
+import ShareIcon from "@mui/icons-material/Share";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import SchedulerInfoComponent from "./SchedulerInfo";
+import UnknownFeaturesDialog from "./UnknownFeature";
 interface Scheduler {
   name: string;
   link: string;
   isMatch?: boolean;
+  unknownCount?: number;
+  unknownFeatures?: string[];
+  details?: Record<string, string>;
 }
-
 interface SchedulerListProps {
   schedulers: Scheduler[];
   generateShareableLink?: () => void;
@@ -20,9 +28,8 @@ interface SchedulerListProps {
   compact?: boolean;
 }
 
-
-const CustomButton = styled(Button)(({ theme }) => ({
-  padding: '4px 10px !important'
+const CustomButton = styled(Button)(() => ({
+  padding: "4px 10px !important",
 }));
 
 const SchedulerListComponent: React.FC<SchedulerListProps> = ({
@@ -31,6 +38,81 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
   resetForm,
   compact = false,
 }) => {
+  const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(
+    null
+  );
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [unknownFeaturesDialogOpen, setUnknownFeaturesDialogOpen] = useState(false);
+
+
+  const handleOpenUnknownFeaturesDialog = (scheduler: Scheduler) => {
+    setSelectedScheduler(scheduler);
+    setUnknownFeaturesDialogOpen(true);
+  }
+  const handleCloseUnknownFeaturesDialog = () => {
+    setUnknownFeaturesDialogOpen(false);
+    setSelectedScheduler(null);
+  }
+
+  const handleOpenDetails = (scheduler: Scheduler) => {
+    setSelectedScheduler(scheduler);
+    setDialogOpen(true);
+  };
+
+  
+  const renderScheduler = (
+    scheduler: Scheduler,
+    index: number,
+    isMatch: boolean,
+    compact: boolean
+  ) => (
+    <Box key={`${isMatch ? "match" : "no-match"}-${index}`} mb={2}>
+      <a
+        className={`schedulerLink ${isMatch ? "match" : "no-match"}`}
+        href={scheduler.link}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {isMatch ? (
+          <CheckCircleIcon className="match-indicator match" />
+        ) : (
+          <CancelIcon className="match-indicator no-match" />
+        )}
+        <span className="schedulerName">
+          <strong>{scheduler.name}</strong>
+        </span>
+        {!compact && scheduler.details ? (
+          <IconButton
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleOpenDetails(scheduler);
+            }}
+            size="small"
+            aria-label="view details"
+          >
+            <InfoOutlinedIcon
+              fontSize="small"
+              sx={{ color: "white", fontSize: 15 }}
+            />
+          </IconButton>
+        ) : null}
+      </a>
+
+      {scheduler.unknownCount && scheduler.unknownCount > 0 && scheduler.unknownFeatures && scheduler.unknownFeatures.length > 0 ? (
+        <Box onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          handleOpenUnknownFeaturesDialog(scheduler);
+        }} className="unknownFields">
+          ( ⚠️ {scheduler.unknownCount} unknown feature
+          {scheduler.unknownCount > 1 ? "s" : ""} )
+        </Box>
+      ) : null
+      }
+    </Box>
+  );
+
   return !schedulers.length ? (
     <>
       <h3 className="submissionText">
@@ -49,49 +131,18 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         className="submissionContainer"
       >
         <div className="submissionBox">
-          {!compact ? (
-            <h3 className="submissionTitle">Results</h3>
-          ) : null}
+          {!compact && <h3 className="submissionTitle">Results</h3>}
+
           <p className="sched-category">MATCHES</p>
-          {
-            schedulers
-            .filter((scheduler) => scheduler.isMatch)
-            .map((scheduler, index) => (
-              <a
-                key={`match-${index}`}
-                className="schedulerLink match"
-                href={scheduler.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <CheckCircleIcon className="match-indicator match" />
-                {/* <span className="match-indicator match">✔</span> */}
-                <span className="schedulerName">
-                  <strong>{scheduler.name}</strong>
-                  {/* <OpenInNewIcon className="icon icon-sm" /> */}
-                </span>
-              </a>
-          ))}
+          {schedulers
+            .filter((s) => s.isMatch)
+            .map((s, i) => renderScheduler(s, i, true, compact))}
+
           <p className="sched-category">NOT A MATCH</p>
-          {
-            schedulers
-            .filter((scheduler) => !scheduler.isMatch)
-            .map((scheduler, index) => (
-              <a
-                key={index}
-                className="schedulerLink no-match"
-                href={scheduler.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <CancelIcon className="match-indicator no-match" />
-                {/* <span className="match-indicator no-match">✘</span> */}
-                <span className="schedulerName">
-                  <strong>{scheduler.name}</strong>
-                  {/* <OpenInNewIcon className="icon icon-sm" /> */}
-                </span>
-              </a>
-          ))}
+          {schedulers
+            .filter((s) => !s.isMatch)
+            .map((s, i) => renderScheduler(s, i, false, compact))}
+
           {!compact && (
             <div className="buttonContainer">
               <CustomButton
@@ -99,7 +150,7 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
                 variant="contained"
                 onClick={generateShareableLink}
               >
-                <ShareIcon fontSize="small"  />
+                <ShareIcon fontSize="small" />
                 <span className="btn-text">Share Link</span>
               </CustomButton>
               <CustomButton
@@ -113,6 +164,24 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
             </div>
           )}
         </div>
+
+        {/* Details Dialog */}
+        {selectedScheduler && (
+          <SchedulerInfoComponent
+            selectedScheduler={selectedScheduler}
+            setSelectedScheduler={setSelectedScheduler}
+            dialogOpen={dialogOpen}
+            setDialogOpen={setDialogOpen}
+          />
+        )}
+        
+        {/* Unknown Features Dialog */}
+        <UnknownFeaturesDialog
+            open={unknownFeaturesDialogOpen}
+            onClose={handleCloseUnknownFeaturesDialog} 
+            unknownFeatures={selectedScheduler?.unknownFeatures || []}
+            unknownCount={selectedScheduler?.unknownCount || 0}
+        />
       </motion.div>
     </AnimatePresence>
   );
