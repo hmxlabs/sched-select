@@ -149,6 +149,7 @@
   
   .submissionContainer {
     text-align: center;
+    margin-top: 20%;
   }
   .submissionTitle {
     color: #FFF;
@@ -337,6 +338,7 @@
     .content {
       flex-direction: column;
       gap: 16px;
+      margin-top: 30%;
       /* padding: 16px; */
     }
   
@@ -373,6 +375,10 @@
   
     .schedulerName {
       font-size: 14px;
+    }
+
+    .submissionContainer {
+      margin-top: 0;
     }
   }
   
