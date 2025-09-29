@@ -30,8 +30,11 @@ export interface Scheduler {
   inScope: number;
   score: string;
   link: string;
+  description?: string;
   features: SchedulerFeatures;
   isMatch?: boolean;
-  unkownCount?: number;
+  unknownCount?: number;
+  unknownFeatures?: string[];
+  details?: Record<string, string>;
   totalMatch?: number;
 }

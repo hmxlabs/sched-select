@@ -26,6 +26,7 @@
     --button-margin-top: 2rem;
     --sub-title-color:rgba(255, 255, 255, 0.8);
     --custom-secondary: #424242;
+    --hyperlink-color: #2491EB;
   }
   
   body {
@@ -186,9 +187,8 @@
   
   .schedulerLink {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 0px 10px;
-    /* margin-bottom: 8px; */
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
@@ -210,10 +210,23 @@
     color: #FF5252;
   }
   .schedulerName {
+    line-height: 1.4;
     font-size: 12px;
     font-weight: lighter;
   }
   
+  .details-button {
+    align-self: flex-start;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  
+  /* InfoOutlinedIcon */
+  .details-icon {
+    color: white;
+    font-size: 16px !important;
+  }
+
   .side-panel {
     position: fixed;
     top: 15%;
@@ -245,7 +258,7 @@
   }
 
   .hyperlink {
-    color: '#1976d2';
+    color: var(--hyperlink-color);
     text-decoration: 'underline';
     word-break: break-word;
     overflow-wrap: anywhere;

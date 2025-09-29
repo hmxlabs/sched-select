@@ -6,6 +6,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://docs.tibco.com/pub/dsp_gridserver/7.1.0/doc/html/_templates/Home.htm",
+    "description": "GridServer Manager is a highly scalable software infrastructure that allows application services to operate in a virtualized fashion, unattached to specific hardware resources.",
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
@@ -42,6 +43,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://www.ibm.com/products/analytics-workload-management",
+    "description": "IBM Spectrum Symphony software delivers powerful enterprise-class management for running compute-intensive and data-intensive distributed applications on a scalable, shared grid.",
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
@@ -78,6 +80,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://www.ibm.com/products/hpc-workload-management",
+    "description": "IBM Spectrum LSF Suites is a workload management platform and job scheduler for distributed high performance computing (HPC). A Terraform-based automation to provision and configure resources for an IBM Spectrum LSF based cluster on IBM Cloud® is available.",
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
@@ -114,6 +117,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://yellowdog.ai",
+    "description": "YellowDog’s Dynamic Workload Manager specialises in accelerating large-scale, complex, computationally intensive workloads, with rapid scaling and advanced preemption handling to maximise cloud cost/performance, whilst also interworking seamlessly with on-premise resources.",
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
@@ -150,6 +154,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://www.schedmd.com/slurm/",
+    "description": "Slurm’s ability to allocate resources based on time duration makes it the ideal application for HPC job scheduling. In fact, Slurm is used by approximately 65% of supercomputers run by the TOP500.",
     "features": {
       "freeSoftware": true,
       "openSourceSoftware": true,
@@ -186,6 +191,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://www.aws.com/pcs",
+    "description": "AWS Parallel Computing Service (AWS PCS) is a managed service that makes it easier for you to run and scale your high performance computing (HPC) workloads and build scientific and engineering models on AWS using Slurm.",
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
@@ -242,6 +248,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://aws.amazon.com/batch/",
+    "description":"AWS Batch is a fully managed batch computing service that plans, schedules, and runs your containerized batch ML, simulation, and analytics workloads across the full range of AWS compute offerings, such as Amazon ECS, Amazon EKS, AWS Fargate, and Spot or On-Demand Instances.",
     "features": {
       "freeSoftware": true,
       "openSourceSoftware": false,
@@ -298,6 +305,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://learn.microsoft.com/en-us/powershell/high-performance-computing/overview-of-microsoft-hpc-pack?view=hpc19-ps",
+    "description": "Microsoft HPC Pack brings the power of high-performance computing (HPC) to the commercial mainstream. The centralized management and deployment interface helps to simplify deployment for both large and small compute clusters and provide a simple and effective management experience in order to increase cluster administrator productivity.",
     "features": {
       "freeSoftware": false,
       "openSourceSoftware": false,
@@ -334,6 +342,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://github.com/finos/htc-grid",
+    "description": "The high throughput compute grid project (HTC-Grid) is a container based cloud native HPC/Grid environment. The project provides a reference architecture that can be used to build and adapt a modern High throughput compute solution using underlying AWS services, allowing users to submit high volumes of short and long running tasks and scaling environments dynamically.",
     "features": {
       "freeSoftware": true,
       "openSourceSoftware": true,
@@ -447,6 +456,7 @@
     "inScope": 1,
     "score": "100%",
     "link": "https://www.htcondor.org",
+    "description": "HTCondor is a workload management system for distributing work across a wide variety of compute resources, from single machines to massive clusters.",
     "features": {
       "freeSoftware": true,
       "openSourceSoftware": true,
