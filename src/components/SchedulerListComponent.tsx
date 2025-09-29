@@ -5,6 +5,7 @@ import {
   Button,
   Box,
   IconButton,
+  Tooltip,
 } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import ShareIcon from "@mui/icons-material/Share";
@@ -13,14 +14,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import SchedulerInfoComponent from "./SchedulerInfo";
 import UnknownFeaturesDialog from "./UnknownFeature";
-interface Scheduler {
-  name: string;
-  link: string;
-  isMatch?: boolean;
-  unknownCount?: number;
-  unknownFeatures?: string[];
-  details?: Record<string, string>;
-}
+import { Scheduler } from "../models/Schedulers";
 interface SchedulerListProps {
   schedulers: Scheduler[];
   generateShareableLink?: () => void;
@@ -64,7 +58,6 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
     scheduler: Scheduler,
     index: number,
     isMatch: boolean,
-    compact: boolean
   ) => (
     <Box key={`${isMatch ? "match" : "no-match"}-${index}`} mb={2}>
       <a
@@ -81,22 +74,25 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         <span className="schedulerName">
           <strong>{scheduler.name}</strong>
         </span>
-        {!compact && scheduler.details ? (
+        <Tooltip title={scheduler.description || "No description available"} placement="bottom" arrow enterDelay={300}>
           <IconButton
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              handleOpenDetails(scheduler);
+              if (scheduler.details) {
+                handleOpenDetails(scheduler);
+              }
             }}
             size="small"
             aria-label="view details"
+            className="details-button"
           >
             <InfoOutlinedIcon
               fontSize="small"
-              sx={{ color: "white", fontSize: 15 }}
+              className="details-icon"
             />
           </IconButton>
-        ) : null}
+        </Tooltip>
       </a>
 
       {scheduler.unknownCount && scheduler.unknownCount > 0 && scheduler.unknownFeatures && scheduler.unknownFeatures.length > 0 ? (
@@ -136,12 +132,12 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
           <p className="sched-category">MATCHES</p>
           {schedulers
             .filter((s) => s.isMatch)
-            .map((s, i) => renderScheduler(s, i, true, compact))}
+            .map((s, i) => renderScheduler(s, i, true))}
 
           <p className="sched-category">NOT A MATCH</p>
           {schedulers
             .filter((s) => !s.isMatch)
-            .map((s, i) => renderScheduler(s, i, false, compact))}
+            .map((s, i) => renderScheduler(s, i, false))}
 
           {!compact && (
             <div className="buttonContainer">

@@ -8,15 +8,7 @@ import {
 } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { formatKey } from "../utils/helpers";
-
-interface Scheduler {
-  name: string;
-  link: string;
-  isMatch?: boolean;
-  unknownCount?: number;
-  unknownFeatures?: string[];
-  details?: Record<string, string>;
-}
+import { Scheduler } from "../models/Schedulers";
 
 interface SchedulerInfoProps {
   selectedScheduler: Scheduler;
