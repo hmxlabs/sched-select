@@ -123,7 +123,7 @@
       "microsoftWindowsComputeNodes": true,
       "supportForContainers": false,
       "arm64CPUSupport": true,
-      "gpuSupport": false,
+      "gpuSupport": true,
       "dataEncrypted": false,
       "advancedResourceScheduling": false,
       "dataAwareScheduling": true,
@@ -180,7 +180,7 @@
     }
   },
   {
-    "name": "AWS Parallel Compute Service (Slurm)",
+    "name": "AWS Parallel Computing Service (Slurm)",
     "product": "PCS",
     "owner": "AWS",
     "inScope": 1,
@@ -188,7 +188,7 @@
     "link": "https://www.aws.com/pcs",
     "features": {
       "freeSoftware": false,
-      "openSourceSoftware": true,
+      "openSourceSoftware": false,
       "commercialSupport": true,
       "typicalTaskDuration": 1,
       "taskSubmissionRate": 1,
@@ -209,10 +209,30 @@
       "cloudAzureIntegration": false,
       "cloudGCPIntegration": false,
       "supportedCloudProviders": [
-        "AWS",
-        "Azure",
-        "GCP"
+        "AWS"
       ]
+    },
+    "details": {
+      "freeSoftware": "AWS PCS is a commerical offering from Amazon Web Services but is based on Slurm.",
+      "openSourceSoftware": "AWS PCS is a commerical offering from Amazon Web Services.",
+      "commercialSupport": "AWS PCS is supported by Amazon Web Services support.",
+      "typicalTaskDuration": "AWS PCS is not designed for very short, high-throughput use-cases.",
+      "taskSubmissionRate": "AWS PCS is not designed for very short, high-throughput use-cases.",
+      "microsoftWindowsComputeNodes": "Windows is not currently supported.",
+      "supportForContainers": "AWS PCS does not currently have native container support.",
+      "arm64CPUSupport": "Support for ARM64 / AWS Graviton is available.",
+      "gpuSupport": "GPUs are supported." ,
+      "advancedResourceScheduling": "",
+      "dataAwareScheduling": "AWS PCS does not allow compute tasks to be directed towards instances with data in place.",
+      "onPremisesScheduler": "AWS PCS can only be run in AWS.",
+      "managedCloudResources": "AWS PCS can create/remove compute resources as needed",
+      "supportCloudSpotCapacity": "This is supported.",
+      "managedCloudSolution": "Yes, AWS PCS is a managed solution.",
+      "cloudAWSIntegration": "AWS PCS is an AWS servivce",
+      "IntegrationK8": "AWS PCS currently leverages AWS EC2 compute planes and does not have native Kubernetes integration.",
+      "advancedCapacityProvisioning": "AWS PCS allows you to set your compute requirements.",
+      "cloudAzureIntegration": "PCS is not supported on Azure",
+      "cloudGCPIntegration": "PCS is not support on GCP"
     }
   },
   {
@@ -223,7 +243,7 @@
     "score": "100%",
     "link": "https://aws.amazon.com/batch/",
     "features": {
-      "freeSoftware": false,
+      "freeSoftware": true,
       "openSourceSoftware": false,
       "commercialSupport": true,
       "typicalTaskDuration": 1,
@@ -245,10 +265,30 @@
       "cloudAzureIntegration": false,
       "cloudGCPIntegration": false,
       "supportedCloudProviders": [
-        "AWS",
-        "Azure",
-        "GCP"
+        "AWS"
       ]
+    },
+    "details": {
+      "freeSoftware": "There is no additional charge for AWS Batch. You pay for AWS resources (e.g. EC2 instances, AWS Lambda functions or AWS Fargate) you create to store and run your application.",
+      "openSourceSoftware": "AWS Batch is a commerical offering from Amazon Web Services.",
+      "commercialSupport": "AWS Batch is supported by Amazon Web Services support.",
+      "typicalTaskDuration": "AWS Batch is not designed for very short, high-throughput use-cases.",
+      "taskSubmissionRate": "AWS Batch is not designed for very short, high-throughput use-cases.",
+      "microsoftWindowsComputeNodes": "Windows containers are supported but only using Amazon ECS Fargate.",
+      "supportForContainers": "AWS Batch requires compute resources to run in a container.",
+      "arm64CPUSupport": "Support for ARM64 / AWS Graviton is available.",
+      "gpuSupport": "GPUs are supported." ,
+      "advancedResourceScheduling": "AWS Batch allows different pools of resources to be configured and shared with 'fair share' scheduling.",
+      "dataAwareScheduling": "AWS Batch does not allow compute tasks to be directed towards instances with data in place.",
+      "onPremisesScheduler": "AWS Batch can only be run in AWS.",
+      "managedCloudResources": "AWS Batch can create/remove compute resources as needed",
+      "supportCloudSpotCapacity": "This is supported.",
+      "managedCloudSolution": "Yes, AWS Batch is a managed solution.",
+      "cloudAWSIntegration": "AWS Batch is an AWS servivce",
+      "IntegrationK8": "AWS Batch currently leverages AWS EKS and ECS compute planes.",
+      "advancedCapacityProvisioning": "AWS Batch allows you to set your compute requirements.",
+      "cloudAzureIntegration": "No Azure implementation has been built.",
+      "cloudGCPIntegration": "No GCP implementation has been built."
     }
   },
   {
@@ -312,15 +352,35 @@
       "supportCloudSpotCapacity": false,
       "managedCloudSolution": false,
       "cloudAWSIntegration": true,
-      "IntegrationK8": false,
+      "IntegrationK8": true,
       "advancedCapacityProvisioning": false,
-      "cloudAzureIntegration": true,
+      "cloudAzureIntegration": false,
       "cloudGCPIntegration": false,
       "supportedCloudProviders": [
-        "AWS",
-        "Azure",
-        "GCP"
+        "AWS"
       ]
+    },
+    "details": {
+      "freeSoftware": "HTC-Grid is open source software, currently owned by the FINOS foundation and available under the Apache License version 2.0 licence.",
+      "openSourceSoftware": "HTC-Grid is open source software, currently owned by the FINOS foundation and available under the Apache License version 2.0 licence.",
+      "commercialSupport": "There is currently no commerical support for HTC-Grid",
+      "typicalTaskDuration": "HTC-Grid is designed to support short tasks of under 1 seconds and throughputs of thousands of tasks per second. More detail can be found here: https://aws.amazon.com/blogs/hpc/operational-characteristics-of-htc-grid/",
+      "taskSubmissionRate": "HTC-Grid has been demonstrated supporting around 30,000 tasks per second in batches of 100.",
+      "microsoftWindowsComputeNodes": "Windows compute nodes have not currently been tested but should be possible.",
+      "supportForContainers": "The current version of HTC-Grid requires the workers to be packaged as containers",
+      "arm64CPUSupport": "Support for ARM64 is possible but is currently untested.",
+      "gpuSupport": "Support for GPUs is possible but is currently untested." ,
+      "advancedResourceScheduling": "HTC-Grid does not offer advanced scheduling options",
+      "dataAwareScheduling": "HTC-Grid does not currently support data-aware scheduling",
+      "onPremisesScheduler": "The HTC-Grid control plane is currently dependent on AWS services including Amazon SQS, DynamoDB and Lambda.",
+      "managedCloudResources": "",
+      "supportCloudSpotCapacity": "This is supported through Amazon EKS.",
+      "managedCloudSolution": "No. This is a self-managed open-source solution.",
+      "cloudAWSIntegration": "",
+      "IntegrationK8": "HTC-Grid currently leverages EKS compute planes.",
+      "advancedCapacityProvisioning": "",
+      "cloudAzureIntegration": "No Azure implementation has been built.",
+      "cloudGCPIntegration": "No GCP implementation has been built."
     }
   },
   {
