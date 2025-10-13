@@ -394,4 +394,112 @@
       margin-top: 0;
     }
   }
+
+  /* Loading Spinner Styles */
+  .loading-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    z-index: 99999 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .loading-spinner-container {
+    position: relative;
+    display: inline-flex;
+    z-index: 10000;
+  }
+
+  .loading-spinner {
+    color: #2491EB !important;
+    z-index: 10000;
+    opacity: 1 !important;
+  }
+
+  .loading-spinner .MuiCircularProgress-circle {
+    stroke-linecap: round;
+    stroke: #2491EB !important;
+    opacity: 1 !important;
+  }
+
+  /* Ensure loading spinner is always visible */
+  .loading-overlay * {
+    opacity: 1 !important;
+  }
+
+  .loading-spinner svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .loading-spinner svg circle {
+    opacity: 1 !important;
+    stroke: #2491EB !important;
+  }
+
+  /* Error Boundary Styles */
+  .error-boundary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    padding: 24px;
+  }
+
+  /* Form Layout Styles */
+  .form-side-panel {
+    order: 2;
+  }
+
+  @media (min-width: 768px) {
+    .form-side-panel {
+      order: 0;
+    }
+  }
+
+  .form-main-box {
+    order: 1;
+  }
+
+  @media (min-width: 768px) {
+    .form-main-box {
+      order: 0;
+    }
+  }
+
+  /* Dialog Close Button Styles */
+  .dialog-close-button {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+  }
+
+  /* Snackbar Styles */
+  .MuiSnackbar-root {
+    z-index: 999999 !important;
+    position: fixed !important;
+  }
+
+  .MuiSnackbar-anchorOriginTopRight {
+    z-index: 999999 !important;
+    top: 80px !important;
+  }
+
+  .MuiSnackbarContent-root {
+    z-index: 999999 !important;
+    position: relative !important;
+  }
+
+  /* Ensure Snackbar appears above everything */
+  [role="alert"] {
+    z-index: 999999 !important;
+  }
   

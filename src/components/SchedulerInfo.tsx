@@ -17,13 +17,6 @@ interface SchedulerInfoProps {
   setDialogOpen: (open: boolean) => void;
 }
 
-const styles = {
-  closeButton: {
-    position: 'absolute',
-    right: 8,
-    top: 8,
-  }
-}
 
 const SchedulerInfoComponent = ({
   selectedScheduler,
@@ -45,12 +38,7 @@ const SchedulerInfoComponent = ({
       <DialogTitle>{selectedScheduler.name} - Details</DialogTitle>
       <IconButton 
         onClick={handleCloseDialog}
-        sx={(theme) => (
-          {
-            ...styles.closeButton,
-            color: theme.palette.grey[500],
-          }
-        )}
+        className="dialog-close-button"
       >
         <CloseIcon />
       </IconButton>

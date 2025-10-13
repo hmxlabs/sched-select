@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { styled } from "@mui/material/styles";
 import {
@@ -65,6 +65,7 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         href={scheduler.link}
         target="_blank"
         rel="noreferrer"
+        aria-label={`${scheduler.name} - ${isMatch ? 'Recommended' : 'Not recommended'} scheduler`}
       >
         {isMatch ? (
           <CheckCircleIcon className="match-indicator match" />
@@ -183,4 +184,4 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
   );
 };
 
-export default SchedulerListComponent;
+export default memo(SchedulerListComponent);

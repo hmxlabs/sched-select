@@ -19,13 +19,6 @@ interface UnknownFeaturesDialogProps {
   unknownCount: number;
 }
 
-const styles = {
-    closeButton: {
-      position: 'absolute',
-      right: 8,
-      top: 8,
-    }
-}
 
 const UnknownFeaturesDialog: React.FC<UnknownFeaturesDialogProps> = ({
   open,
@@ -38,12 +31,7 @@ const UnknownFeaturesDialog: React.FC<UnknownFeaturesDialogProps> = ({
       <DialogTitle>⚠️ Unknown Features</DialogTitle>
       <IconButton 
         onClick={onClose}
-        sx={(theme) => (
-          {
-            ...styles.closeButton,
-            color: theme.palette.grey[500],
-          }
-        )}
+        className="dialog-close-button"
       >
         <CloseIcon />
       </IconButton>

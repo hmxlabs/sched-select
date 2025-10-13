@@ -1,19 +1,14 @@
-import { useEffect, useState, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Snackbar, Box } from "@mui/material";
 import questions from "../db/questions.json";
 import answers from "../db/answers.json";
-import schedulers from "../db/schedulers.json";
 import QuestionComponent from "./QuestionComponent";
 import SchedulerListComponent from "./SchedulerListComponent";
-import { Scheduler } from "../models/Schedulers";
+import LoadingSpinner from "./LoadingSpinner";
 import { Answer } from "../models/Answers";
-import {
-  filterSchedulers,
-  generateShareableLink,
-  scoreSchedulers,
-} from "../utils/helpers";
+import { useFormState } from "../hooks/useFormState";
+import { generateShareableLink } from "../utils/helpers";
 
 import backgroundImage from '../assets/bg1.jpg';
 
@@ -23,28 +18,17 @@ export default function Form() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] =
     useState(false);
-  const [answersState, setAnswersState] = useState<Answer>({} as Answer);
-  const [filteredSchedulers, setFilteredSchedulers] =
-    useState<Scheduler[]>(schedulers);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [isReadOnly, setIsReadOnly] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-
-  useEffect(() => {
-    const params = Object.fromEntries(searchParams.entries());
-    if (Object.keys(params).length > 0) {
-      setAnswersState(params as unknown as Answer);
-      setIsReadOnly(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    const updatedSchedulers = schedulers.map((scheduler) => {
-      const isMatch = filterSchedulers(answersState, [scheduler]).length > 0;
-      return { ...scheduler, isMatch: isMatch || false };
-    });
-    setFilteredSchedulers(updatedSchedulers);
-  }, [answersState]);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const {
+    answersState,
+    filteredSchedulers,
+    isReadOnly,
+    updateAnswers,
+    resetForm: resetFormState,
+    finalizeResults,
+  } = useFormState();
 
   function shouldShowQuestion(question: any, allAnswers: any) {
     if (!question.dependsOn) return true;
@@ -78,17 +62,11 @@ export default function Form() {
   const handleCloseSnackbar = () => setOpenSnackbar(false);
 
   const handleAnswer = (answer: string | boolean | number | string[]) => {
-    const currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = visibleQuestions[currentQuestionIndex];
     const newAnswers = { ...answersState, [currentQuestion.key]: answer };
 
-    setAnswersState(newAnswers);
+    updateAnswers(newAnswers);
     setIsCurrentQuestionAnswered(true);
-
-    setSearchParams(
-      new URLSearchParams(
-        Object.entries(newAnswers).map(([key, value]) => [key, String(value)])
-      )
-    );
   };
 
   const handleNavigation = (direction: "next" | "back") => {
@@ -102,20 +80,21 @@ export default function Form() {
         setCurrentQuestionIndex((prev) => prev + 1);
         setIsCurrentQuestionAnswered(false);
       } else {
-        const final = scoreSchedulers(answersState, filteredSchedulers);
-        setFilteredSchedulers(final);
-        setSubmitted(true);
+        setIsLoading(true);
+        // Simulate processing time for better UX
+        setTimeout(() => {
+          finalizeResults();
+          setSubmitted(true);
+          setIsLoading(false);
+        }, 500);
       }
     }
   };
 
   const resetForm = () => {
-    setAnswersState({} as Answer);
+    resetFormState();
     setCurrentQuestionIndex(0);
-    setIsReadOnly(false);
-    setFilteredSchedulers(schedulers);
     setSubmitted(false);
-    window.history.replaceState(null, "", window.location.pathname);
   };
 
   const customStyle = {
@@ -129,21 +108,22 @@ export default function Form() {
           open={openSnackbar}
           autoHideDuration={3000}
           onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           message="URL copied to clipboard!"
         />
 
-        {!submitted && !isReadOnly && (
-          <Box className="side-panel" sx={{ order: { xs: 2, md: 0 } }}>
+        {!submitted && (
+          <Box className="side-panel form-side-panel">
             <Box className="side-panel-content">
               <SchedulerListComponent schedulers={filteredSchedulers} compact />
             </Box>
           </Box>
         )}
 
-        {
-          !submitted ? (
-            <Box className="formBox" sx={{ order: { xs: 1, md: 0 } }}>
+        {isLoading ? (
+          <LoadingSpinner message="Processing your results..." />
+        ) : !submitted && visibleQuestions.length > 0 && currentQuestionIndex < visibleQuestions.length ? (
+            <Box className="formBox form-main-box">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={visibleQuestions[currentQuestionIndex].key}
@@ -204,6 +184,13 @@ export default function Form() {
                   transition={{ duration: 0.5 }}
                 />
                 <p className="progressBarText">{currentQuestionIndex + 1} of {visibleQuestions.length} questions</p>
+              </div>
+            </Box>
+          ) : !submitted && visibleQuestions.length === 0 ? (
+            <Box className="formBox form-main-box">
+              <div className="questionContainer">
+                <h2>No questions available</h2>
+                <p>There are no questions to display at this time.</p>
               </div>
             </Box>
           ) : (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   Radio,
   RadioGroup,
@@ -167,4 +167,4 @@ const QuestionComponent: React.FC<QuestionProps> = ({
   );
 };
 
-export default QuestionComponent;
+export default memo(QuestionComponent);
