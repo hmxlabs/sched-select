@@ -42,6 +42,10 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Development Environment
+
+A VSCode developer environment is provided. Open VSCode, and then select "Open in Container" from the interactive button, or search for "Dev Containers" in the command palette. For the start command to be successful (`npm install`) you will need access to private repositories provided by hmxlabs.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
