@@ -219,8 +219,8 @@
       ]
     },
     "details": {
-      "freeSoftware": "AWS PCS is a commerical offering from Amazon Web Services but is based on Slurm.",
-      "openSourceSoftware": "AWS PCS is a commerical offering from Amazon Web Services.",
+      "freeSoftware": "AWS PCS is a commercial offering from Amazon Web Services but is based on Slurm.",
+      "openSourceSoftware": "AWS PCS is a commercial offering from Amazon Web Services.",
       "commercialSupport": "Commercial support is available for AWS PCS and is dependent on your level of AWS Enterprise support: https://aws.amazon.com/premiumsupport/plans/",
       "typicalTaskDuration": "AWS PCS is not designed for very short, high-throughput use-cases.",
       "taskSubmissionRate": "AWS PCS is not designed for very short, high-throughput use-cases.",
@@ -277,14 +277,14 @@
     },
     "details": {
       "freeSoftware": "There is no additional charge for AWS Batch. You pay for AWS resources (e.g. EC2 instances, AWS Lambda functions or AWS Fargate) you create to store and run your application.",
-      "openSourceSoftware": "AWS Batch is a commerical offering from Amazon Web Services.",
+      "openSourceSoftware": "AWS Batch is a commercial offering from Amazon Web Services.",
       "commercialSupport": "Commercial support is available for AWS Batch and is dependent on your level of AWS Enterprise support: https://aws.amazon.com/premiumsupport/plans/",
       "typicalTaskDuration": "AWS Batch is not designed for very short, high-throughput use-cases.",
       "taskSubmissionRate": "AWS Batch is not designed for very short, high-throughput use-cases.",
       "microsoftWindowsComputeNodes": "Windows containers are supported but only using Amazon ECS Fargate.",
       "supportForContainers": "AWS Batch supports container/multi-container workloads via ECS, Fargate, and EKS: https://aws.amazon.com/batch/faqs/#topic-0",
       "arm64CPUSupport": "AWS Batch supports both X86_64 and ARM64 vCPU architecture. For Windows container workloads, you must use X86_64. Fargate Spot is not supported for ARM64 and Windows-based containers on Fargate. https://docs.aws.amazon.com/batch/latest/userguide/create-compute-environment.html",
-      "gpuSupport": "AWS Batch supports GPU scheduling, but not when using Fargate as your compute environment. You can utilize instances from the p2, p3, p4, p5, g3, g3s, g4, or g5 familes: https://aws.amazon.com/batch/faqs/#topic-5" ,
+      "gpuSupport": "AWS Batch supports GPU scheduling, but not when using Fargate as your compute environment. You can utilize instances from the p2, p3, p4, p5, g3, g3s, g4, or g5 families: https://aws.amazon.com/batch/faqs/#topic-5" ,
       "advancedResourceScheduling": "AWS Batch allows different pools of resources to be configured and shared with 'fair share' scheduling.",
       "dataAwareScheduling": "AWS Batch does not allow compute tasks to be directed towards instances with data in place.",
       "onPremisesScheduler": "AWS Batch can only be run in AWS.",
@@ -372,7 +372,7 @@
     "details": {
       "freeSoftware": "HTC-Grid is open source software, currently owned by the FINOS foundation and available under the Apache License version 2.0 licence.",
       "openSourceSoftware": "HTC-Grid is open source software, currently owned by the FINOS foundation and available under the Apache License version 2.0 licence.",
-      "commercialSupport": "There is currently no commerical support for HTC-Grid",
+      "commercialSupport": "There is currently no commercial support for HTC-Grid",
       "typicalTaskDuration": "HTC-Grid is designed to support short tasks of under 1 seconds and throughputs of thousands of tasks per second. More detail can be found here: https://aws.amazon.com/blogs/hpc/operational-characteristics-of-htc-grid/",
       "taskSubmissionRate": "HTC-Grid has been demonstrated supporting around 30,000 tasks per second in batches of 100.",
       "microsoftWindowsComputeNodes": "Windows compute nodes have not currently been tested but should be possible.",
@@ -439,7 +439,7 @@
       "advancedResourceScheduling": "ArmoniK partitions can be used to provide autoscaling rules for each users. This is done by exposing custom metric that can take into consideration external elements such as cluster occupation, time: https://armonik.readthedocs.io/en/latest/content/armonik/glossary.html#partition",
       "dataAwareScheduling": "ArmoniK jobs are described as graphs of data and tasks. In a Session, data can be shared amongst any tasks. ArmoniK manages data transfer to a worker while the previous task is running (replicating communication-computation overlapping from advanced MPI programming). We recommend that a session should only run on a single distributed ArmoniK environment. An ArmoniK provides a load balancer to distribute session across different ArmoniK environment.",
       "onPremisesScheduler": "ArmoniK can be deployed on any Kubernetes infrastructure. See installation guide.",
-      "managedCloudResources": "As of today, ArmoniK relies on managed Kubernetes services to manage cloud resources. Future development will rely on other managed services such as AWS Autoscaling Groups or GCP's Managed Instance Groups to provide the same feature without Kubernetes. ArmoniK leverages Kubernete's Pod Deletion Cost to reduce the likelihood of worker eviction during scaledown phases.",
+      "managedCloudResources": "As of today, ArmoniK relies on managed Kubernetes services to manage cloud resources. Future development will rely on other managed services such as AWS Autoscaling Groups or GCP's Managed Instance Groups to provide the same feature without Kubernetes. ArmoniK leverages Kubernetes' Pod Deletion Cost to reduce the likelihood of worker eviction during scaledown phases.",
       "supportCloudSpotCapacity": "Done through Kubernetes machine pool definitions.",
       "managedCloudSolution": "No. Although Market-place deployments are under development.",
       "cloudAWSIntegration": "See installation guide. https://armonik.readthedocs.io/en/latest/content/getting-started/installation/aws.html",
@@ -483,6 +483,65 @@
         "AWS",
         "GCP"
       ]
+    }
+  },
+  {
+    "name": "Flux Framework",
+    "product": "Flux",
+    "owner": "Lawrence Livermore National Laboratory",
+    "inScope": 1,
+    "score": "100%",
+    "link": "https://flux-framework.org",
+    "description": "Flux is a hierarchical, event-driven workload manager that uses resource brokers and dynamic job graphs to provide scalable, flexible, and efficient orchestration of complex scientific workflows on extreme-scale computing systems.",
+    "features": {
+      "freeSoftware": true,
+      "openSourceSoftware": true,
+      "commercialSupport": false,
+      "typicalTaskDuration": 2,
+      "taskSubmissionRate": 3,
+      "microsoftWindowsComputeNodes": false,
+      "supportForContainers": true,
+      "arm64CPUSupport": true,
+      "gpuSupport": true,
+      "dataEncrypted": true,
+      "advancedResourceScheduling": true,
+      "dataAwareScheduling": false,
+      "onPremisesScheduler": true,
+      "managedCloudResources": false,
+      "supportCloudSpotCapacity": false,
+      "managedCloudSolution": false,
+      "cloudAWSIntegration": false,
+      "IntegrationK8": true,
+      "advancedCapacityProvisioning": false,
+      "cloudAzureIntegration": false,
+      "cloudGCPIntegration": false,
+      "supportedCloudProviders": [
+        "AWS",
+        "Azure",
+        "GCP"
+      ]
+    },
+    "details": {
+      "freeSoftware": "",
+      "openSourceSoftware": "Flux Framework projects are available under open source LICENSE on GitHub: https://github.com/flux-framework",
+      "commercialSupport": "The Flux Framework developers team can respond to questions or issues on GitHub boards or via mailing list.",
+      "typicalTaskDuration": "Flux Framework can handle tasks that range from seconds to days or weeks, depending on the cluster configuration that defines a maximum running time. Most HPC jobs are in the order of minutes to hours.",
+      "taskSubmissionRate": "Flux Framework can achieve ~500 jobs/second on simple setups. Flux batch or bringing in hierarchical submission extends that to over 1K jobs/second.",
+      "microsoftWindowsComputeNodes": "Flux Framework is not supported on Windows.",
+      "supportForContainers": "Flux works well with container technologies (e.g., Singularity/Apptainer, CharlieCloud, and Podman) for managing application environments and dependencies. Most HPC environments do not allow for rootful container runtimes.",
+      "arm64CPUSupport": "Flux tests for ARM64 and several cloud environments that use entirely ARM64 have been provisioned (e.g., Graviton2 and Graviton3 on AWS).",
+      "gpuSupport": "Flux enabled with the Fluxion 'flux-sched' resource and queue manager provides support for scheduling to GPUs. Both NVIDIA and AMD have been extensively used." ,
+      "advancedResourceScheduling": "Flux provides advanced resource scheduling and support for multi-tenancy, with support for job priority, custom scheduler policies, and reservations.",
+      "dataAwareScheduling": "Flux provide an ability to move data between brokers that do not share a filesystem with 'flux archive'",
+      "onPremisesScheduler": "Flux Framework can be deployed on-premises (bare metal), on cloud virtual machines, or Kubernetes infrastructure.",
+      "managedCloudResources": "",
+      "supportCloudSpotCapacity": "The Flux Operator (Kubernetes) easily supports spot instances by way of scaling up and down of brokers.",
+      "managedCloudSolution": "The Flux team provides Terraform deployments across clouds for deployment on virtual machines, and the Flux Operator for Kubernetes (e.g., AKS, EKS, GKE).",
+      "cloudAWSIntegration": "Flux can be deployed to AWS via the Flux Operator (EKS) or Bare Metal VMs (EC2 with Terraform)",
+      "IntegrationK8": "The Flux Operator can deploy a Flux cluster on any Kubernetes cluster.",
+      "advancedCapacityProvisioning": "",
+      "cloudAzureIntegration": "Flux can be deployed to Azure via the Flux Operator (AKS) or Bare Metal VMs (Terraform)",
+      "cloudGCPIntegration": "Flux can be deployed to Google Cloud via the Flux Operator (GKE) or Bare Metal VMs (Compute Engine with Terraform)"
     }
   }
 ]
