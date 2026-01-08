@@ -88,7 +88,7 @@
       "typicalTaskDuration": 2,
       "taskSubmissionRate": 1,
       "microsoftWindowsComputeNodes": true,
-      "supportForContainers": false,
+      "supportForContainers": true,
       "arm64CPUSupport": false,
       "gpuSupport": false,
       "dataEncrypted": false,
