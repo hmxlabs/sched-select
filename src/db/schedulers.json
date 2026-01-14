@@ -146,6 +146,28 @@
         "GCP",
         "Oracle"
       ]
+    },
+    "details": {
+      "freeSoftware": "YellowDog is a commercial offering with free trial accounts available.",
+      "openSourceSoftware": "YellowDog is a commercial offering with free trial accounts available.",
+      "commercialSupport": "Support is included with commercial licenses.",
+      "typicalTaskDuration": "YellowDog typically operates with task durations of greater than 200ms",
+      "taskSubmissionRate": "YellowDog has been characterised with a submission rate above 50k tasks per second.",
+      "microsoftWindowsComputeNodes": "Windows is fully supported.",
+      "supportForContainers": "YellowDog has native container support.",
+      "arm64CPUSupport": "YellowDog fully supports ARM64 workloads",
+      "gpuSupport": "GPUs are supported." ,
+      "advancedResourceScheduling": "YellowDog worker pools can be shared and reused between workloads, users and namespaces within an account.",
+      "dataAwareScheduling": "YellowDog allows compute tasks to be scheduled when data resource requirements have been satisfied",
+      "onPremisesScheduler": "YellowDog is available as a self-hosted deployment to run on premises.",
+      "managedCloudResources": "YellowDog orchestrates cloud resources in customers' cloud accounts as instructed",
+      "supportCloudSpotCapacity": "YellowDog has full support for Spot instances, including pre-emption handling and retry policies",
+      "managedCloudSolution": "YellowDog is available as a managed solution, either single or multi-tenant.",
+      "cloudAWSIntegration": "YellowDog supports management of AWS compute",
+      "IntegrationK8": "YellowDog currently leverages AWS EC2 compute planes only but is actively developing a K8S integration.",
+      "advancedCapacityProvisioning": "YellowDog enables advanced capacity provisioning in addition to dynamic autoscaling provisioning.",
+      "cloudAzureIntegration": "YellowDog supports management of Azure compute",
+      "cloudGCPIntegration": "YellowDog supports management of GCP compute"
     }
   },
   {
