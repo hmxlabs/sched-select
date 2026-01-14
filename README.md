@@ -1,9 +1,98 @@
-# sched-select
-HPC Scheduler Selection Tool
+# @hmxlabs/sched-select
 
-# Getting Started with Create React App
+HPC Scheduler Selection Tool - A React component library and standalone application for helping users select the right HPC scheduler based on their requirements.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+This package serves two purposes:
+
+1. **Standalone Application**: A complete React application for scheduler selection
+2. **NPM Package**: A reusable component library that can be imported into other React projects
+
+## Installation
+
+### As an NPM Package
+
+```bash
+npm install @hmxlabs/sched-select
+```
+
+Or for local development:
+
+```json
+{
+  "dependencies": {
+    "@hmxlabs/sched-select": "file:../sched-select"
+  }
+}
+```
+
+### Peer Dependencies
+
+This package requires the following peer dependencies:
+
+```json
+{
+  "@emotion/react": "^11.14.0",
+  "@emotion/styled": "^11.14.0",
+  "@mui/icons-material": "^5.18.0",
+  "@mui/material": "^5.18.0",
+  "@mui/system": "^5.18.0",
+  "framer-motion": "^12.4.5",
+  "react": "^18.0.0 || ^19.0.0",
+  "react-dom": "^18.0.0 || ^19.0.0",
+  "react-router-dom": "^7.0.0"
+}
+```
+
+## Usage
+
+### As a Component in Another Project
+
+```tsx
+import { SchedSelectForm } from '@hmxlabs/sched-select';
+import '@hmxlabs/sched-select/styles';
+
+function App() {
+  return (
+    <div>
+      <SchedSelectForm />
+    </div>
+  );
+}
+```
+
+### Available Exports
+
+```tsx
+// Main component
+import { SchedSelectForm } from '@hmxlabs/sched-select';
+
+// Individual components
+import {
+  QuestionComponent,
+  SchedulerListComponent,
+  SchedulerInfo,
+  UnknownFeature,
+} from '@hmxlabs/sched-select';
+
+// Utilities
+import {
+  scoreSchedulers,
+  filterSchedulers,
+  generateShareableLink,
+  formatKey,
+} from '@hmxlabs/sched-select';
+
+// Types
+import type { Scheduler, SchedulerFeatures, Answer } from '@hmxlabs/sched-select';
+
+// Theme
+import { theme } from '@hmxlabs/sched-select';
+
+// Styles (must be imported separately)
+import '@hmxlabs/sched-select/styles';
+```
 
 ## Available Scripts
 
@@ -11,43 +100,68 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the standalone app in development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the **library** for distribution. Creates:
+- `dist/index.js` - CommonJS bundle
+- `dist/index.esm.js` - ES Module bundle
+- `dist/index.d.ts` - TypeScript declarations
+- `dist/styles.css` - Component styles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run build:app`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the **standalone application** for production to the `build` folder.
 
-### `npm run eject`
+### `npm test`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Launches the test runner in interactive watch mode.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+sched-select/
+├── src/
+│   ├── index.tsx          # Standalone app entry point
+│   ├── lib.ts             # Library entry point (exports)
+│   ├── App.tsx            # Standalone app root component
+│   ├── components/        # React components
+│   │   ├── Form.tsx
+│   │   ├── QuestionComponent.tsx
+│   │   ├── SchedulerListComponent.tsx
+│   │   ├── SchedulerInfo.tsx
+│   │   └── UnknownFeature.tsx
+│   ├── models/            # TypeScript interfaces
+│   ├── utils/             # Helper functions
+│   ├── styles/            # Theme configuration
+│   ├── db/                # JSON data files
+│   └── assets/            # Images and static assets
+├── dist/                  # Built library output
+├── build/                 # Built standalone app output
+├── rollup.config.mjs      # Library build configuration
+├── tsconfig.build.json    # TypeScript config for library build
+└── package.json
+```
 
 ## Development Environment
 
-A VSCode developer environment is provided. Open VSCode, and then select "Open in Container" from the interactive button, or search for "Dev Containers" in the command palette. For the start command to be successful (`npm install`) you will need access to private repositories provided by hmxlabs.
+A VSCode developer environment is provided. Open VSCode, and then select "Open in Container" from the interactive button, or search for "Dev Containers" in the command palette.
+
+## Building for Distribution
+
+To build and publish the library:
+
+```bash
+# Build the library
+npm run build
+
+# The package is ready to be published or linked locally
+```
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [React documentation](https://reactjs.org/)
+- [Material-UI documentation](https://mui.com/)
