@@ -36,6 +36,7 @@
     "react-router-dom": "^7.0.0"
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^5.18.0",
@@ -67,10 +68,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "craco start",
     "build": "rollup -c",
-    "build:app": "react-scripts build",
-    "test": "react-scripts test",
+    "build:app": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "prepublishOnly": "npm run build"
   },
@@ -91,5 +92,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "overrides": {
+    "nth-check": "^2.1.1",
+    "postcss": "^8.4.31",
+    "svgo": "^3.0.0",
+    "css-select": "^5.1.0",
+    "webpack-dev-server": "^5.2.1"
   }
 }
