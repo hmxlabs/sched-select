@@ -1,6 +1,11 @@
 # @hmxlabs/sched-select
 
-HPC Scheduler Selection Tool - A React component library and standalone application for helping users select the right HPC scheduler based on their requirements.
+## TLDR
+Choosing a HPC/AI scheduler is often a once per career type decision and getting it wrong can be expensive. Want a hand? This is the tool for to do that.
+
+If you just want to use the tool, head over to https://scheduler-select.hmxlabs.io
+
+Looking to add your own scheduler or correct a mistake? You probably just want to edit this file: [src/db/schedulers.json](./src/db/schedulers.json) and raise a PR.
 
 ## Overview
 
@@ -159,9 +164,3 @@ npm run build
 
 # The package is ready to be published or linked locally
 ```
-
-## Learn More
-
-- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
-- [React documentation](https://reactjs.org/)
-- [Material-UI documentation](https://mui.com/)
