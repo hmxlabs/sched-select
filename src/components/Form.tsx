@@ -30,13 +30,23 @@ export default function Form() {
   const [isReadOnly, setIsReadOnly] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
+  // Get the valid question keys from the questions database
+  const validQuestionKeys = useMemo(
+    () => new Set(questions.map((q) => q.key)),
+    []
+  );
+
   useEffect(() => {
     const params = Object.fromEntries(searchParams.entries());
-    if (Object.keys(params).length > 0) {
-      setAnswersState(params as unknown as Answer);
+    // Filter to only include known question keys, ignore unknown params like 'ref'
+    const validParams = Object.fromEntries(
+      Object.entries(params).filter(([key]) => validQuestionKeys.has(key))
+    );
+    if (Object.keys(validParams).length > 0) {
+      setAnswersState(validParams as unknown as Answer);
       setIsReadOnly(true);
     }
-  }, []);
+  }, [validQuestionKeys]);
 
   useEffect(() => {
     const updatedSchedulers = schedulers.map((scheduler) => {
