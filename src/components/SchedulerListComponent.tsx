@@ -12,6 +12,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SchedulerInfoComponent from "./SchedulerInfo";
 import UnknownFeaturesDialog from "./UnknownFeature";
 import { Scheduler } from "../models/Schedulers";
@@ -20,6 +21,7 @@ interface SchedulerListProps {
   generateShareableLink?: () => void;
   resetForm?: () => void;
   compact?: boolean;
+  currentQuestionKey?: string;
 }
 
 const CustomButton = styled(Button)(() => ({
@@ -31,6 +33,7 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
   generateShareableLink,
   resetForm,
   compact = false,
+  currentQuestionKey,
 }) => {
   const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(
     null
@@ -93,6 +96,24 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
             />
           </IconButton>
         </Tooltip>
+        {currentQuestionKey && scheduler.details && scheduler.details[currentQuestionKey] && (
+          <Tooltip title={scheduler.details[currentQuestionKey]} placement="bottom" arrow enterDelay={300}>
+            <IconButton
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+              size="small"
+              aria-label="question details"
+              className="details-button"
+            >
+              <HelpOutlineIcon
+                fontSize="small"
+                className="details-icon"
+              />
+            </IconButton>
+          </Tooltip>
+        )}
       </a>
 
       {scheduler.unknownCount && scheduler.unknownCount > 0 && scheduler.unknownFeatures && scheduler.unknownFeatures.length > 0 ? (

@@ -146,7 +146,11 @@ export default function Form() {
         {!submitted && !isReadOnly && (
           <Box className="side-panel" sx={{ order: { xs: 2, md: 0 } }}>
             <Box className="side-panel-content">
-              <SchedulerListComponent schedulers={filteredSchedulers} compact />
+              <SchedulerListComponent 
+                schedulers={filteredSchedulers} 
+                compact 
+                currentQuestionKey={visibleQuestions[currentQuestionIndex]?.key}
+              />
             </Box>
           </Box>
         )}
