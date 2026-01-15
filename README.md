@@ -7,6 +7,22 @@ If you just want to use the tool, head over to https://scheduler-select.hmxlabs.
 
 Looking to add your own scheduler or correct a mistake? You probably just want to edit this file: [src/db/schedulers.json](./src/db/schedulers.json) and raise a PR.
 
+### Validating schedulers.json
+
+After making changes to `schedulers.json`, run the validation script to ensure your changes are correct:
+
+```bash
+python3 validate_schedulers.py
+```
+
+The script validates against the schema defined:
+- **Errors** (cause validation failure):
+  - Missing required top-level fields (`name`, `product`, `owner`, `inScope`, `score`, `link`, `description`, `features`)
+  - Missing required feature fields
+  - Unknown/unexpected fields in any section
+- **Warnings** (validation passes but issues are flagged):
+  - Missing fields in the optional `details` section
+
 ## Overview
 
 This package serves two purposes:
