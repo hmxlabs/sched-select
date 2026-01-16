@@ -3,6 +3,7 @@ import './index.css';
 
 // Main component export
 export { default as SchedSelectForm } from './components/Form';
+export type { FormProps as SchedSelectFormProps } from './components/Form';
 
 // Individual component exports
 export { default as QuestionComponent } from './components/QuestionComponent';

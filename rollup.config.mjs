@@ -47,7 +47,7 @@ export default [
   },
   // Type declarations
   {
-    input: 'dist/index.d.ts',
+    input: 'dist/lib.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'es' }],
     plugins: [dts()],
     external: [/\.css$/],

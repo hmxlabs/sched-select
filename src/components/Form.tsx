@@ -17,8 +17,12 @@ import {
 
 import backgroundImage from '../assets/bg1.jpg';
 
+export interface FormProps {
+  onSubmit?: (answers: Answer) => void;
+}
 
-export default function Form() {
+export default function Form(props: FormProps) {
+  const { onSubmit } = props;
   const [submitted, setSubmitted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] =
@@ -115,6 +119,9 @@ export default function Form() {
         const final = scoreSchedulers(answersState, filteredSchedulers);
         setFilteredSchedulers(final);
         setSubmitted(true);
+        if (onSubmit) {
+          onSubmit(answersState);
+        }
       }
     }
   };
