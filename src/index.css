@@ -269,7 +269,7 @@
 
   .questionSummaryQuestion {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     margin-bottom: 8px;
   }
@@ -278,7 +278,6 @@
     color: var(--progress-bar-bg);
     font-size: 1.2rem;
     flex-shrink: 0;
-    margin-top: 2px;
   }
 
   .questionSummaryText {
