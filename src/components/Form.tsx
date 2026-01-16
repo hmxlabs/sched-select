@@ -2,11 +2,14 @@ import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Snackbar, Box } from "@mui/material";
+import ShareIcon from "@mui/icons-material/Share";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import questions from "../db/questions.json";
 import answers from "../db/answers.json";
 import schedulers from "../db/schedulers.json";
 import QuestionComponent from "./QuestionComponent";
 import SchedulerListComponent from "./SchedulerListComponent";
+import QuestionsSummaryComponent from "./QuestionsSummaryComponent";
 import { Scheduler } from "../models/Schedulers";
 import { Answer } from "../models/Answers";
 import {
@@ -226,20 +229,51 @@ export default function Form(props: FormProps) {
                 />
                 <p className="progressBarText">{currentQuestionIndex + 1} of {visibleQuestions.length} questions</p>
               </div>
+
+              {/* Restart Button */}
+              <div className="formRestartContainer">
+                <button
+                  className="results-button restart-btn"
+                  onClick={resetForm}
+                >
+                  <RefreshIcon fontSize="small" />
+                  <span>Restart</span>
+                </button>
+              </div>
             </Box>
           ) : (
             <motion.div
+              className="resultsWrapper"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <SchedulerListComponent
-                schedulers={filteredSchedulers}
-                generateShareableLink={() =>
-                  generateShareableLink(setOpenSnackbar)
-                }
-                resetForm={resetForm}
-              />
+              <div className="resultsContainer">
+                <QuestionsSummaryComponent userAnswers={answersState as unknown as Record<string, string | boolean | number | string[]>} />
+                <SchedulerListComponent
+                  schedulers={filteredSchedulers}
+                  generateShareableLink={() =>
+                    generateShareableLink(setOpenSnackbar)
+                  }
+                  resetForm={resetForm}
+                />
+              </div>
+              <div className="resultsButtonContainer">
+                <button
+                  className="results-button share-btn"
+                  onClick={() => generateShareableLink(setOpenSnackbar)}
+                >
+                  <ShareIcon fontSize="small" />
+                  <span>Share Link</span>
+                </button>
+                <button
+                  className="results-button restart-btn"
+                  onClick={resetForm}
+                >
+                  <RefreshIcon fontSize="small" />
+                  <span>Restart</span>
+                </button>
+              </div>
             </motion.div>
           )}
       </div>

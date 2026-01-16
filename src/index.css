@@ -98,6 +98,12 @@
     font-weight: lighter;
     text-align: right;
   }
+
+  .formRestartContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
   
   .questionContainer {
     margin-bottom: 90px;
@@ -152,6 +158,65 @@
     text-align: center;
     margin-top: 20%;
   }
+
+  .resultsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+    width: 100%;
+  }
+
+  .resultsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .resultsButtonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .results-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: var(--button-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: capitalize;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  .results-button:hover {
+    opacity: 0.9;
+  }
+
+  .results-button.share-btn {
+    background: var(--custom-secondary);
+  }
+
+  .results-button.share-btn:hover {
+    background-color: var(--button-bg-hover);
+  }
+
+  .results-button.restart-btn {
+    background: var(--button-bg);
+  }
+
+  .results-button.restart-btn:hover {
+    background-color: var(--button-bg-hover);
+  }
+
   .submissionTitle {
     color: #FFF;
     font-family: Inter;
@@ -168,8 +233,66 @@
     gap: 32px;
     border-radius: 8px;
     background: var(--box-bg);
-
+    min-width: 350px;
+    max-width: 450px;
   }
+
+  .summaryBox {
+    max-height: 70vh;
+    overflow-y: auto;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .resultsContainer .schedulerBox {
+    max-height: 70vh;
+    overflow-y: auto;
+    align-self: stretch;
+  }
+
+  .questionsSummaryList {
+    margin-top: 16px;
+  }
+
+  .questionSummaryItem {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .questionSummaryItem:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .questionSummaryQuestion {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .summary-indicator {
+    color: var(--progress-bar-bg);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .questionSummaryText {
+    color: var(--sub-title-color);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .questionSummaryAnswer {
+    padding-left: 30px;
+    color: #fff;
+    font-size: 14px;
+  }
+
   .submissionText {
     color: white;
     margin-bottom: 8px;
@@ -392,6 +515,30 @@
 
     .submissionContainer {
       margin-top: 0;
+    }
+
+    .resultsWrapper {
+      margin-top: 5%;
+    }
+
+    .resultsContainer {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .resultsButtonContainer {
+      margin-top: 24px;
+    }
+
+    .submissionBox {
+      min-width: auto;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .summaryBox,
+    .schedulerBox {
+      max-height: none;
     }
   }
   

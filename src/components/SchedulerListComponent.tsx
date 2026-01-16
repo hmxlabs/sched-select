@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { styled } from "@mui/material/styles";
 import {
   Button,
   Box,
@@ -8,7 +7,6 @@ import {
   Tooltip,
 } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import ShareIcon from "@mui/icons-material/Share";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -23,10 +21,6 @@ interface SchedulerListProps {
   compact?: boolean;
   currentQuestionKey?: string;
 }
-
-const CustomButton = styled(Button)(() => ({
-  padding: "4px 10px !important",
-}));
 
 const SchedulerListComponent: React.FC<SchedulerListProps> = ({
   schedulers,
@@ -145,9 +139,8 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="submissionContainer"
       >
-        <div className="submissionBox">
+        <div className="submissionBox schedulerBox">
           {!compact && <h3 className="submissionTitle">Results</h3>}
 
           <p className="sched-category">MATCHES</p>
@@ -159,27 +152,6 @@ const SchedulerListComponent: React.FC<SchedulerListProps> = ({
           {schedulers
             .filter((s) => !s.isMatch)
             .map((s, i) => renderScheduler(s, i, false))}
-
-          {!compact && (
-            <div className="buttonContainer">
-              <CustomButton
-                className="share-button"
-                variant="contained"
-                onClick={generateShareableLink}
-              >
-                <ShareIcon fontSize="small" />
-                <span className="btn-text">Share Link</span>
-              </CustomButton>
-              <CustomButton
-                className="reset-button"
-                variant="contained"
-                onClick={resetForm}
-              >
-                <RefreshIcon fontSize="small" />
-                <span className="btn-text">Restart</span>
-              </CustomButton>
-            </div>
-          )}
         </div>
 
         {/* Details Dialog */}
