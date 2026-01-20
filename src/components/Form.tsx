@@ -50,8 +50,18 @@ export default function Form(props: FormProps) {
       Object.entries(params).filter(([key]) => validQuestionKeys.has(key))
     );
     if (Object.keys(validParams).length > 0) {
-      setAnswersState(validParams as unknown as Answer);
+      const answersFromUrl = validParams as unknown as Answer;
+      setAnswersState(answersFromUrl);
       setIsReadOnly(true);
+      
+      // Calculate scored schedulers and go directly to results
+      const updatedSchedulers = schedulers.map((scheduler) => {
+        const isMatch = filterSchedulers(answersFromUrl, [scheduler]).length > 0;
+        return { ...scheduler, isMatch: isMatch || false };
+      });
+      const final = scoreSchedulers(answersFromUrl, updatedSchedulers);
+      setFilteredSchedulers(final);
+      setSubmitted(true);
     }
   }, [validQuestionKeys]);
 
