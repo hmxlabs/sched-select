@@ -221,7 +221,7 @@
       "supportCloudSpotCapacity": true,
       "managedCloudSolution": true,
       "cloudAWSIntegration": true,
-      "IntegrationK8": false,
+      "IntegrationK8": true,
       "advancedCapacityProvisioning": true,
       "cloudAzureIntegration": true,
       "cloudGCPIntegration": true,
@@ -249,7 +249,7 @@
       "supportCloudSpotCapacity": "YellowDog has full support for Spot instances, including pre-emption handling and retry policies",
       "managedCloudSolution": "YellowDog is available as a managed solution, either single or multi-tenant.",
       "cloudAWSIntegration": "YellowDog supports management of AWS compute",
-      "IntegrationK8": "YellowDog currently leverages AWS EC2 compute planes only but is actively developing a K8S integration.",
+      "IntegrationK8": "YellowDog supports native Kubernetes cluster provisioning.",
       "advancedCapacityProvisioning": "YellowDog enables advanced capacity provisioning in addition to dynamic autoscaling provisioning.",
       "cloudAzureIntegration": "YellowDog supports management of Azure compute",
       "cloudGCPIntegration": "YellowDog supports management of GCP compute"
